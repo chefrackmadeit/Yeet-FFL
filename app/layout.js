@@ -35,7 +35,7 @@ export default function RootLayout({ children }) {
               </Link>
               <div className="nav-links">
                 <Link href="/">Home</Link>
-                <Link href="/standings">Standings</Link>
+                <Link href="/head-to-head">Head to Head</Link>
                 <Link href="/matchups">Matchups</Link>
                 <Link href="/history">History</Link>
                 <ThemeToggle />

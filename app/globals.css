@@ -417,6 +417,92 @@ tbody tr:hover {
   color: var(--muted);
 }
 
+/* ---- Head to Head ---- */
+.h2h-heads {
+  display: flex;
+  align-items: stretch;
+  gap: 12px;
+  margin-bottom: 18px;
+}
+.h2h-card {
+  flex: 1;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 18px 12px;
+  text-align: center;
+}
+.h2h-avatar {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  object-fit: cover;
+  background: var(--bg-soft);
+  margin: 0 auto 8px;
+  display: block;
+}
+.h2h-team {
+  font-weight: 800;
+  font-size: 17px;
+}
+.h2h-vs {
+  align-self: center;
+  font-weight: 800;
+  color: var(--muted);
+  font-size: 14px;
+}
+.h2h-stats {
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  overflow: hidden;
+}
+.h2h-row {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  border-top: 1px solid var(--border);
+}
+.h2h-row:first-child {
+  border-top: none;
+}
+.h2h-val {
+  padding: 12px 14px;
+  font-weight: 700;
+  font-size: 17px;
+  font-variant-numeric: tabular-nums;
+}
+.h2h-row .h2h-val:first-child {
+  text-align: right;
+}
+.h2h-val.win {
+  color: var(--win);
+  background: color-mix(in srgb, var(--win) 12%, transparent);
+}
+.h2h-label {
+  padding: 12px 16px;
+  color: var(--muted);
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  text-align: center;
+  white-space: nowrap;
+}
+
+@media (max-width: 640px) {
+  .h2h-label {
+    font-size: 10px;
+    padding: 10px 6px;
+    white-space: normal;
+  }
+  .h2h-val {
+    font-size: 15px;
+    padding: 10px;
+  }
+  .h2h-team {
+    font-size: 15px;
+  }
+}
+
 /* ---- Weekly Preview cards ---- */
 .preview-card {
   border: 1px solid var(--border);

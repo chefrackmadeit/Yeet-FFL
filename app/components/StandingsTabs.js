@@ -2,7 +2,6 @@
 
 import Link from "next/link";
 import { useMemo, useState } from "react";
-import { americanOdds } from "@/lib/odds";
 
 const BASE_COLS = [
   { key: "team", label: "Team", type: "text" },
@@ -12,7 +11,7 @@ const BASE_COLS = [
   { key: "pointsFor", label: "PF", type: "num" },
   { key: "pointsAgainst", label: "PA", type: "num" },
 ];
-const ODDS_COL = { key: "titleProb", label: "Title Odds", type: "num" };
+const ODDS_COL = { key: "titleProb", label: "Title %", type: "num" };
 
 export default function StandingsTabs({ sets }) {
   const [active, setActive] = useState(0);
@@ -81,8 +80,8 @@ export default function StandingsTabs({ sets }) {
           </thead>
           <tbody>
             {rows.map((r, i) => {
-              const isChamp = r.rosterId === set.champRosterId;
-              const isLoser = r.rosterId === set.loserRosterId;
+              const isChamp = String(r.rosterId) === String(set.champRosterId);
+              const isLoser = String(r.rosterId) === String(set.loserRosterId);
               return (
                 <tr key={r.rosterId}>
                   <td className="rank">{i + 1}</td>
@@ -110,7 +109,7 @@ export default function StandingsTabs({ sets }) {
                   <td className="num">{r.pointsFor.toFixed(1)}</td>
                   <td className="num">{r.pointsAgainst.toFixed(1)}</td>
                   {set.isCurrent && (
-                    <td className="num">{americanOdds(r.titleProb || 0.01)}</td>
+                    <td className="num">{((r.titleProb || 0) * 100).toFixed(1)}%</td>
                   )}
                 </tr>
               );
@@ -120,7 +119,7 @@ export default function StandingsTabs({ sets }) {
       </div>
       <p className="sub" style={{ marginTop: 12 }}>
         🏆 champion · 🍔 last place. Click a column to sort.
-        {set.isCurrent && " Title Odds are a for-fun projection from record + scoring."}
+        {set.isCurrent && " Title % is a for-fun projection from record + scoring."}
       </p>
     </div>
   );
