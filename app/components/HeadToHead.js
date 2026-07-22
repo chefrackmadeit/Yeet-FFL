@@ -47,30 +47,29 @@ export default function HeadToHead({ managers, stats }) {
 
   return (
     <div>
-      <div className="filters">
-        <label>
-          Manager 1&nbsp;
+      <div className="h2h-selectors">
+        <div className="h2h-sel">
           <Select value={idA} onChange={setIdA} />
-        </label>
-        <label>
-          Manager 2&nbsp;
+        </div>
+        <div />
+        <div className="h2h-sel">
           <Select value={idB} onChange={setIdB} />
-        </label>
-      </div>
-
-      <div className="tabs">
-        <button className={"tab-btn" + (mode === "regular" ? " active" : "")} onClick={() => setMode("regular")}>
-          Regular Season
-        </button>
-        <button className={"tab-btn" + (mode === "all" ? " active" : "")} onClick={() => setMode("all")}>
-          All Time
-        </button>
+        </div>
       </div>
 
       <div className="h2h-heads">
         {mA && <ManagerCard m={mA} />}
         <div className="h2h-vs">VS</div>
         {mB && <ManagerCard m={mB} />}
+      </div>
+
+      <div className="tabs" style={{ justifyContent: "center", marginTop: 18 }}>
+        <button className={"tab-btn" + (mode === "regular" ? " active" : "")} onClick={() => setMode("regular")}>
+          Regular Season
+        </button>
+        <button className={"tab-btn" + (mode === "all" ? " active" : "")} onClick={() => setMode("all")}>
+          All Time
+        </button>
       </div>
 
       {a && b ? (

@@ -1,77 +1,97 @@
-import { getAllTimeStats, getCurrentLeagueId } from "@/lib/sleeper";
+import Link from "next/link";
+import { getCurrentLeagueId } from "@/lib/sleeper";
+import { buildArchives } from "@/lib/manager";
+import ArchivesExplorer from "@/app/components/ArchivesExplorer";
 
 export const dynamic = "force-dynamic";
 
-export const metadata = { title: "History · YEET FFL" };
+export const metadata = { title: "The Archives · YEET FFL" };
 
-export default async function HistoryPage() {
-  const currentId = await getCurrentLeagueId();
-  const { table, seasons } = await getAllTimeStats(currentId);
+function RecordCard({ label, value, sub }) {
+  return (
+    <div className="card record-card">
+      <div className="label">{label}</div>
+      <div className="value">{value}</div>
+      {sub && <div className="sub">{sub}</div>}
+    </div>
+  );
+}
+
+export default async function ArchivesPage() {
+  const id = await getCurrentLeagueId();
+  const { seasons, perYear, allTime, recordBook: rb, champions } =
+    await buildArchives(id);
+
+  const cards = [
+    rb.bestRegSeason && {
+      label: "Best Regular Season",
+      value: `${rb.bestRegSeason.wins}-${rb.bestRegSeason.losses}${rb.bestRegSeason.ties ? "-" + rb.bestRegSeason.ties : ""}`,
+      sub: `${rb.bestRegSeason.team} · ${rb.bestRegSeason.year}`,
+    },
+    rb.highestGame && {
+      label: "Highest Points Scored",
+      value: rb.highestGame.value.toFixed(1),
+      sub: `${rb.highestGame.team} · ${rb.highestGame.year} Wk ${rb.highestGame.week}`,
+    },
+    rb.lowestGame && {
+      label: "Lowest Points Scored",
+      value: rb.lowestGame.value.toFixed(1),
+      sub: `${rb.lowestGame.team} · ${rb.lowestGame.year} Wk ${rb.lowestGame.week}`,
+    },
+    rb.largestMargin && {
+      label: "Largest Win Margin",
+      value: `+${rb.largestMargin.margin.toFixed(1)}`,
+      sub: `${rb.largestMargin.winnerTeam} ${rb.largestMargin.winnerScore.toFixed(1)} – ${rb.largestMargin.loserScore.toFixed(1)} ${rb.largestMargin.loserTeam} · ${rb.largestMargin.year} Wk ${rb.largestMargin.week}`,
+    },
+    rb.bestPlayer && {
+      label: "Highest Player Performance",
+      value: rb.bestPlayer.points.toFixed(1),
+      sub: `${rb.bestPlayer.player} (${rb.bestPlayer.position}) · ${rb.bestPlayer.manager} · ${rb.bestPlayer.year} Wk ${rb.bestPlayer.week}`,
+    },
+    rb.mostWaivers && {
+      label: "Most Waiver Moves",
+      value: rb.mostWaivers.count,
+      sub: `${rb.mostWaivers.manager} · ${rb.mostWaivers.year}`,
+    },
+    rb.bestWinStreak && {
+      label: "Best Win Streak",
+      value: `${rb.bestWinStreak.len} W`,
+      sub: `${rb.bestWinStreak.manager} · ${rb.bestWinStreak.year}`,
+    },
+    rb.worstLossStreak && {
+      label: "Worst Losing Streak",
+      value: `${rb.worstLossStreak.len} L`,
+      sub: `${rb.worstLossStreak.manager} · ${rb.worstLossStreak.year}`,
+    },
+  ].filter(Boolean);
 
   return (
     <>
+      <h2>Record Book</h2>
+      <div className="grid record-grid">
+        {cards.map((c) => (
+          <RecordCard key={c.label} label={c.label} value={c.value} sub={c.sub} />
+        ))}
+      </div>
+
       <h2>League Champions</h2>
       <div className="grid">
-        {seasons.map((s) => (
-          <div className="card champion" key={s.leagueId}>
-            <div className="label">{s.season}</div>
-            <div className="value">
-              🏆 {s.champion ? s.champion.team : "—"}
-            </div>
-            {s.champion && <div className="sub">{s.champion.manager}</div>}
+        {champions.map((c) => (
+          <div className="card champion-card" key={c.year}>
+            <div className="label">{c.year}</div>
+            <div className="value">🏆 {c.champion ? c.champion.team : "—"}</div>
+            {c.champion && <div className="sub">{c.champion.manager}</div>}
+            {c.last && (
+              <div className="sub" style={{ marginTop: 6 }}>
+                🍔 {c.last.team}
+              </div>
+            )}
           </div>
         ))}
       </div>
 
       <h2>All-Time Records</h2>
-      <div className="table-wrap">
-        <table>
-          <thead>
-            <tr>
-              <th className="rank">#</th>
-              <th>Manager</th>
-              <th className="num">Titles</th>
-              <th className="num">Seasons</th>
-              <th className="num">W</th>
-              <th className="num">L</th>
-              <th className="num">T</th>
-              <th className="num">Win %</th>
-              <th className="num">Total PF</th>
-            </tr>
-          </thead>
-          <tbody>
-            {table.map((m, i) => (
-              <tr key={m.userId}>
-                <td className="rank">{i + 1}</td>
-                <td>
-                  <div className="team-cell">
-                    {m.avatar && (
-                      // eslint-disable-next-line @next/next/no-img-element
-                      <img className="avatar" src={m.avatar} alt="" />
-                    )}
-                    <div>
-                      <div>{m.team}</div>
-                      <div className="sub">{m.name}</div>
-                    </div>
-                  </div>
-                </td>
-                <td className="num">{m.titles || ""}</td>
-                <td className="num">{m.seasons}</td>
-                <td className="num">{m.wins}</td>
-                <td className="num">{m.losses}</td>
-                <td className="num">{m.ties}</td>
-                <td className="num">{(m.winPct * 100).toFixed(1)}%</td>
-                <td className="num">{m.pointsFor.toFixed(1)}</td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      </div>
-      <p className="sub" style={{ marginTop: 12 }}>
-        Aggregated across every season in the league's Sleeper history. Managers
-        are tracked by account, so records follow you even if you rename your
-        team.
-      </p>
+      <ArchivesExplorer seasons={seasons} perYear={perYear} allTime={allTime} />
     </>
   );
 }
