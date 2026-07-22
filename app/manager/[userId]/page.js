@@ -86,6 +86,11 @@ export default async function ManagerPage({ params }) {
           }
         />
         <Stat
+          label="Avg Points / Game"
+          value={a.avgPoints.toFixed(1)}
+          sub="regular season"
+        />
+        <Stat
           label="Playoff Appearances"
           value={a.playoffAppearances}
           sub={
@@ -102,7 +107,11 @@ export default async function ManagerPage({ params }) {
       </div>
 
       <h2>Season History</h2>
-      <ManagerTabs seasons={profile.seasons} />
+      <ManagerTabs
+        seasons={profile.seasons}
+        draft={profile.draft}
+        players={profile.players}
+      />
     </>
   );
 }

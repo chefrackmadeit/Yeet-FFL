@@ -1,49 +1,47 @@
 /* ============================================================
    THEME TOKENS
-   Dark mode (default) uses the brand accents:
-     gold #FFBD59 · cyan #0CC0DF · purple #9000D4
-   Light mode uses the RGB-inverse of those accents:
-     #0042A6 · #F33F20 · #6FFF2B
+   Dark mode  → Stripe-inspired: deep indigo surfaces with the
+     purple / pink / orange gradient accents.
+   Light mode → Notion-inspired: clean white + warm neutrals,
+     with a calm blue accent.
+   The three accent vars (--c-purple, --c-cyan=pink, --c-gold=orange)
+   feed the --grad gradient used on the logo, titles and banner.
    ============================================================ */
 :root {
-  --bg: #0b0f1a;
-  --bg-soft: #141b2d;
-  --card: #172136;
-  --border: #263250;
-  --text: #e8edf7;
-  --muted: #93a1bd;
+  --bg: #0a0b1e;
+  --bg-soft: #13152f;
+  --card: #181b39;
+  --border: #2c3160;
+  --text: #e8eafb;
+  --muted: #a2a8ce;
 
-  --c-gold: #ffbd59;
-  --c-cyan: #0cc0df;
-  --c-purple: #9000d4;
-  --accent: var(--c-cyan);
+  --c-purple: #a175ff;
+  --c-cyan: #ff5fa2; /* pink */
+  --c-gold: #ff9457; /* orange */
+  --accent: #8b6dff; /* blurple */
+  --grad: linear-gradient(120deg, var(--c-purple), var(--c-cyan), var(--c-gold));
 
-  --win: #35c26b;
-  --loss: #ff5c6c;
-  --shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+  --win: #3ddc97;
+  --loss: #ff6b81;
+  --shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
 }
 
 [data-theme="light"] {
-  --bg: #f4f7fb;
-  --bg-soft: #e7edf6;
+  --bg: #ffffff;
+  --bg-soft: #f7f6f3;
   --card: #ffffff;
-  --border: #d4dced;
-  --text: #131722;
-  --muted: #5a6577;
+  --border: #e9e9e7;
+  --text: #37352f;
+  --muted: #787774;
 
-  --c-gold: #0042a6;
-  --c-cyan: #f33f20;
-  --c-purple: #1f7a3d; /* forest green (softened light-mode inverse) */
-  --accent: var(--c-cyan);
+  --c-purple: #7c3aed;
+  --c-cyan: #d6336c; /* pink */
+  --c-gold: #e8590c; /* orange */
+  --accent: #2383e2; /* Notion blue */
 
-  --win: #1f9d57;
+  --win: #148f47;
   --loss: #d92b3a;
-  --shadow: 0 8px 24px rgba(20, 30, 60, 0.12);
-}
-
-/* Banner brand color is fixed in both themes */
-:root {
-  --banner: #0cc0df;
+  --shadow: 0 4px 16px rgba(15, 15, 15, 0.08);
 }
 
 * {
@@ -97,9 +95,11 @@ a {
   text-align: center;
   max-width: 1000px;
   margin: 0 auto;
-  /* blue outline in dark mode, inverse orange in light mode */
-  border: 2px solid var(--accent);
+  /* rounded gradient border (purple → pink → orange) */
+  border: 2px solid transparent;
   border-radius: 12px;
+  background: linear-gradient(var(--bg), var(--bg)) padding-box,
+    var(--grad) border-box;
 }
 .banner-label {
   font-weight: 800;
@@ -142,7 +142,11 @@ a {
   font-weight: 800;
   letter-spacing: 0.5px;
   font-size: 20px;
-  color: var(--accent);
+  background: var(--grad);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
 }
 .nav-links {
   display: flex;
@@ -184,7 +188,7 @@ a {
   align-items: center;
   gap: 8px;
   background: var(--accent);
-  color: #06222a;
+  color: #fff;
   font-weight: 700;
   padding: 10px 16px;
   border-radius: 10px;
@@ -206,6 +210,11 @@ main {
 .hero h1 {
   font-size: 40px;
   margin: 0 0 8px;
+  background: var(--grad);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
 }
 .hero p {
   color: var(--muted);
@@ -450,7 +459,7 @@ tbody tr:hover {
 }
 .subtab.active {
   background: var(--accent);
-  color: #06222a;
+  color: #fff;
   border-color: var(--accent);
 }
 .tab-btn.alt.active {
@@ -515,6 +524,10 @@ tbody tr:hover {
 }
 .h2h-vs {
   align-self: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
   font-weight: 800;
   color: var(--muted);
   font-size: 14px;
@@ -610,6 +623,82 @@ tbody tr:hover {
   font-weight: 700;
 }
 
+/* ---- Owners directory ---- */
+.owners-grid {
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+}
+.owner-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 20px 16px;
+  text-align: center;
+  transition: border-color 0.15s ease, transform 0.15s ease;
+}
+.owner-card:hover {
+  border-color: var(--accent);
+  transform: translateY(-2px);
+}
+.owner-avatar {
+  width: 76px;
+  height: 76px;
+  border-radius: 50%;
+  object-fit: cover;
+  background: var(--bg-soft);
+  margin: 0 auto 10px;
+  display: block;
+}
+.owner-team {
+  font-weight: 800;
+  font-size: 17px;
+}
+.owner-medals {
+  font-size: 20px;
+  min-height: 26px;
+  margin: 8px 0 12px;
+  letter-spacing: 2px;
+}
+.owner-stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 6px;
+  border-top: 1px solid var(--border);
+  padding-top: 12px;
+}
+.owner-stat-num {
+  font-weight: 700;
+  font-size: 15px;
+  font-variant-numeric: tabular-nums;
+}
+.owner-stat-lab {
+  color: var(--muted);
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+}
+
+/* ---- Draft tendency legend ---- */
+.pos-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  margin-top: 10px;
+}
+.pos-key {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--muted);
+}
+.pos-swatch {
+  width: 14px;
+  height: 14px;
+  border-radius: 3px;
+  display: inline-block;
+}
+
 /* ---- Manager page ---- */
 .manager-head {
   display: flex;
@@ -651,7 +740,7 @@ tbody tr:hover {
 }
 .tab-btn.active {
   background: var(--accent);
-  color: #06222a;
+  color: #fff;
   border-color: var(--accent);
 }
 .total-row {

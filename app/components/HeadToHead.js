@@ -28,7 +28,7 @@ function ManagerCard({ m }) {
 export default function HeadToHead({ managers, stats }) {
   const [idA, setIdA] = useState(managers[0]?.userId || "");
   const [idB, setIdB] = useState(managers[1]?.userId || managers[0]?.userId || "");
-  const [mode, setMode] = useState("regular");
+  const [mode, setMode] = useState("current");
 
   const mA = managers.find((m) => m.userId === idA);
   const mB = managers.find((m) => m.userId === idB);
@@ -64,7 +64,7 @@ export default function HeadToHead({ managers, stats }) {
       </div>
 
       <div className="tabs" style={{ justifyContent: "center", marginTop: 18 }}>
-        <button className={"tab-btn" + (mode === "regular" ? " active" : "")} onClick={() => setMode("regular")}>
+        <button className={"tab-btn" + (mode === "current" ? " active" : "")} onClick={() => setMode("current")}>
           Regular Season
         </button>
         <button className={"tab-btn" + (mode === "all" ? " active" : "")} onClick={() => setMode("all")}>
@@ -93,7 +93,7 @@ export default function HeadToHead({ managers, stats }) {
       )}
 
       <p className="sub" style={{ marginTop: 12 }}>
-        {mode === "regular" ? "Regular season only." : "All time (regular season + playoffs)."} Better stat is highlighted green.
+        {mode === "current" ? "Current season — regular season." : "All-time regular season (all years)."} Better stat is highlighted green.
       </p>
     </div>
   );
