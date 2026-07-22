@@ -33,7 +33,7 @@
 
   --c-gold: #0042a6;
   --c-cyan: #f33f20;
-  --c-purple: #6fff2b;
+  --c-purple: #1f7a3d; /* forest green (softened light-mode inverse) */
   --accent: var(--c-cyan);
 
   --win: #1f9d57;
