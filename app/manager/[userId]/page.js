@@ -60,25 +60,45 @@ export default async function ManagerPage({ params }) {
         <Stat
           label="All-Time Record"
           value={recordStr}
-          sub={`${(a.winPct * 100).toFixed(1)}% win rate`}
+          sub={`${(a.winPct * 100).toFixed(1)}% win rate · ${a.seasonSpan}`}
         />
-        <Stat label="Total Points" value={a.totalPoints.toFixed(1)} sub="all seasons" />
+        <Stat
+          label="Total Points"
+          value={a.totalPoints.toFixed(1)}
+          sub={a.seasonSpan ? `${a.seasonSpan} (${a.seasonsPlayed} seasons)` : "all seasons"}
+        />
         <Stat
           label="Highest Score"
           value={a.highestGame.toFixed(1)}
-          sub="single game"
+          sub={
+            a.highestGameSeason
+              ? `${a.highestGameSeason} · Week ${a.highestGameWeek}`
+              : "single game"
+          }
         />
         <Stat
           label="Lowest Score"
           value={a.lowestGame.toFixed(1)}
-          sub="single game"
+          sub={
+            a.lowestGameSeason
+              ? `${a.lowestGameSeason} · Week ${a.lowestGameWeek}`
+              : "single game"
+          }
         />
         <Stat
           label="Playoff Appearances"
           value={a.playoffAppearances}
-          sub={`of ${a.seasonsPlayed}`}
+          sub={
+            a.playoffYears.length
+              ? a.playoffYears.join(", ")
+              : `of ${a.seasonsPlayed}`
+          }
         />
-        <Stat label="Best Finish" value={ordinal(a.bestPlace)} sub="all-time" />
+        <Stat
+          label="Best Finish"
+          value={ordinal(a.bestPlace)}
+          sub={a.bestPlaceSeason ? `in ${a.bestPlaceSeason}` : "all-time"}
+        />
       </div>
 
       <h2>Season History</h2>
