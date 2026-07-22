@@ -7,7 +7,7 @@ import {
 import { attachTitleOdds } from "@/lib/odds";
 import StandingsTabs from "./components/StandingsTabs";
 import WeeklyPreview from "./components/WeeklyPreview";
-import { weeklyRecap } from "@/content/homepage";
+import { weeklyRecap, yeetNewsNetwork } from "@/content/homepage";
 
 export const dynamic = "force-dynamic";
 
@@ -70,6 +70,14 @@ export default async function HomePage() {
         <summary>🔮 Weekly Preview</summary>
         <div className="body">
           <WeeklyPreview />
+        </div>
+      </details>
+
+      {/* Yeet News Network — manually-curated league news (content/homepage.js) */}
+      <details className="section ynn">
+        <summary>📡 Yeet News Network</summary>
+        <div className="body">
+          <Prose text={yeetNewsNetwork} />
         </div>
       </details>
 

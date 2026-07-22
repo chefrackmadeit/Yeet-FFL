@@ -14,6 +14,10 @@ export const weeklyRecap = `No news yet but the season is near`;
 // During the season the Tuesday task can drop a short summary here.
 export const weeklyPreview = `Matchups are coming`;
 
+// "Yeet News Network" — manually-curated league news. Give Claude the raw
+// notes and it will write this up; then edit the text below and push.
+export const yeetNewsNetwork = `Nothing new except this site which is sick as hell`;
+
 // Optional per-matchup blurbs for the Weekly Preview, keyed by "week:matchupId"
 // (e.g. "3:5"). Leave empty and the site shows an auto-generated projection
 // line; fill these in (or let the Tuesday task fill them) for custom flavor.
