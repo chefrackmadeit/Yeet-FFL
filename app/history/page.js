@@ -2,6 +2,7 @@ import Link from "next/link";
 import { getCurrentLeagueId } from "@/lib/sleeper";
 import { buildArchives } from "@/lib/manager";
 import ArchivesExplorer from "@/app/components/ArchivesExplorer";
+import { burgerGoblins } from "@/content/burgerGoblins";
 
 export const dynamic = "force-dynamic";
 
@@ -95,17 +96,31 @@ export default async function ArchivesPage() {
         Worst regular-season record each season.
       </p>
       <div className="grid">
-        {champions.map((c) => (
-          <div className="card award-loser" key={"bg-" + c.year}>
-            <div className="label">{c.year}</div>
-            <div className="value">🍔 {c.last ? c.last.team : "—"}</div>
-            {c.last && (
-              <div className="sub">
-                {c.last.manager} · {c.last.record}
-              </div>
-            )}
-          </div>
-        ))}
+        {champions.map((c) => {
+          const info = burgerGoblins[c.year];
+          return (
+            <details className="card award-loser bg-card" key={"bg-" + c.year}>
+              <summary>
+                <div className="label">{c.year}</div>
+                <div className="value">🍔 {c.last ? c.last.team : "—"}</div>
+                {c.last && (
+                  <div className="sub">
+                    {c.last.manager} · {c.last.record}
+                  </div>
+                )}
+              </summary>
+              {info && info.lines?.length ? (
+                <div className="bg-body">
+                  {info.lines.map((line, i) => (
+                    <p key={i}>{line}</p>
+                  ))}
+                </div>
+              ) : (
+                <div className="bg-body sub">No sentence recorded… yet.</div>
+              )}
+            </details>
+          );
+        })}
       </div>
 
       <h2>All-Time Records</h2>

@@ -439,6 +439,43 @@ tbody tr:hover {
   border: 1px solid color-mix(in srgb, var(--c-gold) 45%, var(--border));
 }
 
+/* ---- Burger Goblins collapsible cards ---- */
+.bg-card {
+  cursor: pointer;
+}
+.bg-card > summary {
+  list-style: none;
+  position: relative;
+  padding-right: 20px;
+}
+.bg-card > summary::-webkit-details-marker {
+  display: none;
+}
+.bg-card > summary::after {
+  content: "▸";
+  position: absolute;
+  top: 0;
+  right: 0;
+  color: var(--muted);
+  transition: transform 0.15s ease;
+}
+.bg-card[open] > summary::after {
+  transform: rotate(90deg);
+}
+.bg-card .bg-body {
+  margin-top: 12px;
+  padding-top: 12px;
+  border-top: 1px solid var(--border);
+}
+.bg-card .bg-body p {
+  margin: 0 0 6px;
+  font-size: 14px;
+  line-height: 1.5;
+}
+.bg-card .bg-body p:last-child {
+  margin-bottom: 0;
+}
+
 /* ---- Sub-tabs (schedule weeks) ---- */
 .subtabs {
   display: flex;

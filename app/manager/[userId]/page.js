@@ -63,25 +63,21 @@ export default async function ManagerPage({ params }) {
           sub={`${(a.winPct * 100).toFixed(1)}% win rate · ${a.seasonSpan}`}
         />
         <Stat
-          label="Total Points"
+          label="Total Points Scored"
           value={a.totalPoints.toFixed(1)}
           sub={a.seasonSpan ? `${a.seasonSpan} (${a.seasonsPlayed} seasons)` : "all seasons"}
         />
         <Stat
-          label="Most Points For"
+          label="Total Points Against"
+          value={a.totalPointsAgainst.toFixed(1)}
+          sub={a.seasonSpan ? `${a.seasonSpan} (${a.seasonsPlayed} seasons)` : "all seasons"}
+        />
+        <Stat
+          label="Most Points Scored"
           value={a.highestGame.toFixed(1)}
           sub={
             a.highestGameSeason
               ? `${a.highestGameSeason} · Week ${a.highestGameWeek}`
-              : "single game"
-          }
-        />
-        <Stat
-          label="Least Points For"
-          value={a.lowestGame.toFixed(1)}
-          sub={
-            a.lowestGameSeason
-              ? `${a.lowestGameSeason} · Week ${a.lowestGameWeek}`
               : "single game"
           }
         />
@@ -91,6 +87,15 @@ export default async function ManagerPage({ params }) {
           sub={
             a.highestAgainstSeason
               ? `${a.highestAgainstSeason} · Week ${a.highestAgainstWeek}`
+              : "single game"
+          }
+        />
+        <Stat
+          label="Least Points Scored"
+          value={a.lowestGame.toFixed(1)}
+          sub={
+            a.lowestGameSeason
+              ? `${a.lowestGameSeason} · Week ${a.lowestGameWeek}`
               : "single game"
           }
         />
