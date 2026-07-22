@@ -73,9 +73,9 @@ export default async function HomePage() {
         </div>
       </details>
 
-      {/* Yeet News Network — manually-curated league news (content/homepage.js) */}
-      <details className="section ynn">
-        <summary>📡 Yeet News Network</summary>
+      {/* YEET News Network — manually-curated league news (content/homepage.js) */}
+      <details className="section news">
+        <summary>📡 YEET News Network</summary>
         <div className="body">
           <Prose text={yeetNewsNetwork} />
         </div>

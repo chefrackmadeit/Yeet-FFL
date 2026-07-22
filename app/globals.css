@@ -257,6 +257,10 @@ h2 {
 .section.recap > summary {
   color: var(--c-gold);
 }
+.section.news > summary {
+  /* banner blue in dark mode, its inverse orange in light mode */
+  color: var(--accent);
+}
 
 /* ---- Cards / awards ---- */
 .grid {
