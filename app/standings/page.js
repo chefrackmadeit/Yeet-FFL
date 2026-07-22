@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { getLeague, getStandings, getCurrentLeagueId } from "@/lib/sleeper";
 
 export const dynamic = "force-dynamic";
@@ -39,7 +40,11 @@ export default async function StandingsPage() {
                       <img className="avatar" src={r.avatar} alt="" />
                     )}
                     <div>
-                      <div>{r.team}</div>
+                      <div>
+                        <Link href={`/manager/${r.userId}`} className="team-link">
+                          {r.team}
+                        </Link>
+                      </div>
                       <div className="sub">{r.manager}</div>
                     </div>
                   </div>

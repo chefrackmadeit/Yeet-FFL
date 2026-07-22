@@ -1,3 +1,10 @@
+/* ============================================================
+   THEME TOKENS
+   Dark mode (default) uses the brand accents:
+     gold #FFBD59 · cyan #0CC0DF · purple #9000D4
+   Light mode uses the RGB-inverse of those accents:
+     #0042A6 · #F33F20 · #6FFF2B
+   ============================================================ */
 :root {
   --bg: #0b0f1a;
   --bg-soft: #141b2d;
@@ -5,9 +12,38 @@
   --border: #263250;
   --text: #e8edf7;
   --muted: #93a1bd;
-  --accent: #f5c518;
-  --accent-2: #35c26b;
-  --danger: #ff5c6c;
+
+  --c-gold: #ffbd59;
+  --c-cyan: #0cc0df;
+  --c-purple: #9000d4;
+  --accent: var(--c-cyan);
+
+  --win: #35c26b;
+  --loss: #ff5c6c;
+  --shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+}
+
+[data-theme="light"] {
+  --bg: #f4f7fb;
+  --bg-soft: #e7edf6;
+  --card: #ffffff;
+  --border: #d4dced;
+  --text: #131722;
+  --muted: #5a6577;
+
+  --c-gold: #0042a6;
+  --c-cyan: #f33f20;
+  --c-purple: #6fff2b;
+  --accent: var(--c-cyan);
+
+  --win: #1f9d57;
+  --loss: #d92b3a;
+  --shadow: 0 8px 24px rgba(20, 30, 60, 0.12);
+}
+
+/* Banner brand color is fixed in both themes */
+:root {
+  --banner: #0cc0df;
 }
 
 * {
@@ -23,6 +59,7 @@ body {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica,
     Arial, sans-serif;
   line-height: 1.5;
+  transition: background 0.2s ease, color 0.2s ease;
 }
 
 a {
@@ -36,10 +73,50 @@ a {
   padding: 0 20px;
 }
 
+/* ---- Countdown banner ---- */
+.banner {
+  background: var(--banner);
+  color: #06222a;
+}
+.banner-inner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 18px;
+  flex-wrap: wrap;
+  padding: 10px 20px;
+  text-align: center;
+}
+.banner-label {
+  font-weight: 800;
+  letter-spacing: 0.4px;
+  text-transform: uppercase;
+  font-size: 14px;
+}
+.countdown {
+  display: flex;
+  gap: 12px;
+}
+.count-unit {
+  min-width: 52px;
+}
+.count-num {
+  font-size: 24px;
+  font-weight: 800;
+  font-variant-numeric: tabular-nums;
+  line-height: 1;
+}
+.count-lab {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  opacity: 0.8;
+}
+
 /* ---- Nav ---- */
 .nav {
   border-bottom: 1px solid var(--border);
-  background: rgba(11, 15, 26, 0.85);
+  background: color-mix(in srgb, var(--bg) 85%, transparent);
   backdrop-filter: blur(8px);
   position: sticky;
   top: 0;
@@ -48,7 +125,7 @@ a {
 .nav-inner {
   display: flex;
   align-items: center;
-  gap: 24px;
+  gap: 20px;
   height: 60px;
 }
 .brand {
@@ -59,9 +136,10 @@ a {
 }
 .nav-links {
   display: flex;
-  gap: 20px;
+  gap: 18px;
   margin-left: auto;
   flex-wrap: wrap;
+  align-items: center;
 }
 .nav-links a {
   color: var(--muted);
@@ -72,13 +150,48 @@ a {
   color: var(--text);
 }
 
+/* ---- Theme toggle ---- */
+.theme-toggle {
+  background: var(--card);
+  border: 1px solid var(--border);
+  color: var(--text);
+  border-radius: 999px;
+  width: 38px;
+  height: 38px;
+  font-size: 17px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+.theme-toggle:hover {
+  border-color: var(--accent);
+}
+
+/* ---- Buttons ---- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--accent);
+  color: #06222a;
+  font-weight: 700;
+  padding: 10px 16px;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+}
+.btn:hover {
+  filter: brightness(1.05);
+}
+
 /* ---- Layout bits ---- */
 main {
-  padding: 32px 0 64px;
+  padding: 28px 0 64px;
 }
 .hero {
   text-align: center;
-  padding: 40px 0 24px;
+  padding: 28px 0 8px;
 }
 .hero h1 {
   font-size: 40px;
@@ -86,15 +199,56 @@ main {
 }
 .hero p {
   color: var(--muted);
-  margin: 0;
+  margin: 0 0 18px;
   font-size: 17px;
 }
 h2 {
   font-size: 24px;
-  margin: 32px 0 16px;
+  margin: 28px 0 14px;
 }
 
-/* ---- Cards ---- */
+/* ---- Collapsible sections ---- */
+.section {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  margin-bottom: 16px;
+  overflow: hidden;
+}
+.section > summary {
+  list-style: none;
+  cursor: pointer;
+  padding: 16px 20px;
+  font-weight: 700;
+  font-size: 18px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.section > summary::-webkit-details-marker {
+  display: none;
+}
+.section > summary::after {
+  content: "▸";
+  margin-left: auto;
+  color: var(--muted);
+  transition: transform 0.15s ease;
+}
+.section[open] > summary::after {
+  transform: rotate(90deg);
+}
+.section .body {
+  padding: 0 20px 18px;
+  color: var(--text);
+}
+.section.ynn > summary {
+  color: var(--c-purple);
+}
+.section.recap > summary {
+  color: var(--c-gold);
+}
+
+/* ---- Cards / awards ---- */
 .grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
@@ -117,13 +271,28 @@ h2 {
   font-size: 22px;
   font-weight: 700;
 }
-
-.champion {
-  background: linear-gradient(135deg, #1c2540, #21306a);
-  border: 1px solid #38477a;
+.card .sub {
+  color: var(--muted);
+  font-size: 13px;
 }
-.champion .trophy {
-  font-size: 34px;
+.award-champion {
+  border: 1px solid color-mix(in srgb, var(--c-gold) 55%, var(--border));
+  background: linear-gradient(
+    135deg,
+    color-mix(in srgb, var(--c-gold) 16%, var(--card)),
+    var(--card)
+  );
+}
+.award-loser {
+  border: 1px solid color-mix(in srgb, var(--loss) 45%, var(--border));
+  background: linear-gradient(
+    135deg,
+    color-mix(in srgb, var(--loss) 14%, var(--card)),
+    var(--card)
+  );
+}
+.award-emoji {
+  font-size: 30px;
 }
 
 /* ---- Table ---- */
@@ -150,11 +319,22 @@ thead th {
   text-transform: uppercase;
   letter-spacing: 0.5px;
 }
+th.sortable {
+  cursor: pointer;
+  user-select: none;
+}
+th.sortable:hover {
+  color: var(--text);
+}
+th .arrow {
+  font-size: 11px;
+  margin-left: 4px;
+}
 tbody tr {
   border-top: 1px solid var(--border);
 }
 tbody tr:hover {
-  background: rgba(255, 255, 255, 0.02);
+  background: color-mix(in srgb, var(--text) 4%, transparent);
 }
 .num {
   text-align: right;
@@ -189,12 +369,12 @@ tbody tr:hover {
   font-weight: 700;
 }
 .pill.win {
-  background: rgba(53, 194, 107, 0.15);
-  color: var(--accent-2);
+  background: color-mix(in srgb, var(--win) 18%, transparent);
+  color: var(--win);
 }
 .pill.loss {
-  background: rgba(255, 92, 108, 0.15);
-  color: var(--danger);
+  background: color-mix(in srgb, var(--loss) 18%, transparent);
+  color: var(--loss);
 }
 
 /* ---- Matchups ---- */
@@ -222,10 +402,179 @@ tbody tr:hover {
   text-align: center;
   color: var(--muted);
 }
+
+/* ---- Manager page ---- */
+.manager-head {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+.manager-avatar {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  object-fit: cover;
+  background: var(--bg-soft);
+  flex-shrink: 0;
+}
+.team-link {
+  color: inherit;
+}
+.team-link:hover {
+  color: var(--accent);
+  text-decoration: underline;
+}
+
+/* ---- Tabs ---- */
+.tabs {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 16px;
+  flex-wrap: wrap;
+}
+.tab-btn {
+  background: var(--card);
+  border: 1px solid var(--border);
+  color: var(--muted);
+  font-weight: 700;
+  font-size: 15px;
+  padding: 9px 16px;
+  border-radius: 10px;
+  cursor: pointer;
+}
+.tab-btn.active {
+  background: var(--accent);
+  color: #06222a;
+  border-color: var(--accent);
+}
+.total-row {
+  background: var(--bg-soft);
+  font-weight: 700;
+}
+
+/* ---- Filters / selects ---- */
+.filters {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 14px;
+  flex-wrap: wrap;
+  color: var(--muted);
+  font-size: 14px;
+  font-weight: 600;
+}
+.filters select {
+  background: var(--card);
+  color: var(--text);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 8px 10px;
+  font-size: 15px;
+  cursor: pointer;
+}
+
+/* ---- Footer ---- */
 .footer {
   border-top: 1px solid var(--border);
   color: var(--muted);
   font-size: 13px;
-  padding: 24px 0;
+  padding: 28px 0;
   text-align: center;
+}
+.footer-logo {
+  height: 90px;
+  width: auto;
+  margin: 0 auto 12px;
+  display: block;
+}
+
+/* ============================================================
+   MOBILE / RESPONSIVE
+   Most traffic is on phones, so tighten spacing and scale type.
+   ============================================================ */
+@media (max-width: 640px) {
+  .container {
+    padding: 0 14px;
+  }
+
+  /* Banner: keep the countdown on one tidy row */
+  .banner-inner {
+    gap: 10px;
+    padding: 8px 12px;
+  }
+  .banner-label {
+    font-size: 12px;
+    width: 100%;
+  }
+  .countdown {
+    gap: 8px;
+  }
+  .count-unit {
+    min-width: 44px;
+  }
+  .count-num {
+    font-size: 20px;
+  }
+
+  /* Nav: brand on the left, links wrap below, comfy tap targets */
+  .nav-inner {
+    height: auto;
+    flex-wrap: wrap;
+    gap: 10px 16px;
+    padding: 10px 0;
+  }
+  .nav-links {
+    gap: 14px;
+    width: 100%;
+    justify-content: space-between;
+  }
+  .nav-links a {
+    font-size: 15px;
+    padding: 4px 0;
+  }
+
+  .hero {
+    padding: 20px 0 6px;
+  }
+  .hero h1 {
+    font-size: 30px;
+  }
+  .hero p {
+    font-size: 15px;
+  }
+  h2 {
+    font-size: 21px;
+  }
+
+  .section > summary {
+    font-size: 16px;
+    padding: 14px 16px;
+  }
+  .section .body {
+    padding: 0 16px 16px;
+  }
+
+  .card {
+    padding: 16px;
+  }
+
+  /* Tables scroll horizontally; keep them readable */
+  th,
+  td {
+    padding: 10px 12px;
+    font-size: 14px;
+  }
+
+  .footer-logo {
+    height: 72px;
+  }
+}
+
+/* Slightly larger tap targets on any touch device */
+@media (hover: none) {
+  .nav-links a,
+  .tab-btn,
+  th.sortable {
+    padding-top: 8px;
+    padding-bottom: 8px;
+  }
 }

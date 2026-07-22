@@ -1,39 +1,42 @@
-import Link from "next/link";
-import { getLeague, getStandings, getSeasonChain, getRosters, getUsers, usersById, teamName, getCurrentLeagueId } from "@/lib/sleeper";
+import {
+  getLeague,
+  getStandings,
+  getReigningAwards,
+  getCurrentLeagueId,
+} from "@/lib/sleeper";
+import SortableStandings from "./components/SortableStandings";
+import { weeklyRecap, yeetNewsNetwork } from "@/content/homepage";
 
 export const dynamic = "force-dynamic";
 
-async function getReigningChampion(startId) {
-  const chain = await getSeasonChain(startId);
-  // Most recent completed season with a recorded champion.
-  for (const s of chain) {
-    if (s.championRosterId) {
-      const [rosters, users] = await Promise.all([
-        getRosters(s.leagueId),
-        getUsers(s.leagueId),
-      ]);
-      const uById = usersById(users);
-      const champ = rosters.find(
-        (r) => String(r.roster_id) === String(s.championRosterId)
-      );
-      if (champ) {
-        const u = uById[champ.owner_id];
-        return { season: s.season, team: teamName(u), manager: u?.display_name };
-      }
-    }
-  }
-  return null;
+// Split editable content into paragraphs on blank lines.
+function paragraphs(text) {
+  return String(text)
+    .trim()
+    .split(/\n\s*\n/)
+    .map((p) => p.trim())
+    .filter(Boolean);
+}
+
+function Prose({ text }) {
+  return (
+    <>
+      {paragraphs(text).map((p, i) => (
+        <p key={i} style={{ margin: i === 0 ? "0 0 10px" : "10px 0" }}>
+          {p}
+        </p>
+      ))}
+    </>
+  );
 }
 
 export default async function HomePage() {
   const currentId = await getCurrentLeagueId();
-  const [league, standings, champion] = await Promise.all([
+  const [league, standings, awards] = await Promise.all([
     getLeague(currentId),
     getStandings(currentId),
-    getReigningChampion(currentId),
+    getReigningAwards(currentId),
   ]);
-
-  const top = standings.slice(0, 5);
 
   return (
     <>
@@ -43,56 +46,57 @@ export default async function HomePage() {
           {league.season} season · {league.total_rosters} teams · updated live
           from Sleeper
         </p>
+        <a className="btn" href="/YEET-FFL-Guidelines.pdf" target="_blank" rel="noopener noreferrer">
+          📖 League Rules
+        </a>
       </section>
 
-      {champion && (
-        <div className="card champion">
-          <div className="label">Reigning Champion — {champion.season}</div>
-          <div className="value">
-            <span className="trophy">🏆</span> {champion.team}
-          </div>
-          <div className="sub">Manager: {champion.manager}</div>
+      {/* Weekly Recap — editable in content/homepage.js */}
+      <details className="section recap" open>
+        <summary>📰 Weekly Recap</summary>
+        <div className="body">
+          <Prose text={weeklyRecap} />
         </div>
-      )}
+      </details>
 
-      <h2>Top of the Standings</h2>
-      <div className="table-wrap">
-        <table>
-          <thead>
-            <tr>
-              <th className="rank">#</th>
-              <th>Team</th>
-              <th className="num">W</th>
-              <th className="num">L</th>
-              <th className="num">PF</th>
-            </tr>
-          </thead>
-          <tbody>
-            {top.map((r) => (
-              <tr key={r.rosterId}>
-                <td className="rank">{r.rank}</td>
-                <td>
-                  <div className="team-cell">
-                    {r.avatar && (
-                      // eslint-disable-next-line @next/next/no-img-element
-                      <img className="avatar" src={r.avatar} alt="" />
-                    )}
-                    <div>
-                      <div>{r.team}</div>
-                      <div className="sub">{r.manager}</div>
-                    </div>
-                  </div>
-                </td>
-                <td className="num">{r.wins}</td>
-                <td className="num">{r.losses}</td>
-                <td className="num">{r.pointsFor.toFixed(1)}</td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
+      {/* Yeet News Network — editable in content/homepage.js */}
+      <details className="section ynn" open>
+        <summary>📡 Yeet News Network</summary>
+        <div className="body">
+          <Prose text={yeetNewsNetwork} />
+        </div>
+      </details>
+
+      {/* Reigning champion + last place */}
+      <div className="grid">
+        <div className="card award-champion">
+          <div className="label">
+            Reigning Champion{awards.season ? ` — ${awards.season}` : ""}
+          </div>
+          <div className="value">
+            <span className="award-emoji">🏆</span>{" "}
+            {awards.champion ? awards.champion.team : "—"}
+          </div>
+          {awards.champion && (
+            <div className="sub">{awards.champion.manager}</div>
+          )}
+        </div>
+        <div className="card award-loser">
+          <div className="label">
+            Burger Bound{awards.season ? ` — ${awards.season}` : ""}
+          </div>
+          <div className="value">
+            <span className="award-emoji">🍔</span>{" "}
+            {awards.loser ? awards.loser.team : "—"}
+          </div>
+          {awards.loser && <div className="sub">{awards.loser.manager}</div>}
+        </div>
       </div>
-      <p style={{ marginTop: 16 }}>
-        <Link href="/standings">See full standings →</Link>
+
+      <h2>Standings</h2>
+      <SortableStandings rows={standings} />
+      <p className="sub" style={{ marginTop: 12 }}>
+        Click any column header to sort. PF = points for · PA = points against.
       </p>
     </>
   );
