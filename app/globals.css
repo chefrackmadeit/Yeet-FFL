@@ -267,8 +267,7 @@ h2 {
   color: var(--c-gold);
 }
 .section.news > summary {
-  /* banner blue in dark mode, its inverse orange in light mode */
-  color: var(--accent);
+  color: var(--c-cyan); /* pink */
 }
 
 /* ---- Cards / awards ---- */
@@ -675,6 +674,55 @@ tbody tr:hover {
   font-size: 11px;
   text-transform: uppercase;
   letter-spacing: 0.4px;
+}
+.owner-records {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+  margin-top: 12px;
+}
+.owner-rec {
+  background: var(--bg-soft);
+  border-radius: 8px;
+  padding: 8px 6px;
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+}
+.owner-rec-num {
+  font-weight: 800;
+  font-size: 16px;
+  font-variant-numeric: tabular-nums;
+}
+
+/* ---- Draft tab layout (table left, chart right) ---- */
+.draft-layout {
+  display: flex;
+  gap: 20px;
+  align-items: flex-start;
+}
+.draft-table {
+  flex: 0 0 auto;
+  width: 160px;
+}
+.draft-table table {
+  font-size: 14px;
+}
+.draft-table th,
+.draft-table td {
+  padding: 8px 10px;
+}
+.draft-chart {
+  flex: 1;
+  min-width: 0;
+}
+@media (max-width: 640px) {
+  .draft-layout {
+    flex-direction: column;
+  }
+  .draft-table {
+    width: 100%;
+  }
 }
 
 /* ---- Draft tendency legend ---- */

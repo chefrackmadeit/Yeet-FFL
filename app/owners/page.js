@@ -61,6 +61,19 @@ export default async function OwnersPage() {
                 <div className="owner-stat-lab">PPG</div>
               </div>
             </div>
+
+            <div className="owner-records">
+              <div className="owner-rec">
+                <span className="owner-stat-lab">Points For</span>
+                <span className="owner-rec-num">{o.maxPF ? o.maxPF.value.toFixed(1) : "—"}</span>
+                {o.maxPF && <span className="sub">{o.maxPF.year} · Wk {o.maxPF.week}</span>}
+              </div>
+              <div className="owner-rec">
+                <span className="owner-stat-lab">Points Against</span>
+                <span className="owner-rec-num">{o.maxPA ? o.maxPA.value.toFixed(1) : "—"}</span>
+                {o.maxPA && <span className="sub">{o.maxPA.year} · Wk {o.maxPA.week}</span>}
+              </div>
+            </div>
           </Link>
         ))}
       </div>

@@ -134,84 +134,97 @@ function DraftTab({ draft }) {
   const bw = rounds.length ? (W - padL - 10) / rounds.length : 0;
 
   return (
-    <div>
-      <div className="table-wrap" style={{ marginBottom: 18 }}>
-        <table>
-          <thead>
-            <tr>
-              <th>Year</th>
-              <th className="num">Pick Position</th>
-            </tr>
-          </thead>
-          <tbody>
-            {draft.perYear.map((y) => (
-              <tr key={y.season}>
-                <td>{y.season}</td>
-                <td className="num">{y.slot != null ? ordinal(y.slot) : "—"}</td>
+    <div className="draft-layout">
+      <div className="draft-table">
+        <div className="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Year</th>
+                <th className="num">Pick</th>
               </tr>
-            ))}
-          </tbody>
-        </table>
+            </thead>
+            <tbody>
+              {draft.perYear.map((y) => (
+                <tr key={y.season}>
+                  <td>{y.season}</td>
+                  <td className="num">{y.slot != null ? ordinal(y.slot) : "—"}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
       </div>
 
-      <h3 style={{ margin: "0 0 8px", fontSize: 17 }}>Pick Tendencies</h3>
-      {rounds.length === 0 ? (
-        <div className="notice">No draft history available.</div>
-      ) : (
-        <>
-          <div style={{ overflowX: "auto" }}>
-            <svg viewBox={`0 0 ${W} ${H}`} width="100%" style={{ minWidth: 480 }}>
-              {[0, 0.5, 1].map((f) => {
-                const y = padT + plotH * (1 - f);
-                return (
-                  <g key={f}>
-                    <line x1={padL} y1={y} x2={W - 10} y2={y} stroke="var(--border)" strokeWidth="1" />
-                    <text x={padL - 6} y={y + 4} textAnchor="end" fontSize="11" fill="var(--muted)">
-                      {Math.round(maxTotal * f)}
-                    </text>
-                  </g>
-                );
-              })}
-              {rounds.map((r, i) => {
-                const counts = draft.tendency?.[r] || {};
-                let yTop = padT + plotH;
-                const x = padL + i * bw + bw * 0.16;
-                const w = bw * 0.68;
-                return (
-                  <g key={r}>
-                    {positions.map((p) => {
-                      const c = counts[p] || 0;
-                      if (!c) return null;
-                      const h = (plotH * c) / maxTotal;
-                      yTop -= h;
-                      return <rect key={p} x={x} y={yTop} width={w} height={h} fill={colorFor(p)} rx="2" />;
-                    })}
-                    <text x={x + w / 2} y={H - padB + 18} textAnchor="middle" fontSize="11" fill="var(--muted)">
-                      R{r}
-                    </text>
-                  </g>
-                );
-              })}
-              <text x={padL} y={H - 6} fontSize="11" fill="var(--muted)">Rounds → players drafted (all years)</text>
-            </svg>
-          </div>
-          <div className="pos-legend">
-            {positions.map((p) => (
-              <span key={p} className="pos-key">
-                <span className="pos-swatch" style={{ background: colorFor(p) }} />
-                {p}
-              </span>
-            ))}
-          </div>
-        </>
-      )}
+      <div className="draft-chart">
+        <h3 style={{ margin: "0 0 8px", fontSize: 17 }}>Pick Tendencies</h3>
+        {rounds.length === 0 ? (
+          <div className="notice">No draft history available.</div>
+        ) : (
+          <>
+            <div style={{ overflowX: "auto" }}>
+              <svg viewBox={`0 0 ${W} ${H}`} width="100%" style={{ minWidth: 420 }}>
+                {[0, 0.5, 1].map((f) => {
+                  const y = padT + plotH * (1 - f);
+                  return (
+                    <g key={f}>
+                      <line x1={padL} y1={y} x2={W - 10} y2={y} stroke="var(--border)" strokeWidth="1" />
+                      <text x={padL - 6} y={y + 4} textAnchor="end" fontSize="11" fill="var(--muted)">
+                        {Math.round(maxTotal * f)}
+                      </text>
+                    </g>
+                  );
+                })}
+                {rounds.map((r, i) => {
+                  const counts = draft.tendency?.[r] || {};
+                  let yTop = padT + plotH;
+                  const x = padL + i * bw + bw * 0.16;
+                  const w = bw * 0.68;
+                  return (
+                    <g key={r}>
+                      {positions.map((p) => {
+                        const c = counts[p] || 0;
+                        if (!c) return null;
+                        const h = (plotH * c) / maxTotal;
+                        yTop -= h;
+                        return (
+                          <g key={p}>
+                            <rect x={x} y={yTop} width={w} height={h} fill={colorFor(p)} rx="2" />
+                            {h >= 15 && (
+                              <text x={x + w / 2} y={yTop + h / 2 + 4} textAnchor="middle" fontSize="11" fontWeight="700" fill="#0a0b1e">
+                                {c}
+                              </text>
+                            )}
+                          </g>
+                        );
+                      })}
+                      <text x={x + w / 2} y={H - padB + 18} textAnchor="middle" fontSize="11" fill="var(--muted)">
+                        R{r}
+                      </text>
+                    </g>
+                  );
+                })}
+                <text x={padL} y={H - 6} fontSize="11" fill="var(--muted)">Rounds → players drafted (all years)</text>
+              </svg>
+            </div>
+            <div className="pos-legend">
+              {positions.map((p) => (
+                <span key={p} className="pos-key">
+                  <span className="pos-swatch" style={{ background: colorFor(p) }} />
+                  {p}
+                </span>
+              ))}
+            </div>
+          </>
+        )}
+      </div>
     </div>
   );
 }
 
 function PlayersTab({ players, seasons }) {
   const years = seasons.map((s) => s.season);
-  const [acq, setAcq] = useState("draft");
+  const [acq, setAcq] = useState("all");
   const [year, setYear] = useState("all");
   const [pos, setPos] = useState("ALL");
   const [sortKey, setSortKey] = useState("points");
@@ -220,7 +233,7 @@ function PlayersTab({ players, seasons }) {
   const positions = ["ALL", ...POS_ORDER.filter((p) => players.some((r) => r.position === p))];
 
   const rows = useMemo(() => {
-    let list = players.filter((r) => r.acq === acq);
+    let list = acq === "all" ? [...players] : players.filter((r) => r.acq === acq);
     if (year !== "all") list = list.filter((r) => r.year === year);
     if (pos !== "ALL") list = list.filter((r) => r.position === pos);
 
@@ -250,6 +263,9 @@ function PlayersTab({ players, seasons }) {
   return (
     <div>
       <div className="tabs">
+        <button className={"tab-btn alt" + (acq === "all" ? " active" : "")} onClick={() => setAcq("all")}>
+          All Players
+        </button>
         <button className={"tab-btn alt" + (acq === "draft" ? " active" : "")} onClick={() => setAcq("draft")}>
           Players Drafted
         </button>

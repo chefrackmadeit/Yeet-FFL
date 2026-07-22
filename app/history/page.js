@@ -90,6 +90,24 @@ export default async function ArchivesPage() {
         ))}
       </div>
 
+      <h2>Burger Goblins</h2>
+      <p className="sub" style={{ marginTop: -6, marginBottom: 14 }}>
+        Worst regular-season record each season.
+      </p>
+      <div className="grid">
+        {champions.map((c) => (
+          <div className="card award-loser" key={"bg-" + c.year}>
+            <div className="label">{c.year}</div>
+            <div className="value">🍔 {c.last ? c.last.team : "—"}</div>
+            {c.last && (
+              <div className="sub">
+                {c.last.manager} · {c.last.record}
+              </div>
+            )}
+          </div>
+        ))}
+      </div>
+
       <h2>All-Time Records</h2>
       <ArchivesExplorer seasons={seasons} perYear={perYear} allTime={allTime} />
     </>
