@@ -30,7 +30,7 @@
   --bg: #ffffff;
   --bg-soft: #f7f6f3;
   --card: #ffffff;
-  --border: #e9e9e7;
+  --border: #dcd9d2;
   --text: #37352f;
   --muted: #787774;
 
@@ -652,10 +652,27 @@ tbody tr:hover {
   font-size: 17px;
 }
 .owner-medals {
-  font-size: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 6px;
   min-height: 26px;
   margin: 8px 0 12px;
-  letter-spacing: 2px;
+}
+.owner-medal {
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+  font-size: 16px;
+  background: var(--bg-soft);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  padding: 2px 8px 2px 6px;
+}
+.owner-medal-yr {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--muted);
 }
 .owner-stats {
   display: grid;
@@ -864,7 +881,7 @@ tbody tr:hover {
     height: auto;
     flex-wrap: wrap;
     gap: 10px 16px;
-    padding: 10px 0;
+    padding: 10px 20px;
   }
   .nav-links {
     gap: 14px;
@@ -911,6 +928,32 @@ tbody tr:hover {
   .footer-logo {
     height: 72px;
   }
+}
+
+/* ============================================================
+   LIGHT MODE — bolder outlines on cards for better definition
+   ============================================================ */
+[data-theme="light"] .card,
+[data-theme="light"] .owner-card,
+[data-theme="light"] .h2h-card,
+[data-theme="light"] .preview-card,
+[data-theme="light"] .section,
+[data-theme="light"] .table-wrap,
+[data-theme="light"] .matchup,
+[data-theme="light"] .notice {
+  border-width: 2px;
+  border-color: #c7c4bb;
+}
+/* keep the colored accents on special cards */
+[data-theme="light"] .award-champion {
+  border-color: color-mix(in srgb, var(--c-gold) 65%, #c7c4bb);
+}
+[data-theme="light"] .award-loser {
+  border-color: color-mix(in srgb, var(--loss) 55%, #c7c4bb);
+}
+[data-theme="light"] .record-card {
+  border-left-color: var(--c-gold);
+  border-left-width: 3px;
 }
 
 /* Slightly larger tap targets on any touch device */

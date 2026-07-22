@@ -68,7 +68,7 @@ export default async function ManagerPage({ params }) {
           sub={a.seasonSpan ? `${a.seasonSpan} (${a.seasonsPlayed} seasons)` : "all seasons"}
         />
         <Stat
-          label="Highest Score"
+          label="Most Points For"
           value={a.highestGame.toFixed(1)}
           sub={
             a.highestGameSeason
@@ -77,11 +77,20 @@ export default async function ManagerPage({ params }) {
           }
         />
         <Stat
-          label="Lowest Score"
+          label="Least Points For"
           value={a.lowestGame.toFixed(1)}
           sub={
             a.lowestGameSeason
               ? `${a.lowestGameSeason} · Week ${a.lowestGameWeek}`
+              : "single game"
+          }
+        />
+        <Stat
+          label="Most Points Against"
+          value={a.highestAgainst.toFixed(1)}
+          sub={
+            a.highestAgainstSeason
+              ? `${a.highestAgainstSeason} · Week ${a.highestAgainstWeek}`
               : "single game"
           }
         />

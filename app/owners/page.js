@@ -8,10 +8,10 @@ export const metadata = { title: "Owners · YEET FFL" };
 
 function medals(o) {
   const items = [];
-  for (let i = 0; i < o.champ; i++) items.push(["🏆", "Champion"]);
-  for (let i = 0; i < o.second; i++) items.push(["🥈", "Runner-up"]);
-  for (let i = 0; i < o.third; i++) items.push(["🥉", "Third place"]);
-  for (let i = 0; i < o.last; i++) items.push(["🍔", "Last place"]);
+  (o.champYears || []).forEach((y) => items.push(["🏆", "Champion", y]));
+  (o.secondYears || []).forEach((y) => items.push(["🥈", "Runner-up", y]));
+  (o.thirdYears || []).forEach((y) => items.push(["🥉", "Third place", y]));
+  (o.lastYears || []).forEach((y) => items.push(["🍔", "Last place", y]));
   return items;
 }
 
@@ -37,8 +37,10 @@ export default async function OwnersPage() {
 
             <div className="owner-medals">
               {medals(o).length ? (
-                medals(o).map(([icon, title], i) => (
-                  <span key={i} title={title}>{icon}</span>
+                medals(o).map(([icon, title, year], i) => (
+                  <span key={i} className="owner-medal" title={title}>
+                    {icon}<span className="owner-medal-yr">{year}</span>
+                  </span>
                 ))
               ) : (
                 <span className="sub">—</span>
