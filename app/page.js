@@ -1,11 +1,13 @@
 import {
   getLeague,
-  getStandings,
   getReigningAwards,
   getCurrentLeagueId,
+  getSeasonStandingsSets,
 } from "@/lib/sleeper";
-import SortableStandings from "./components/SortableStandings";
-import { weeklyRecap, yeetNewsNetwork } from "@/content/homepage";
+import { attachTitleOdds } from "@/lib/odds";
+import StandingsTabs from "./components/StandingsTabs";
+import WeeklyPreview from "./components/WeeklyPreview";
+import { weeklyRecap } from "@/content/homepage";
 
 export const dynamic = "force-dynamic";
 
@@ -32,11 +34,15 @@ function Prose({ text }) {
 
 export default async function HomePage() {
   const currentId = await getCurrentLeagueId();
-  const [league, standings, awards] = await Promise.all([
+  const [league, seasonSets, awards] = await Promise.all([
     getLeague(currentId),
-    getStandings(currentId),
+    getSeasonStandingsSets(currentId),
     getReigningAwards(currentId),
   ]);
+
+  // Attach for-fun league title odds to the current season's rows.
+  const currentSet = seasonSets.find((s) => s.isCurrent);
+  if (currentSet) attachTitleOdds(currentSet.rows);
 
   return (
     <>
@@ -59,11 +65,11 @@ export default async function HomePage() {
         </div>
       </details>
 
-      {/* Yeet News Network — editable in content/homepage.js */}
+      {/* Weekly Preview — matchup blurbs + for-fun odds (live from Sleeper) */}
       <details className="section ynn">
-        <summary>📡 Yeet News Network</summary>
+        <summary>🔮 Weekly Preview</summary>
         <div className="body">
-          <Prose text={yeetNewsNetwork} />
+          <WeeklyPreview />
         </div>
       </details>
 
@@ -94,10 +100,7 @@ export default async function HomePage() {
       </div>
 
       <h2>Standings</h2>
-      <SortableStandings rows={standings} />
-      <p className="sub" style={{ marginTop: 12 }}>
-        Click any column header to sort. PF = points for · PA = points against.
-      </p>
+      <StandingsTabs sets={seasonSets} />
     </>
   );
 }

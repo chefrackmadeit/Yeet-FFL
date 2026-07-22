@@ -413,6 +413,45 @@ tbody tr:hover {
   color: var(--muted);
 }
 
+/* ---- Weekly Preview cards ---- */
+.preview-card {
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 14px 16px;
+  margin-bottom: 12px;
+  background: color-mix(in srgb, var(--text) 3%, transparent);
+}
+.preview-desc {
+  margin-bottom: 10px;
+}
+.preview-odds {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+.odds-side {
+  flex: 1;
+  min-width: 180px;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.odds-team {
+  font-weight: 700;
+}
+.odds-line {
+  color: var(--c-gold);
+  font-size: 13px;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+}
+.odds-vs {
+  color: var(--muted);
+  font-size: 13px;
+  font-weight: 700;
+}
+
 /* ---- Manager page ---- */
 .manager-head {
   display: flex;
@@ -503,7 +542,7 @@ tbody tr:hover {
    ============================================================ */
 @media (max-width: 640px) {
   .container {
-    padding: 0 14px;
+    padding: 0 20px;
   }
 
   /* Banner: keep the countdown on one tidy row */
