@@ -21,14 +21,22 @@ export default function ThemeToggle() {
     } catch {}
   }
 
+  const isLight = theme === "light";
+
   return (
     <button
-      className="theme-toggle"
+      className={"theme-switch" + (isLight ? " light" : "")}
       onClick={toggle}
-      aria-label="Toggle light / dark mode"
+      role="switch"
+      aria-checked={isLight}
+      aria-label="Toggle light or dark mode"
       title="Toggle light / dark mode"
     >
-      {theme === "dark" ? "☀️" : "🌙"}
+      <span className="theme-switch-track">
+        <span className="theme-switch-icon" aria-hidden="true">🌙</span>
+        <span className="theme-switch-icon" aria-hidden="true">☀️</span>
+        <span className="theme-switch-knob" />
+      </span>
     </button>
   );
 }

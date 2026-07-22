@@ -33,12 +33,12 @@ export default function RootLayout({ children }) {
               <Link href="/" className="brand">
                 YEET FFL
               </Link>
+              <ThemeToggle />
               <div className="nav-links">
                 <Link href="/">Home</Link>
                 <Link href="/head-to-head">Head to Head</Link>
                 <Link href="/owners">Owners</Link>
                 <Link href="/history">The Archives</Link>
-                <ThemeToggle />
               </div>
             </div>
           </nav>
