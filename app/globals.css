@@ -666,6 +666,7 @@ tbody tr:hover {
 .owner-card {
   background: var(--card);
   border: 1px solid var(--border);
+  border-left: 3px solid var(--c-gold);
   border-radius: 14px;
   padding: 20px 16px;
   text-align: center;
@@ -673,7 +674,11 @@ tbody tr:hover {
 }
 .owner-card:hover {
   border-color: var(--accent);
+  border-left-color: var(--c-gold);
   transform: translateY(-2px);
+}
+.owner-card .owner-team {
+  color: var(--c-gold);
 }
 .owner-avatar {
   width: 76px;
@@ -988,7 +993,8 @@ tbody tr:hover {
 [data-theme="light"] .award-loser {
   border-color: color-mix(in srgb, var(--loss) 55%, #c7c4bb);
 }
-[data-theme="light"] .record-card {
+[data-theme="light"] .record-card,
+[data-theme="light"] .owner-card {
   border-left-color: var(--c-gold);
   border-left-width: 3px;
 }
