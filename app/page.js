@@ -52,7 +52,7 @@ export default async function HomePage() {
       </section>
 
       {/* Weekly Recap — editable in content/homepage.js */}
-      <details className="section recap" open>
+      <details className="section recap">
         <summary>📰 Weekly Recap</summary>
         <div className="body">
           <Prose text={weeklyRecap} />
@@ -60,7 +60,7 @@ export default async function HomePage() {
       </details>
 
       {/* Yeet News Network — editable in content/homepage.js */}
-      <details className="section ynn" open>
+      <details className="section ynn">
         <summary>📡 Yeet News Network</summary>
         <div className="body">
           <Prose text={yeetNewsNetwork} />

@@ -26,21 +26,23 @@ export default function RootLayout({ children }) {
         <script dangerouslySetInnerHTML={{ __html: noFlash }} />
       </head>
       <body>
-        <CountdownBanner />
-        <nav className="nav">
-          <div className="container nav-inner">
-            <Link href="/" className="brand">
-              YEET FFL
-            </Link>
-            <div className="nav-links">
-              <Link href="/">Home</Link>
-              <Link href="/standings">Standings</Link>
-              <Link href="/matchups">Matchups</Link>
-              <Link href="/history">History</Link>
-              <ThemeToggle />
+        <header className="site-header">
+          <CountdownBanner />
+          <nav className="nav">
+            <div className="container nav-inner">
+              <Link href="/" className="brand">
+                YEET FFL
+              </Link>
+              <div className="nav-links">
+                <Link href="/">Home</Link>
+                <Link href="/standings">Standings</Link>
+                <Link href="/matchups">Matchups</Link>
+                <Link href="/history">History</Link>
+                <ThemeToggle />
+              </div>
             </div>
-          </div>
-        </nav>
+          </nav>
+        </header>
         <main>
           <div className="container">{children}</div>
         </main>
