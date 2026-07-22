@@ -1,11 +1,12 @@
-import { getAllTimeStats } from "@/lib/sleeper";
+import { getAllTimeStats, getCurrentLeagueId } from "@/lib/sleeper";
 
 export const dynamic = "force-dynamic";
 
 export const metadata = { title: "History · YEET FFL" };
 
 export default async function HistoryPage() {
-  const { table, seasons } = await getAllTimeStats();
+  const currentId = await getCurrentLeagueId();
+  const { table, seasons } = await getAllTimeStats(currentId);
 
   return (
     <>

@@ -27,17 +27,17 @@ You don't need to run anything on your computer. Vercel builds and hosts it:
 From now on, every time you **Commit + Push** in GitHub Desktop, Vercel
 automatically rebuilds and updates the live site.
 
-## Changing the league / season
+## Seasons roll over automatically
 
-The league is set in one place. Open `lib/sleeper.js` and edit:
+The site is **not** pinned to a single season. On every load it asks Sleeper
+for the newest YEET league belonging to a fixed manager account
+(UncleZaddy4), so when the 2026 season (and every future season) starts, the
+site switches to it on its own — no code changes, no redeploy needed. Past
+seasons keep chaining backward onto the History page.
 
-```js
-export const LEAGUE_ID = "1255585509246259200"; // YEET FFL (current)
-```
-
-When a new season starts, Sleeper creates a new league ID — paste the new one
-here and the whole site follows it. Past seasons are found automatically by
-following each league's link to the previous season.
+If Sleeper is ever unreachable, it safely falls back to the 2025 league so the
+site never goes blank. The anchor account and fallback live at the top of
+`lib/sleeper.js` (`USER_ID` and `LEAGUE_ID`) if they ever need changing.
 
 ## Running locally (optional, advanced)
 

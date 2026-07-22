@@ -1,10 +1,10 @@
 import Link from "next/link";
-import { getLeague, getStandings, getSeasonChain, getRosters, getUsers, usersById, teamName } from "@/lib/sleeper";
+import { getLeague, getStandings, getSeasonChain, getRosters, getUsers, usersById, teamName, getCurrentLeagueId } from "@/lib/sleeper";
 
 export const dynamic = "force-dynamic";
 
-async function getReigningChampion() {
-  const chain = await getSeasonChain();
+async function getReigningChampion(startId) {
+  const chain = await getSeasonChain(startId);
   // Most recent completed season with a recorded champion.
   for (const s of chain) {
     if (s.championRosterId) {
@@ -26,10 +26,11 @@ async function getReigningChampion() {
 }
 
 export default async function HomePage() {
+  const currentId = await getCurrentLeagueId();
   const [league, standings, champion] = await Promise.all([
-    getLeague(),
-    getStandings(),
-    getReigningChampion(),
+    getLeague(currentId),
+    getStandings(currentId),
+    getReigningChampion(currentId),
   ]);
 
   const top = standings.slice(0, 5);

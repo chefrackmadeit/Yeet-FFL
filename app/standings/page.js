@@ -1,11 +1,15 @@
-import { getLeague, getStandings } from "@/lib/sleeper";
+import { getLeague, getStandings, getCurrentLeagueId } from "@/lib/sleeper";
 
 export const dynamic = "force-dynamic";
 
 export const metadata = { title: "Standings · YEET FFL" };
 
 export default async function StandingsPage() {
-  const [league, standings] = await Promise.all([getLeague(), getStandings()]);
+  const currentId = await getCurrentLeagueId();
+  const [league, standings] = await Promise.all([
+    getLeague(currentId),
+    getStandings(currentId),
+  ]);
 
   return (
     <>

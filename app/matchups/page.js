@@ -6,6 +6,7 @@ import {
   getUsers,
   usersById,
   teamName,
+  getCurrentLeagueId,
   LEAGUE_ID,
 } from "@/lib/sleeper";
 
@@ -42,7 +43,11 @@ async function buildWeek(week, leagueId = LEAGUE_ID) {
 }
 
 export default async function MatchupsPage() {
-  const [league, state] = await Promise.all([getLeague(), getNflState()]);
+  const currentId = await getCurrentLeagueId();
+  const [league, state] = await Promise.all([
+    getLeague(currentId),
+    getNflState(),
+  ]);
 
   // Which week to show: live NFL week if in season, otherwise the last
   // scored week of this league (so the page is never empty in the offseason).
@@ -54,7 +59,7 @@ export default async function MatchupsPage() {
   let games = [];
   if (week > 0) {
     try {
-      games = await buildWeek(week);
+      games = await buildWeek(week, currentId);
     } catch {
       games = [];
     }
