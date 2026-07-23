@@ -536,7 +536,7 @@ tbody tr:hover {
 /* ---- Head to Head ---- */
 .h2h-selectors {
   display: grid;
-  grid-template-columns: 1fr 48px 1fr;
+  grid-template-columns: minmax(0, 1fr) 48px minmax(0, 1fr);
   gap: 12px;
   margin-bottom: 10px;
 }
@@ -557,18 +557,21 @@ tbody tr:hover {
 }
 .h2h-heads {
   display: grid;
-  grid-template-columns: 1fr 48px 1fr;
-  align-items: center;
+  grid-template-columns: minmax(0, 1fr) 48px minmax(0, 1fr);
+  align-items: stretch;
   gap: 12px;
   margin-bottom: 4px;
 }
 .h2h-card {
-  flex: 1;
+  min-width: 0;
   background: var(--card);
   border: 1px solid var(--border);
   border-radius: 14px;
   padding: 18px 12px;
   text-align: center;
+}
+.h2h-team {
+  overflow-wrap: anywhere;
 }
 .h2h-avatar {
   width: 72px;
@@ -643,6 +646,47 @@ tbody tr:hover {
   .h2h-team {
     font-size: 15px;
   }
+}
+
+/* ---- Matchup odds cards ---- */
+.odds-card {
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 14px 16px;
+  margin-bottom: 12px;
+  background: color-mix(in srgb, var(--text) 3%, transparent);
+}
+.odds-team-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  padding: 6px 0;
+  flex-wrap: wrap;
+}
+.odds-team-row.winner {
+  font-weight: 700;
+}
+.odds-team-name {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.odds-score {
+  font-variant-numeric: tabular-nums;
+  color: var(--muted);
+  font-weight: 700;
+}
+.odds-score.score-win {
+  color: var(--win);
+  font-weight: 800;
+}
+.odds-mid {
+  text-align: center;
+  color: var(--muted);
+  font-size: 12px;
+  font-weight: 700;
+  padding: 2px 0;
 }
 
 /* ---- Weekly Preview cards ---- */

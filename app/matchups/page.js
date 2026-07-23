@@ -1,101 +1,95 @@
 import {
-  getLeague,
-  getNflState,
-  getMatchups,
-  getRosters,
-  getUsers,
-  usersById,
-  teamName,
   getCurrentLeagueId,
-  LEAGUE_ID,
+  getLeague,
+  getStandings,
+  getMatchups,
+  getNflState,
 } from "@/lib/sleeper";
+import { winProbability, americanOdds, tenToWin } from "@/lib/odds";
+import MatchupOdds from "@/app/components/MatchupOdds";
 
 export const dynamic = "force-dynamic";
 
 export const metadata = { title: "Matchups · YEET FFL" };
 
-// Build a list of head-to-head matchups for a given week.
-async function buildWeek(week, leagueId = LEAGUE_ID) {
-  const [matchups, rosters, users] = await Promise.all([
-    getMatchups(week, leagueId),
-    getRosters(leagueId),
-    getUsers(leagueId),
-  ]);
-  const uById = usersById(users);
-  const teamByRoster = {};
-  for (const r of rosters) {
-    teamByRoster[r.roster_id] = teamName(uById[r.owner_id]);
-  }
-
-  const groups = {};
-  for (const m of matchups) {
-    if (m.matchup_id == null) continue;
-    (groups[m.matchup_id] = groups[m.matchup_id] || []).push({
-      team: teamByRoster[m.roster_id] || `Roster ${m.roster_id}`,
-      points: m.points || 0,
-    });
-  }
-
-  return Object.values(groups).map((pair) => {
-    pair.sort((a, b) => b.points - a.points);
-    return pair;
-  });
-}
-
 export default async function MatchupsPage() {
-  const currentId = await getCurrentLeagueId();
-  const [league, state] = await Promise.all([
-    getLeague(currentId),
+  const id = await getCurrentLeagueId();
+  const [league, standings, state] = await Promise.all([
+    getLeague(id),
+    getStandings(id),
     getNflState(),
   ]);
 
-  // Which week to show: live NFL week if in season, otherwise the last
-  // scored week of this league (so the page is never empty in the offseason).
-  const liveWeek = Number(state.week) || 0;
-  const lastScored = Number(league.settings?.last_scored_leg) || 0;
-  const week = liveWeek > 0 ? liveWeek : lastScored;
-  const offseason = liveWeek === 0;
+  const lastWeek =
+    Number(league.settings?.last_scored_leg) ||
+    Number(league.settings?.leg) ||
+    17;
 
-  let games = [];
-  if (week > 0) {
-    try {
-      games = await buildWeek(week, currentId);
-    } catch {
-      games = [];
-    }
+  // team -> projected points (season average) + display info
+  const info = {};
+  for (const r of standings) {
+    const g = r.wins + r.losses + r.ties;
+    info[r.rosterId] = {
+      team: r.team,
+      avatar: r.avatar,
+      proj: g ? r.pointsFor / g : 0,
+    };
   }
+
+  const nums = Array.from({ length: lastWeek }, (_, i) => i + 1);
+  const allMs = await Promise.all(
+    nums.map((w) => getMatchups(w, id).catch(() => []))
+  );
+
+  const weeks = allMs.map((ms, idx) => {
+    const groups = {};
+    for (const m of ms) {
+      if (m.matchup_id == null) continue;
+      (groups[m.matchup_id] = groups[m.matchup_id] || []).push(m);
+    }
+    const games = Object.values(groups)
+      .filter((p) => p.length === 2)
+      .map(([a, b]) => {
+        const A = info[a.roster_id] || { team: "TBD", proj: 0, avatar: null };
+        const B = info[b.roster_id] || { team: "TBD", proj: 0, avatar: null };
+        const aPts = a.points || 0;
+        const bPts = b.points || 0;
+        const played = aPts > 0 || bPts > 0;
+        const pA = winProbability(A.proj, B.proj);
+        return {
+          a: {
+            team: A.team, avatar: A.avatar, proj: A.proj, score: aPts,
+            ao: americanOdds(pA), win10: tenToWin(pA), winner: played && aPts > bPts,
+          },
+          b: {
+            team: B.team, avatar: B.avatar, proj: B.proj, score: bPts,
+            ao: americanOdds(1 - pA), win10: tenToWin(1 - pA), winner: played && bPts > aPts,
+          },
+          played,
+        };
+      });
+    return { week: idx + 1, games };
+  });
+
+  const liveWeek = Number(state.week) || 0;
+  const inSeason =
+    liveWeek > 0 && state.season_type !== "off" && league.status !== "complete";
+  const scored = weeks.filter((w) => w.games.length > 0).map((w) => w.week);
+  const defaultWeek =
+    inSeason && liveWeek ? liveWeek : scored[scored.length - 1] || 1;
 
   return (
     <>
-      <h2>
-        {offseason ? "Latest Results" : "Matchups"} — Week {week || "—"}
-      </h2>
-
-      {offseason && (
-        <div className="notice" style={{ marginBottom: 20 }}>
-          It's the offseason. Showing the final scored week of the{" "}
-          {league.season} season. Live weekly matchups and previews will appear
-          here automatically once games kick off.
-        </div>
-      )}
-
-      {games.length === 0 ? (
-        <div className="notice">No matchup data available yet.</div>
-      ) : (
-        games.map((pair, i) => (
-          <div className="matchup" key={i}>
-            {pair.map((t, j) => (
-              <div
-                className={"matchup-row" + (j === 0 ? " winner" : "")}
-                key={j}
-              >
-                <span>{t.team}</span>
-                <span className="num">{t.points.toFixed(1)}</span>
-              </div>
-            ))}
-          </div>
-        ))
-      )}
+      <h2>Matchups</h2>
+      <p className="sub" style={{ marginTop: -6, marginBottom: 16 }}>
+        Week-by-week matchup odds · {league.season} season.
+      </p>
+      <MatchupOdds
+        weeks={weeks}
+        defaultWeek={defaultWeek}
+        offseason={!inSeason}
+        seasonLabel={league.season}
+      />
     </>
   );
 }

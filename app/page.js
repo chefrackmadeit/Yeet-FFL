@@ -52,7 +52,12 @@ export default async function HomePage() {
           {league.season} season · {league.total_rosters} teams · updated live
           from Sleeper
         </p>
-        <a className="btn" href="/YEET-FFL-Guidelines.pdf" target="_blank" rel="noopener noreferrer">
+        <a
+          className="btn"
+          href="https://docs.google.com/document/d/1iuEKRa91wx7Nz4L9vPwOgguym7tWBaDMGQwTvNIED1g/edit?usp=sharing"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
           📖 League Rules
         </a>
       </section>
