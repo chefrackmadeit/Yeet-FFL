@@ -1077,7 +1077,7 @@ tbody tr:hover {
 .h2h-record-table {
   table-layout: fixed;
   width: 100%;
-  min-width: 640px;
+  min-width: 660px;
 }
 /* everything centered except the opponent column */
 .h2h-record-table th,
@@ -1093,8 +1093,11 @@ tbody tr:hover {
   background: var(--bg);
   border-right: 1px solid var(--border);
   text-align: left;
-  width: 168px;
+  width: 176px;
+  white-space: normal;
   overflow-wrap: anywhere;
+  word-break: break-word;
+  line-height: 1.35;
 }
 .h2h-record-table thead th:first-child {
   background: var(--bg-soft);
