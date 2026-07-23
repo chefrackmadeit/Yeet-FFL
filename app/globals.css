@@ -172,6 +172,43 @@ a {
   border-color: var(--claude);
 }
 
+/* ---- Hamburger (mobile only) ---- */
+.nav-toggle {
+  display: none; /* hidden on desktop */
+  order: 4;
+  flex-direction: column;
+  justify-content: center;
+  gap: 4px;
+  width: 40px;
+  height: 34px;
+  padding: 8px;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  cursor: pointer;
+  transition: border-color 0.15s ease;
+}
+.nav-toggle:hover {
+  border-color: var(--claude);
+}
+.nav-toggle-bar {
+  display: block;
+  width: 100%;
+  height: 2px;
+  background: var(--text);
+  border-radius: 2px;
+  transition: transform 0.2s ease, opacity 0.2s ease;
+}
+.nav-toggle[aria-expanded="true"] .nav-toggle-bar:nth-child(1) {
+  transform: translateY(6px) rotate(45deg);
+}
+.nav-toggle[aria-expanded="true"] .nav-toggle-bar:nth-child(2) {
+  opacity: 0;
+}
+.nav-toggle[aria-expanded="true"] .nav-toggle-bar:nth-child(3) {
+  transform: translateY(-6px) rotate(-45deg);
+}
+
 /* ---- Theme toggle (sliding switch) ---- */
 .theme-switch {
   order: 3;
@@ -732,6 +769,25 @@ tbody tr:hover {
   display: flex;
   align-items: center;
   gap: 8px;
+  flex-wrap: wrap;
+}
+.odds-team-label {
+  font-weight: 700;
+}
+.odds-proj {
+  font-size: 13px;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+}
+.odds-proj.muted {
+  color: var(--muted);
+  font-weight: 500;
+}
+.odds-proj.fav {
+  color: #3ddc97;
+}
+.odds-proj.dog {
+  color: #ef4444;
 }
 .odds-score {
   font-variant-numeric: tabular-nums;
@@ -1061,21 +1117,35 @@ tbody tr:hover {
     gap: 10px 16px;
     padding: 10px 20px;
   }
-  .nav-links {
-    gap: 14px;
-    width: 100%;
-    order: 3;
-    margin-left: 0;
-    justify-content: space-between;
-  }
-  .nav-links a {
-    font-size: 15px;
-    padding: 4px 0;
-  }
-  /* theme switch sits on the same row as the logo, to its right */
+  /* theme switch + hamburger sit on the logo row, to the right */
   .theme-switch {
     order: 2;
     margin-left: auto;
+  }
+  .nav-toggle {
+    display: flex;
+    order: 3;
+    margin-left: 8px;
+  }
+  /* nav links collapse into a dropdown opened by the hamburger */
+  .nav-links {
+    order: 4;
+    width: 100%;
+    margin-left: 0;
+    display: none;
+    flex-direction: column;
+    gap: 4px;
+    padding-top: 8px;
+    margin-top: 6px;
+    border-top: 1px solid var(--border);
+  }
+  .nav-links.open {
+    display: flex;
+  }
+  .nav-links a {
+    font-size: 16px;
+    padding: 10px 12px;
+    width: 100%;
   }
 
   .hero {

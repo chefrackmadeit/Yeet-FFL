@@ -1,7 +1,6 @@
 import "./globals.css";
-import Link from "next/link";
 import CountdownBanner from "./components/CountdownBanner";
-import ThemeToggle from "./components/ThemeToggle";
+import NavBar from "./components/NavBar";
 
 export const metadata = {
   title: "YEET FFL",
@@ -28,21 +27,7 @@ export default function RootLayout({ children }) {
       <body>
         <header className="site-header">
           <CountdownBanner />
-          <nav className="nav">
-            <div className="container nav-inner">
-              <Link href="/" className="brand">
-                YEET FFL
-              </Link>
-              <ThemeToggle />
-              <div className="nav-links">
-                <Link href="/">Home</Link>
-                <Link href="/matchups">Matchups</Link>
-                <Link href="/head-to-head">Head to Head</Link>
-                <Link href="/owners">Owners</Link>
-                <Link href="/history">The Archives</Link>
-              </div>
-            </div>
-          </nav>
+          <NavBar />
         </header>
         <main>
           <div className="container">{children}</div>

@@ -4,7 +4,7 @@ import { buildOwners } from "@/lib/manager";
 
 export const dynamic = "force-dynamic";
 
-export const metadata = { title: "Owners · YEET FFL" };
+export const metadata = { title: "Managers · YEET FFL" };
 
 function medals(o) {
   const items = [];
@@ -21,9 +21,9 @@ export default async function OwnersPage() {
 
   return (
     <>
-      <h2>Owners</h2>
+      <h2>Managers</h2>
       <p className="sub" style={{ marginTop: -6, marginBottom: 18 }}>
-        Select an owner to view their full profile.
+        Select a manager to view their full profile.
       </p>
       <div className="grid owners-grid">
         {owners.map((o) => (

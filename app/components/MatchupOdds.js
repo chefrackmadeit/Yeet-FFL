@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { winProbability, americanOdds, tenToWin } from "@/lib/odds";
 
-function TeamRow({ t, played }) {
+function TeamRow({ t, played, projTone }) {
   return (
     <div className={"odds-team-row" + (t.winner ? " winner" : "")}>
       <div className="odds-team-name">
@@ -11,8 +11,10 @@ function TeamRow({ t, played }) {
           // eslint-disable-next-line @next/next/no-img-element
           <img className="avatar" src={t.avatar} alt="" />
         )}
-        <span>{t.team}</span>
-        <span className="sub">proj {t.proj.toFixed(1)}</span>
+        <span className="odds-team-label">{t.team}</span>
+        <span className={"odds-proj " + (projTone || "muted")}>
+          Proj {t.proj.toFixed(1)}
+        </span>
         {played && (
           <span className={"odds-score" + (t.winner ? " score-win" : "")}>
             {t.score.toFixed(1)}
@@ -94,9 +96,9 @@ export default function MatchupOdds({ weeks, teams, defaultWeek, offseason, seas
             </div>
             {genA && genB && (
               <div className="odds-card" style={{ marginTop: 12, marginBottom: 0 }}>
-                <TeamRow t={genA} played={false} />
+                <TeamRow t={genA} played={false} projTone={tA.proj >= tB.proj ? "fav" : "dog"} />
                 <div className="odds-mid">vs</div>
-                <TeamRow t={genB} played={false} />
+                <TeamRow t={genB} played={false} projTone={tA.proj >= tB.proj ? "dog" : "fav"} />
               </div>
             )}
           </div>
@@ -107,13 +109,16 @@ export default function MatchupOdds({ weeks, teams, defaultWeek, offseason, seas
           {!current || current.games.length === 0 ? (
             <div className="notice">No matchups for this week.</div>
           ) : (
-            current.games.map((g, i) => (
-              <div className="odds-card" key={i}>
-                <TeamRow t={g.a} played={g.played} />
-                <div className="odds-mid">vs</div>
-                <TeamRow t={g.b} played={g.played} />
-              </div>
-            ))
+            current.games.map((g, i) => {
+              const aFav = g.a.proj >= g.b.proj;
+              return (
+                <div className="odds-card" key={i}>
+                  <TeamRow t={g.a} played={g.played} projTone={aFav ? "fav" : "dog"} />
+                  <div className="odds-mid">vs</div>
+                  <TeamRow t={g.b} played={g.played} projTone={aFav ? "dog" : "fav"} />
+                </div>
+              );
+            })
           )}
         </div>
       </div>
