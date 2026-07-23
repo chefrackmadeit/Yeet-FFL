@@ -1077,7 +1077,13 @@ tbody tr:hover {
 .h2h-record-table {
   table-layout: fixed;
   width: 100%;
-  min-width: 620px;
+  min-width: 640px;
+}
+/* everything centered except the opponent column */
+.h2h-record-table th,
+.h2h-record-table td {
+  text-align: center;
+  vertical-align: middle;
 }
 .h2h-record-table th:first-child,
 .h2h-record-table td:first-child {
@@ -1087,19 +1093,29 @@ tbody tr:hover {
   background: var(--bg);
   border-right: 1px solid var(--border);
   text-align: left;
-  width: 148px;
+  width: 168px;
   overflow-wrap: anywhere;
 }
 .h2h-record-table thead th:first-child {
   background: var(--bg-soft);
   z-index: 2;
 }
-.h2h-record-table .h2h-hi {
-  background: color-mix(in srgb, var(--win) 24%, transparent);
+/* highlight as a clean centered chip, not a full-cell block */
+.h2h-chip {
+  display: inline-block;
+  min-width: 46px;
+  padding: 4px 9px;
+  border-radius: 7px;
+  font-variant-numeric: tabular-nums;
+}
+.h2h-chip.h2h-hi {
+  background: color-mix(in srgb, var(--win) 26%, transparent);
+  color: var(--text);
   font-weight: 700;
 }
-.h2h-record-table .h2h-lo {
-  background: color-mix(in srgb, var(--loss) 24%, transparent);
+.h2h-chip.h2h-lo {
+  background: color-mix(in srgb, var(--loss) 26%, transparent);
+  color: var(--text);
   font-weight: 700;
 }
 

@@ -134,14 +134,16 @@ function H2HTable({ rows }) {
                     <div className="sub">{r.name}</div>
                   </td>
                   {H2H_COLS.slice(1).map((c) => {
-                    let cls = "num";
+                    let chip = "h2h-chip";
                     if (data.length > 1) {
-                      if (r[c.key] === ext[c.key].max) cls += " h2h-hi";
-                      else if (r[c.key] === ext[c.key].min) cls += " h2h-lo";
+                      if (r[c.key] === ext[c.key].max) chip += " h2h-hi";
+                      else if (r[c.key] === ext[c.key].min) chip += " h2h-lo";
                     }
                     return (
-                      <td key={c.key} className={cls}>
-                        {c.fmt ? c.fmt(r[c.key]) : r[c.key]}
+                      <td key={c.key}>
+                        <span className={chip}>
+                          {c.fmt ? c.fmt(r[c.key]) : r[c.key]}
+                        </span>
                       </td>
                     );
                   })}
