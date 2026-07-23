@@ -71,6 +71,13 @@ export default async function MatchupsPage() {
     return { week: idx + 1, games };
   });
 
+  const teams = standings.map((r) => ({
+    rosterId: r.rosterId,
+    team: r.team,
+    avatar: r.avatar,
+    proj: r.wins + r.losses + r.ties ? r.pointsFor / (r.wins + r.losses + r.ties) : 0,
+  }));
+
   const liveWeek = Number(state.week) || 0;
   const inSeason =
     liveWeek > 0 && state.season_type !== "off" && league.status !== "complete";
@@ -86,6 +93,7 @@ export default async function MatchupsPage() {
       </p>
       <MatchupOdds
         weeks={weeks}
+        teams={teams}
         defaultWeek={defaultWeek}
         offseason={!inSeason}
         seasonLabel={league.season}
