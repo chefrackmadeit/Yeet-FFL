@@ -38,7 +38,7 @@ export default async function ManagerPage({ params }) {
     <>
       <p style={{ margin: "18px 0 6px" }}>
         <Link href="/" className="sub">
-          ← Back to standings
+          ← Back
         </Link>
       </p>
 

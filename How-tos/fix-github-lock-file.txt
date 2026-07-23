@@ -1,0 +1,36 @@
+HOW-TO: Fix "A lock file already exists" error in GitHub Desktop
+================================================================
+
+SYMPTOM
+  When you click Commit or Push in GitHub Desktop you see:
+  "A lock file already exists in the repository, which blocks this
+   operation from completing."
+
+CAUSE
+  A leftover file named  index.lock  inside your repo's hidden .git
+  folder. It's usually left behind when a git action gets interrupted.
+  It is safe to delete -- it is NOT part of your project.
+
+FIX (Terminal -- easiest)
+  1. Quit GitHub Desktop (Cmd + Q).
+  2. Open Terminal (Cmd + Space, type "Terminal", press Enter).
+  3. Paste this line and press Enter:
+
+        rm -f ~/Desktop/Yeet-FFL/.git/index.lock
+
+     (No output means it worked.)
+  4. Reopen GitHub Desktop and try Commit + Push again.
+
+FIX (Finder -- alternative)
+  1. Quit GitHub Desktop.
+  2. In Finder, open the Yeet-FFL folder.
+  3. Press  Cmd + Shift + .  (period) to show hidden files --
+     a faded ".git" folder appears.
+  4. Open .git, find "index.lock", and drag it to the Trash.
+  5. Press  Cmd + Shift + .  again to re-hide hidden files.
+  6. Reopen GitHub Desktop and Commit + Push.
+
+STILL STUCK?
+  There may be another leftover lock file (e.g. HEAD.lock or
+  config.lock) in the .git folder. Delete it the same way, or ask
+  Claude to check.

@@ -3,9 +3,11 @@
 import { useState } from "react";
 import { winProbability, americanOdds, tenToWin } from "@/lib/odds";
 
-function TeamRow({ t, played, projTone }) {
+function TeamRow({ t, projTone, outcome }) {
+  const outClass =
+    outcome === "win" ? " win-row" : outcome === "loss" ? " loss-row" : "";
   return (
-    <div className={"odds-team-row" + (t.winner ? " winner" : "")}>
+    <div className={"odds-team-row" + (t.winner ? " winner" : "") + outClass}>
       <div className="odds-team-name">
         {t.avatar && (
           // eslint-disable-next-line @next/next/no-img-element
@@ -15,11 +17,6 @@ function TeamRow({ t, played, projTone }) {
         <span className={"odds-proj " + (projTone || "muted")}>
           Proj {t.proj.toFixed(1)}
         </span>
-        {played && (
-          <span className={"odds-score" + (t.winner ? " score-win" : "")}>
-            {t.score.toFixed(1)}
-          </span>
-        )}
       </div>
       <div className="odds-line">
         {t.ao} · $10 to win {t.win10}
@@ -93,11 +90,14 @@ export default function MatchupOdds({ weeks, teams, defaultWeek, offseason, seas
           ) : (
             current.games.map((g, i) => {
               const aFav = g.a.proj >= g.b.proj;
+              const tie = g.played && !g.a.winner && !g.b.winner;
+              const outA = !g.played || tie ? null : g.a.winner ? "win" : "loss";
+              const outB = !g.played || tie ? null : g.b.winner ? "win" : "loss";
               return (
                 <div className="odds-card" key={i}>
-                  <TeamRow t={g.a} played={g.played} projTone={aFav ? "fav" : "dog"} />
+                  <TeamRow t={g.a} projTone={aFav ? "fav" : "dog"} outcome={outA} />
                   <div className="odds-mid">vs</div>
-                  <TeamRow t={g.b} played={g.played} projTone={aFav ? "dog" : "fav"} />
+                  <TeamRow t={g.b} projTone={aFav ? "dog" : "fav"} outcome={outB} />
                 </div>
               );
             })
@@ -113,9 +113,9 @@ export default function MatchupOdds({ weeks, teams, defaultWeek, offseason, seas
           </div>
           {genA && genB && (
             <div className="odds-card" style={{ marginTop: 12, marginBottom: 0 }}>
-              <TeamRow t={genA} played={false} projTone={tA.proj >= tB.proj ? "fav" : "dog"} />
+              <TeamRow t={genA} projTone={tA.proj >= tB.proj ? "fav" : "dog"} />
               <div className="odds-mid">vs</div>
-              <TeamRow t={genB} played={false} projTone={tA.proj >= tB.proj ? "dog" : "fav"} />
+              <TeamRow t={genB} projTone={tA.proj >= tB.proj ? "dog" : "fav"} />
             </div>
           )}
         </div>

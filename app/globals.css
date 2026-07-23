@@ -771,6 +771,18 @@ tbody tr:hover {
 .odds-team-row.winner {
   font-weight: 700;
 }
+.odds-team-row.win-row {
+  background: color-mix(in srgb, #3ddc97 15%, transparent);
+  border-right: 4px solid #3ddc97;
+  border-radius: 6px;
+  padding: 6px 10px;
+}
+.odds-team-row.loss-row {
+  background: color-mix(in srgb, #ef4444 15%, transparent);
+  border-right: 4px solid #ef4444;
+  border-radius: 6px;
+  padding: 6px 10px;
+}
 .odds-team-name {
   display: flex;
   align-items: center;
