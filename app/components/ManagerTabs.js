@@ -59,7 +59,7 @@ function SeasonsTable({ seasons }) {
 
   return (
     <div className="table-wrap">
-      <table>
+      <table className="seasons-table">
         <thead>
           <tr>
             <th>Year</th>
@@ -299,19 +299,17 @@ function PlayersTab({ players, seasons }) {
           <thead>
             <tr>
               <th className="sortable" onClick={() => onSort("name")}>Player{arrow("name")}</th>
-              <th className="sortable num" onClick={() => onSort("starts")}>Starts{arrow("starts")}</th>
               <th className="sortable num" onClick={() => onSort("points")}>Total Points{arrow("points")}</th>
               <th className="sortable num" onClick={() => onSort("best")}>Best Game{arrow("best")}</th>
             </tr>
           </thead>
           <tbody>
             {rows.length === 0 ? (
-              <tr><td colSpan={4} className="sub">No players for this filter.</td></tr>
+              <tr><td colSpan={3} className="sub">No players for this filter.</td></tr>
             ) : (
               rows.map((p) => (
                 <tr key={p.playerId + (p.year || "")}>
                   <td>{p.name} <span className="sub">· {p.position}</span></td>
-                  <td className="num">{p.starts}</td>
                   <td className="num">{p.points.toFixed(1)}</td>
                   <td className="num">{p.best.toFixed(1)}</td>
                 </tr>

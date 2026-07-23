@@ -71,36 +71,18 @@ export default function MatchupOdds({ weeks, teams, defaultWeek, offseason, seas
       )}
 
       <div className="matchups-layout">
-        <div className="matchups-left">
-          <div className="panel">
-            <div className="panel-title">All Weeks</div>
-            <div className="subtabs" style={{ margin: 0 }}>
-              {available.map((w) => (
-                <button
-                  key={w}
-                  className={"subtab" + (w === wk ? " active" : "")}
-                  onClick={() => setWk(w)}
-                >
-                  Wk {w}
-                </button>
-              ))}
-            </div>
-          </div>
-
-          <div className="panel">
-            <div className="panel-title">Head-to-Head Odds</div>
-            <div className="h2h-gen">
-              <Select value={idA} onChange={setIdA} />
-              <div className="odds-mid">vs</div>
-              <Select value={idB} onChange={setIdB} />
-            </div>
-            {genA && genB && (
-              <div className="odds-card" style={{ marginTop: 12, marginBottom: 0 }}>
-                <TeamRow t={genA} played={false} projTone={tA.proj >= tB.proj ? "fav" : "dog"} />
-                <div className="odds-mid">vs</div>
-                <TeamRow t={genB} played={false} projTone={tA.proj >= tB.proj ? "dog" : "fav"} />
-              </div>
-            )}
+        <div className="panel matchups-weeks">
+          <div className="panel-title">All Weeks</div>
+          <div className="subtabs" style={{ margin: 0 }}>
+            {available.map((w) => (
+              <button
+                key={w}
+                className={"subtab" + (w === wk ? " active" : "")}
+                onClick={() => setWk(w)}
+              >
+                Wk {w}
+              </button>
+            ))}
           </div>
         </div>
 
@@ -119,6 +101,22 @@ export default function MatchupOdds({ weeks, teams, defaultWeek, offseason, seas
                 </div>
               );
             })
+          )}
+        </div>
+
+        <div className="panel matchups-h2h">
+          <div className="panel-title">Head-to-Head Odds</div>
+          <div className="h2h-gen">
+            <Select value={idA} onChange={setIdA} />
+            <div className="odds-mid">vs</div>
+            <Select value={idB} onChange={setIdB} />
+          </div>
+          {genA && genB && (
+            <div className="odds-card" style={{ marginTop: 12, marginBottom: 0 }}>
+              <TeamRow t={genA} played={false} projTone={tA.proj >= tB.proj ? "fav" : "dog"} />
+              <div className="odds-mid">vs</div>
+              <TeamRow t={genB} played={false} projTone={tA.proj >= tB.proj ? "dog" : "fav"} />
+            </div>
           )}
         </div>
       </div>

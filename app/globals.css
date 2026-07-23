@@ -701,15 +701,20 @@ tbody tr:hover {
 .matchups-layout {
   display: grid;
   grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-  gap: 20px;
+  grid-template-areas:
+    "weeks matchups"
+    "h2h   matchups";
+  gap: 16px 20px;
   align-items: start;
 }
-.matchups-left {
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-  position: sticky;
-  top: 84px;
+.matchups-weeks {
+  grid-area: weeks;
+}
+.matchups-h2h {
+  grid-area: h2h;
+}
+.matchups-right {
+  grid-area: matchups;
 }
 .panel {
   background: var(--card);
@@ -740,9 +745,10 @@ tbody tr:hover {
 @media (max-width: 820px) {
   .matchups-layout {
     grid-template-columns: 1fr;
-  }
-  .matchups-left {
-    position: static;
+    grid-template-areas:
+      "weeks"
+      "matchups"
+      "h2h";
   }
 }
 
@@ -1089,6 +1095,23 @@ tbody tr:hover {
 @media (max-width: 640px) {
   .container {
     padding: 0 20px;
+  }
+
+  /* Freeze the Year column on the manager Seasons table */
+  .seasons-table th:first-child,
+  .seasons-table td:first-child {
+    position: sticky;
+    left: 0;
+    z-index: 1;
+    background: var(--bg);
+    border-right: 1px solid var(--border);
+  }
+  .seasons-table thead th:first-child {
+    background: var(--bg-soft);
+    z-index: 2;
+  }
+  .seasons-table tr.total-row td:first-child {
+    background: var(--bg-soft);
   }
 
   /* Banner: keep the countdown on one tidy row */
