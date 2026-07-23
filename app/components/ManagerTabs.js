@@ -46,68 +46,144 @@ export default function ManagerTabs({ seasons, draft, players, h2h }) {
   );
 }
 
+const H2H_COLS = [
+  { key: "team", label: "Opponent", type: "text" },
+  { key: "wins", label: "W" },
+  { key: "losses", label: "L" },
+  { key: "winPct", label: "Win %", fmt: (v) => (v * 100).toFixed(1) + "%" },
+  { key: "tpf", label: "TPF", fmt: (v) => v.toFixed(1) },
+  { key: "tpa", label: "TPA", fmt: (v) => v.toFixed(1) },
+  { key: "apf", label: "APF", fmt: (v) => v.toFixed(1) },
+  { key: "apa", label: "APA", fmt: (v) => v.toFixed(1) },
+];
+
 function H2HTable({ rows }) {
-  if (!rows || rows.length === 0) {
-    return <div className="notice">No head-to-head history yet.</div>;
+  const [mode, setMode] = useState("reg");
+  const [sortKey, setSortKey] = useState("wins");
+  const [dir, setDir] = useState("desc");
+
+  function onSort(key) {
+    if (key === sortKey) setDir(dir === "asc" ? "desc" : "asc");
+    else {
+      setSortKey(key);
+      setDir(key === "team" ? "asc" : "desc");
+    }
   }
-  const cols = [
-    { key: "wins", label: "W" },
-    { key: "losses", label: "L" },
-    { key: "winPct", label: "Win %", fmt: (v) => (v * 100).toFixed(1) + "%" },
-    { key: "tpf", label: "TPF", fmt: (v) => v.toFixed(1) },
-    { key: "tpa", label: "TPA", fmt: (v) => v.toFixed(1) },
-    { key: "apf", label: "APF", fmt: (v) => v.toFixed(1) },
-    { key: "apa", label: "APA", fmt: (v) => v.toFixed(1) },
-  ];
+  const arrow = (k) =>
+    k === sortKey ? <span className="arrow">{dir === "asc" ? "▲" : "▼"}</span> : null;
+
+  const data = useMemo(() => {
+    let list = (rows || [])
+      .map((r) => ({ userId: r.userId, team: r.team, name: r.name, ...r[mode] }))
+      .filter((x) => x.games > 0);
+    const col = H2H_COLS.find((c) => c.key === sortKey);
+    list.sort((a, b) => {
+      let res;
+      if (col && col.type === "text")
+        res = String(a[sortKey]).localeCompare(String(b[sortKey]));
+      else res = (a[sortKey] || 0) - (b[sortKey] || 0);
+      return dir === "asc" ? res : -res;
+    });
+    return list;
+  }, [rows, mode, sortKey, dir]);
+
   const ext = {};
-  for (const c of cols) {
-    const vals = rows.map((r) => r[c.key]);
+  for (const c of H2H_COLS) {
+    if (c.type === "text") continue;
+    const vals = data.map((r) => r[c.key]);
     ext[c.key] = { min: Math.min(...vals), max: Math.max(...vals) };
   }
+
   return (
-    <div className="table-wrap">
-      <table className="h2h-record-table">
-        <thead>
-          <tr>
-            <th>Opponent</th>
-            {cols.map((c) => (
-              <th key={c.key} className="num">{c.label}</th>
-            ))}
-          </tr>
-        </thead>
-        <tbody>
-          {rows.map((r) => (
-            <tr key={r.userId}>
-              <td>
-                <Link href={`/manager/${r.userId}`} className="team-link">{r.team}</Link>
-                <div className="sub">{r.name}</div>
-              </td>
-              {cols.map((c) => {
-                let cls = "num";
-                if (rows.length > 1) {
-                  if (r[c.key] === ext[c.key].max) cls += " h2h-hi";
-                  else if (r[c.key] === ext[c.key].min) cls += " h2h-lo";
-                }
-                return (
-                  <td key={c.key} className={cls}>
-                    {c.fmt ? c.fmt(r[c.key]) : r[c.key]}
+    <div>
+      <div className="tabs">
+        <button className={"tab-btn alt" + (mode === "reg" ? " active" : "")} onClick={() => setMode("reg")}>
+          Regular Season
+        </button>
+        <button className={"tab-btn alt" + (mode === "ply" ? " active" : "")} onClick={() => setMode("ply")}>
+          Playoffs
+        </button>
+      </div>
+
+      {data.length === 0 ? (
+        <div className="notice">
+          No {mode === "reg" ? "regular-season" : "playoff"} head-to-head games yet.
+        </div>
+      ) : (
+        <div className="table-wrap">
+          <table className="h2h-record-table">
+            <thead>
+              <tr>
+                {H2H_COLS.map((c) => (
+                  <th
+                    key={c.key}
+                    className={"sortable" + (c.type === "text" ? "" : " num")}
+                    onClick={() => onSort(c.key)}
+                  >
+                    {c.label}
+                    {arrow(c.key)}
+                  </th>
+                ))}
+              </tr>
+            </thead>
+            <tbody>
+              {data.map((r) => (
+                <tr key={r.userId}>
+                  <td>
+                    <Link href={`/manager/${r.userId}`} className="team-link">{r.team}</Link>
+                    <div className="sub">{r.name}</div>
                   </td>
-                );
-              })}
-            </tr>
-          ))}
-        </tbody>
-      </table>
+                  {H2H_COLS.slice(1).map((c) => {
+                    let cls = "num";
+                    if (data.length > 1) {
+                      if (r[c.key] === ext[c.key].max) cls += " h2h-hi";
+                      else if (r[c.key] === ext[c.key].min) cls += " h2h-lo";
+                    }
+                    return (
+                      <td key={c.key} className={cls}>
+                        {c.fmt ? c.fmt(r[c.key]) : r[c.key]}
+                      </td>
+                    );
+                  })}
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      )}
+
       <p className="sub" style={{ marginTop: 12 }}>
-        Each row = this manager's record vs that opponent. Highest value in each
-        column is green, lowest is red. TPF/TPA = total points for/against;
-        APF/APA = average per game.
+        Record vs each opponent ({mode === "reg" ? "regular season" : "playoffs"}).
+        Highest value per column is green, lowest red. Click a column to sort.
+        TPF/TPA = total points for/against; APF/APA = average per game.
       </p>
     </div>
   );
 }
 
+const SEASON_COLS = [
+  { key: "season", label: "Year" },
+  { key: "place", label: "Finish" },
+  { key: "wins", label: "W", num: true },
+  { key: "losses", label: "L", num: true },
+  { key: "winPct", label: "Win %", num: true },
+  { key: "pf", label: "PF", num: true },
+  { key: "pa", label: "PA", num: true },
+  { key: "ppg", label: "PPG", num: true },
+  { key: "waivers", label: "Waivers", num: true },
+  { key: "high", label: "Most", num: true },
+  { key: "low", label: "Least", num: true },
+];
+function seasonVal(s, key) {
+  if (key === "season") return Number(s.season) || 0;
+  if (key === "place") return s.place == null ? Infinity : s.place;
+  if (key === "winPct") return s.games ? s.wins / s.games : 0;
+  return s[key] ?? 0;
+}
+
 function SeasonsTable({ seasons }) {
+  const [sortKey, setSortKey] = useState("season");
+  const [dir, setDir] = useState("desc");
   const t = seasons.reduce(
     (a, s) => {
       a.wins += s.wins; a.losses += s.losses; a.ties += s.ties;
@@ -120,22 +196,37 @@ function SeasonsTable({ seasons }) {
   );
   const tg = t.wins + t.losses + t.ties;
 
+  function onSort(key) {
+    if (key === sortKey) setDir(dir === "asc" ? "desc" : "asc");
+    else { setSortKey(key); setDir("desc"); }
+  }
+  const arrow = (k) =>
+    k === sortKey ? <span className="arrow">{dir === "asc" ? "▲" : "▼"}</span> : null;
+  const sorted = useMemo(() => {
+    const copy = [...seasons];
+    copy.sort((a, b) => {
+      let res = seasonVal(a, sortKey) - seasonVal(b, sortKey);
+      if (Number.isNaN(res)) res = 0;
+      return dir === "asc" ? res : -res;
+    });
+    return copy;
+  }, [seasons, sortKey, dir]);
+
   return (
     <div className="table-wrap">
       <table className="seasons-table">
         <thead>
           <tr>
-            <th>Year</th>
-            <th>Finish</th>
-            <th className="num">W</th>
-            <th className="num">L</th>
-            <th className="num">Win %</th>
-            <th className="num">PF</th>
-            <th className="num">PA</th>
-            <th className="num">PPG</th>
-            <th className="num">Waivers</th>
-            <th className="num">Most</th>
-            <th className="num">Least</th>
+            {SEASON_COLS.map((c) => (
+              <th
+                key={c.key}
+                className={"sortable" + (c.num ? " num" : "")}
+                onClick={() => onSort(c.key)}
+              >
+                {c.label}
+                {arrow(c.key)}
+              </th>
+            ))}
           </tr>
         </thead>
         <tbody>
@@ -152,7 +243,7 @@ function SeasonsTable({ seasons }) {
             <td className="num">{t.high.toFixed(1)}</td>
             <td className="num">{(t.low ?? 0).toFixed(1)}</td>
           </tr>
-          {seasons.map((s) => (
+          {sorted.map((s) => (
             <tr key={s.season}>
               <td>{s.season}</td>
               <td>{ordinal(s.place)}</td>

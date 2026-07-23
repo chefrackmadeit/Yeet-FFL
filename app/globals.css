@@ -1074,6 +1074,11 @@ tbody tr:hover {
 }
 
 /* ---- Manager H2H record table ---- */
+.h2h-record-table {
+  table-layout: fixed;
+  width: 100%;
+  min-width: 620px;
+}
 .h2h-record-table th:first-child,
 .h2h-record-table td:first-child {
   position: sticky;
@@ -1082,19 +1087,20 @@ tbody tr:hover {
   background: var(--bg);
   border-right: 1px solid var(--border);
   text-align: left;
-  min-width: 130px;
+  width: 148px;
+  overflow-wrap: anywhere;
 }
 .h2h-record-table thead th:first-child {
   background: var(--bg-soft);
   z-index: 2;
 }
-.h2h-hi {
-  color: var(--win);
-  font-weight: 800;
+.h2h-record-table .h2h-hi {
+  background: color-mix(in srgb, var(--win) 24%, transparent);
+  font-weight: 700;
 }
-.h2h-lo {
-  color: var(--loss);
-  font-weight: 800;
+.h2h-record-table .h2h-lo {
+  background: color-mix(in srgb, var(--loss) 24%, transparent);
+  font-weight: 700;
 }
 
 /* ---- Tabs ---- */
