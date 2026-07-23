@@ -2,6 +2,13 @@
 
 A running list of features to revisit later.
 
+## 🎨 Design conventions (keep consistent)
+- **Tabs & week sub-tabs:** always use the shared `.tab-btn` / `.subtab`
+  classes. They carry the standard styling and the **Claude-coral (#d97757)
+  outline on hover** (desktop). All new tabbed sections should reuse these so
+  the hover behavior stays consistent everywhere.
+- Coral hover token lives in CSS as `var(--claude)`.
+
 ## 🔖 Reactions / voting on previews & recaps
 **Bookmarked — revisit closer to the 2026 season.**
 
