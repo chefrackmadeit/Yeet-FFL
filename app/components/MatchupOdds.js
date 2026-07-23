@@ -9,11 +9,13 @@ function TeamRow({ t, projTone, outcome }) {
   return (
     <div className={"odds-team-row" + (t.winner ? " winner" : "") + outClass}>
       <div className="odds-team-name">
-        {t.avatar && (
-          // eslint-disable-next-line @next/next/no-img-element
-          <img className="avatar" src={t.avatar} alt="" />
-        )}
-        <span className="odds-team-label">{t.team}</span>
+        <span className="odds-team-id">
+          {t.avatar && (
+            // eslint-disable-next-line @next/next/no-img-element
+            <img className="avatar" src={t.avatar} alt="" />
+          )}
+          <span className="odds-team-label">{t.team}</span>
+        </span>
         <span className={"odds-proj " + (projTone || "muted")}>
           Proj {t.proj.toFixed(1)}
         </span>
@@ -89,15 +91,14 @@ export default function MatchupOdds({ weeks, teams, defaultWeek, offseason, seas
             <div className="notice">No matchups for this week.</div>
           ) : (
             current.games.map((g, i) => {
-              const aFav = g.a.proj >= g.b.proj;
               const tie = g.played && !g.a.winner && !g.b.winner;
               const outA = !g.played || tie ? null : g.a.winner ? "win" : "loss";
               const outB = !g.played || tie ? null : g.b.winner ? "win" : "loss";
               return (
                 <div className="odds-card" key={i}>
-                  <TeamRow t={g.a} projTone={aFav ? "fav" : "dog"} outcome={outA} />
+                  <TeamRow t={g.a} outcome={outA} />
                   <div className="odds-mid">vs</div>
-                  <TeamRow t={g.b} projTone={aFav ? "dog" : "fav"} outcome={outB} />
+                  <TeamRow t={g.b} outcome={outB} />
                 </div>
               );
             })
