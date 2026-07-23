@@ -49,10 +49,17 @@
   box-sizing: border-box;
 }
 
+/* Guard against any element overflowing horizontally (kept off <body> so the
+   sticky header still works). */
+html {
+  overflow-x: hidden;
+}
+
 html,
 body {
   margin: 0;
   padding: 0;
+  max-width: 100%;
   background: var(--bg);
   color: var(--text);
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica,
@@ -1064,6 +1071,30 @@ tbody tr:hover {
 .team-link:hover {
   color: var(--accent);
   text-decoration: underline;
+}
+
+/* ---- Manager H2H record table ---- */
+.h2h-record-table th:first-child,
+.h2h-record-table td:first-child {
+  position: sticky;
+  left: 0;
+  z-index: 1;
+  background: var(--bg);
+  border-right: 1px solid var(--border);
+  text-align: left;
+  min-width: 130px;
+}
+.h2h-record-table thead th:first-child {
+  background: var(--bg-soft);
+  z-index: 2;
+}
+.h2h-hi {
+  color: var(--win);
+  font-weight: 800;
+}
+.h2h-lo {
+  color: var(--loss);
+  font-weight: 800;
 }
 
 /* ---- Tabs ---- */

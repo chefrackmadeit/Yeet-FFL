@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { useMemo, useState } from "react";
 
 function ordinal(n) {
@@ -20,12 +21,12 @@ const POS_COLOR = {
 };
 const colorFor = (p) => POS_COLOR[p] || "#8a93b5";
 
-export default function ManagerTabs({ seasons, draft, players }) {
+export default function ManagerTabs({ seasons, draft, players, h2h }) {
   const [tab, setTab] = useState("seasons");
   return (
     <div>
       <div className="tabs">
-        {[["seasons", "Seasons"], ["draft", "Draft"], ["players", "Players"]].map(
+        {[["seasons", "Seasons"], ["draft", "Draft"], ["players", "Players"], ["h2h", "H2H"]].map(
           ([k, label]) => (
             <button
               key={k}
@@ -40,6 +41,68 @@ export default function ManagerTabs({ seasons, draft, players }) {
       {tab === "seasons" && <SeasonsTable seasons={seasons} />}
       {tab === "draft" && <DraftTab draft={draft} />}
       {tab === "players" && <PlayersTab players={players} seasons={seasons} />}
+      {tab === "h2h" && <H2HTable rows={h2h} />}
+    </div>
+  );
+}
+
+function H2HTable({ rows }) {
+  if (!rows || rows.length === 0) {
+    return <div className="notice">No head-to-head history yet.</div>;
+  }
+  const cols = [
+    { key: "wins", label: "W" },
+    { key: "losses", label: "L" },
+    { key: "winPct", label: "Win %", fmt: (v) => (v * 100).toFixed(1) + "%" },
+    { key: "tpf", label: "TPF", fmt: (v) => v.toFixed(1) },
+    { key: "tpa", label: "TPA", fmt: (v) => v.toFixed(1) },
+    { key: "apf", label: "APF", fmt: (v) => v.toFixed(1) },
+    { key: "apa", label: "APA", fmt: (v) => v.toFixed(1) },
+  ];
+  const ext = {};
+  for (const c of cols) {
+    const vals = rows.map((r) => r[c.key]);
+    ext[c.key] = { min: Math.min(...vals), max: Math.max(...vals) };
+  }
+  return (
+    <div className="table-wrap">
+      <table className="h2h-record-table">
+        <thead>
+          <tr>
+            <th>Opponent</th>
+            {cols.map((c) => (
+              <th key={c.key} className="num">{c.label}</th>
+            ))}
+          </tr>
+        </thead>
+        <tbody>
+          {rows.map((r) => (
+            <tr key={r.userId}>
+              <td>
+                <Link href={`/manager/${r.userId}`} className="team-link">{r.team}</Link>
+                <div className="sub">{r.name}</div>
+              </td>
+              {cols.map((c) => {
+                let cls = "num";
+                if (rows.length > 1) {
+                  if (r[c.key] === ext[c.key].max) cls += " h2h-hi";
+                  else if (r[c.key] === ext[c.key].min) cls += " h2h-lo";
+                }
+                return (
+                  <td key={c.key} className={cls}>
+                    {c.fmt ? c.fmt(r[c.key]) : r[c.key]}
+                  </td>
+                );
+              })}
+            </tr>
+          ))}
+        </tbody>
+      </table>
+      <p className="sub" style={{ marginTop: 12 }}>
+        Each row = this manager's record vs that opponent. Highest value in each
+        column is green, lowest is red. TPF/TPA = total points for/against;
+        APF/APA = average per game.
+      </p>
     </div>
   );
 }

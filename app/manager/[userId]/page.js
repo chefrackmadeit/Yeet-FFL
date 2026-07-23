@@ -125,6 +125,7 @@ export default async function ManagerPage({ params }) {
         seasons={profile.seasons}
         draft={profile.draft}
         players={profile.players}
+        h2h={profile.h2h}
       />
     </>
   );
