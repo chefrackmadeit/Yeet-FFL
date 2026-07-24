@@ -5,6 +5,14 @@ import { createClient } from "@/lib/supabase/client";
 
 const EMOJIS = ["👍", "🔥", "😂", "😮", "🍔"];
 
+// Extra emojis shown in the "+" pop-up picker (iMessage-style).
+const MORE_EMOJIS = [
+  "❤️", "😍", "🤣", "😭", "😡", "🤯", "🎉", "💯",
+  "👀", "🙌", "😅", "😬", "🥶", "🫡", "🤝", "💀",
+  "🏈", "🐐", "🚮", "🧢", "👑", "🥲", "😤", "🤔",
+  "👏", "🙈", "💩", "🫠", "😈", "🤙",
+];
+
 export default function ReactionBar({ postId }) {
   const supabase = useMemo(() => createClient(), []);
   const [user, setUser] = useState(null);
@@ -13,6 +21,7 @@ export default function ReactionBar({ postId }) {
   const [email, setEmail] = useState("");
   const [sent, setSent] = useState(false);
   const [showForm, setShowForm] = useState(false);
+  const [showPicker, setShowPicker] = useState(false);
 
   async function load() {
     if (!supabase) return;
@@ -108,6 +117,13 @@ export default function ReactionBar({ postId }) {
   const up = (byKind["up"] || []).length;
   const down = (byKind["down"] || []).length;
 
+  // Show the default emoji row plus any custom emoji someone has reacted with
+  // (so picks from the "+" menu appear as chips too).
+  const extra = Object.keys(byKind).filter(
+    (k) => k !== "up" && k !== "down" && !EMOJIS.includes(k)
+  );
+  const shown = [...EMOJIS, ...extra];
+
   return (
     <div className="reactions">
       <div className="react-row">
@@ -118,7 +134,7 @@ export default function ReactionBar({ postId }) {
           ▼ {down}
         </button>
         <span className="react-divider" />
-        {EMOJIS.map((em) => {
+        {shown.map((em) => {
           const who = byKind[em] || [];
           return (
             <button
@@ -132,21 +148,45 @@ export default function ReactionBar({ postId }) {
             </button>
           );
         })}
+
+        <div className="react-picker-wrap">
+          <button
+            className={"react-chip react-plus" + (showPicker ? " on" : "")}
+            onClick={() => setShowPicker((v) => !v)}
+            aria-label="More emojis"
+            title="More emojis"
+          >
+            <span className="react-emoji">＋</span>
+          </button>
+          {showPicker && (
+            <div className="react-picker">
+              {MORE_EMOJIS.map((em) => (
+                <button
+                  key={em}
+                  className={"react-pick" + (mine.has(em) ? " on" : "")}
+                  onClick={() => {
+                    toggleEmoji(em);
+                    setShowPicker(false);
+                  }}
+                >
+                  {em}
+                </button>
+              ))}
+            </div>
+          )}
+        </div>
       </div>
 
       <div className="react-auth">
         {user && manager ? (
-          <span className="sub">
-            Signed in as {manager.display_name} ·{" "}
-            <button className="link-btn" onClick={signOut}>sign out</button>
-          </span>
+          <span className="sub">Signed in as {manager.display_name}</span>
         ) : user && !manager ? (
           <span className="sub">
             This account isn’t on the league roster.{" "}
             <button className="link-btn" onClick={signOut}>sign out</button>
           </span>
         ) : sent ? (
-          <span className="sub">Check your email for a sign-in link.</span>
+          <span className="sub">Please check your email.</span>
         ) : showForm ? (
           <form className="react-signin" onSubmit={sendLink}>
             <input

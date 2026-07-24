@@ -1258,6 +1258,59 @@ tbody tr:hover {
 .react-chip:hover .react-tip {
   display: block;
 }
+.react-plus {
+  padding: 5px 10px;
+}
+.react-plus .react-emoji {
+  font-size: 18px;
+  color: var(--muted);
+}
+.react-plus.on .react-emoji {
+  color: var(--text);
+}
+.react-picker-wrap {
+  position: relative;
+  display: inline-flex;
+}
+.react-picker {
+  position: absolute;
+  bottom: calc(100% + 8px);
+  left: 50%;
+  transform: translateX(-50%);
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
+  gap: 2px;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 8px;
+  box-shadow: var(--shadow);
+  z-index: 30;
+  width: max-content;
+  max-width: min(320px, 88vw);
+}
+.react-pick {
+  background: transparent;
+  border: none;
+  border-radius: 8px;
+  padding: 5px;
+  font-size: 20px;
+  line-height: 1;
+  cursor: pointer;
+  transition: background 0.12s ease, transform 0.12s ease;
+}
+.react-pick:hover {
+  background: var(--bg-soft);
+  transform: scale(1.15);
+}
+.react-pick.on {
+  background: color-mix(in srgb, var(--accent) 20%, transparent);
+}
+@media (max-width: 480px) {
+  .react-picker {
+    grid-template-columns: repeat(6, 1fr);
+  }
+}
 .react-auth {
   margin-top: 8px;
 }
