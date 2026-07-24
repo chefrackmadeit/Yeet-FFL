@@ -1,11 +1,12 @@
 import ReactionBar from "./ReactionBar";
 
-// Renders a list of manual posts (from content/posts.js), each with its own
-// reaction bar. Used inside the Weekly Review and YEET News Network dropdowns.
+// Renders a list of manual posts (from content/posts.js). Each post is a
+// collapsible accordion: click the headline to expand the full article (with
+// links + reactions). Used inside the Weekly Review / YEET News Network / etc.
+// dropdowns, so the whole thing is a nested accordion for a clean, scannable UI.
 //
-// Links are supported three ways:
-//   • In the body text: [label](https://...) or a bare https://... URL.
-//   • post.href — makes the whole title a clickable link.
+// Links inside a post are supported two ways:
+//   • In the body text: **bold**, [label](https://...), or a bare https://... URL.
 //   • post.links — an array of { label, url } shown as buttons under the post.
 // All links open in a new browser tab (great for PDFs, Google Docs, etc.).
 
@@ -54,44 +55,40 @@ export default function PostFeed({ posts, emptyText }) {
     <div className="post-feed">
       {posts.map((post, i) => {
         const id = post.id || `post-${i}`;
-        const titleNode = post.href ? (
-          <a href={post.href} target="_blank" rel="noopener noreferrer">
-            {post.title} ↗
-          </a>
-        ) : (
-          post.title
-        );
-
         return (
-          <article className="post" key={id}>
-            <div className="post-head">
-              <h3 className="post-title">{titleNode}</h3>
-              {post.date && <span className="post-date">{post.date}</span>}
+          <details className="post" key={id}>
+            <summary className="post-summary">
+              <span className="post-summary-main">
+                <span className="post-title">{post.title}</span>
+                {post.date && <span className="post-date">{post.date}</span>}
+              </span>
+            </summary>
+            <div className="post-content">
+              {post.body && (
+                <div className="post-body">
+                  {paragraphs(post.body).map((p, j) => (
+                    <p key={j}>{renderInline(p, `${id}-${j}`)}</p>
+                  ))}
+                </div>
+              )}
+              {Array.isArray(post.links) && post.links.length > 0 && (
+                <div className="post-links">
+                  {post.links.map((lnk, j) => (
+                    <a
+                      key={j}
+                      className="post-link"
+                      href={lnk.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      {lnk.label} ↗
+                    </a>
+                  ))}
+                </div>
+              )}
+              <ReactionBar postId={id} />
             </div>
-            {post.body && (
-              <div className="post-body">
-                {paragraphs(post.body).map((p, j) => (
-                  <p key={j}>{renderInline(p, `${id}-${j}`)}</p>
-                ))}
-              </div>
-            )}
-            {Array.isArray(post.links) && post.links.length > 0 && (
-              <div className="post-links">
-                {post.links.map((lnk, j) => (
-                  <a
-                    key={j}
-                    className="post-link"
-                    href={lnk.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    {lnk.label} ↗
-                  </a>
-                ))}
-              </div>
-            )}
-            <ReactionBar postId={id} />
-          </article>
+          </details>
         );
       })}
     </div>
