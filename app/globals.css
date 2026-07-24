@@ -1181,6 +1181,112 @@ tbody tr:hover {
   background-size: 12px;
 }
 
+/* ---- Reactions ---- */
+.reactions {
+  margin-top: 4px;
+}
+.react-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+.react-vote,
+.react-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  background: var(--bg-soft);
+  border: 1px solid var(--border);
+  color: var(--text);
+  border-radius: 999px;
+  padding: 5px 11px;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: border-color 0.15s ease, background 0.15s ease;
+}
+.react-vote:hover,
+.react-chip:hover {
+  border-color: var(--claude);
+}
+.react-vote.on,
+.react-chip.on {
+  border-color: var(--accent);
+  background: color-mix(in srgb, var(--accent) 18%, transparent);
+}
+.react-divider {
+  width: 1px;
+  height: 20px;
+  background: var(--border);
+  margin: 0 2px;
+}
+.react-emoji {
+  font-size: 16px;
+  line-height: 1;
+}
+.react-count {
+  font-variant-numeric: tabular-nums;
+  color: var(--muted);
+}
+.react-chip.on .react-count {
+  color: var(--text);
+}
+.react-chip {
+  position: relative;
+}
+.react-tip {
+  display: none;
+  position: absolute;
+  bottom: calc(100% + 8px);
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 6px 10px;
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--text);
+  white-space: nowrap;
+  max-width: 240px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  box-shadow: var(--shadow);
+  z-index: 20;
+}
+.react-chip:hover .react-tip {
+  display: block;
+}
+.react-auth {
+  margin-top: 8px;
+}
+.react-signin {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  align-items: center;
+}
+.react-signin input {
+  background: var(--bg-soft);
+  border: 1px solid var(--border);
+  color: var(--text);
+  border-radius: 8px;
+  padding: 8px 10px;
+  font-size: 14px;
+  min-width: 200px;
+}
+.link-btn {
+  background: none;
+  border: none;
+  padding: 0;
+  color: var(--accent);
+  font: inherit;
+  font-weight: 600;
+  cursor: pointer;
+  text-decoration: underline;
+}
+
 /* ---- Footer ---- */
 .footer {
   border-top: 1px solid var(--border);

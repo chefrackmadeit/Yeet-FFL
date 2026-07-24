@@ -7,6 +7,7 @@ import {
 import { attachTitleOdds } from "@/lib/odds";
 import StandingsTabs from "./components/StandingsTabs";
 import WeeklyPreview from "./components/WeeklyPreview";
+import ReactionBar from "./components/ReactionBar";
 import { weeklyRecap, yeetNewsNetwork } from "@/content/homepage";
 
 export const dynamic = "force-dynamic";
@@ -61,6 +62,16 @@ export default async function HomePage() {
           📖 League Rules
         </a>
       </section>
+
+      {/* Test post — for trying out reactions during setup */}
+      <div className="card" style={{ marginBottom: 16 }}>
+        <div className="label">🧪 Test Post</div>
+        <p style={{ margin: "4px 0 12px" }}>
+          A sandbox post for testing reactions. Sign in and try the votes and
+          emojis below — hover a reaction to see who reacted.
+        </p>
+        <ReactionBar postId="test-post" />
+      </div>
 
       {/* Weekly Recap — editable in content/homepage.js */}
       <details className="section recap">
