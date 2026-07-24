@@ -10,6 +10,7 @@ import StandingsTabs from "./components/StandingsTabs";
 import WeeklyPreview from "./components/WeeklyPreview";
 import PostFeed from "./components/PostFeed";
 import NotifySection from "./components/NotifySection";
+import HeroSignIn from "./components/HeroSignIn";
 import { weeklyReview, yeetNews } from "@/content/posts";
 
 export const dynamic = "force-dynamic";
@@ -44,14 +45,17 @@ export default async function HomePage() {
           {league.season} season · {league.total_rosters} teams · updated live
           from Sleeper
         </p>
-        <a
-          className="btn"
-          href="https://docs.google.com/document/d/1iuEKRa91wx7Nz4L9vPwOgguym7tWBaDMGQwTvNIED1g/edit?usp=sharing"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          📖 League Rules
-        </a>
+        <div className="hero-actions">
+          <a
+            className="btn"
+            href="https://docs.google.com/document/d/1iuEKRa91wx7Nz4L9vPwOgguym7tWBaDMGQwTvNIED1g/edit?usp=sharing"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            📖 League Rules
+          </a>
+          <HeroSignIn />
+        </div>
       </section>
 
       {/* Weekly Review — manual posts (content/posts.js), each with reactions */}
