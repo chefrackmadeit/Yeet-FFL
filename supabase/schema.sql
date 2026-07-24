@@ -52,11 +52,22 @@ create policy "delete reactions" on public.reactions for delete using (
 );
 
 -- 4) Allowlist seed ----------------------------------------------------------
--- TEST PHASE: only Mike's email is enabled, so only he can log in / react.
--- When ready to launch, add the rest of the league here (one row per manager,
--- email LOWERCASED, mapped to their Sleeper display name + team).
+-- LAUNCH ROSTER: all 12 managers. Emails are LOWERCASED (the app matches on
+-- the lowercased login email). Safe to re-run.
 insert into public.managers (email, sleeper_user_id, display_name, team_name)
-values ('chefrackmadeit@gmail.com', '993296992803647488', 'UncleZaddy4', 'Glizzard Wizards')
+values
+  ('chefrackmadeit@gmail.com',    '993296992803647488',  'UncleZaddy4',     'Glizzard Wizards'),
+  ('nateschechter1993@gmail.com', '868545856306094080',  'Nschechter',      'The Space Browns'),
+  ('kyletwarek@gmail.com',        '1002631322264842240', 'kyletwarek',      'Bonnie Blue 42'),
+  ('prestonbrick@gmail.com',      '1000249028845600768', 'prestonbrick',    'Chadamania'),
+  ('miketozzi01@gmail.com',       '1122613900320649216', 'mtozzi54',        'Preston Wasnt There Again'),
+  ('zak.garrett7@gmail.com',      '863934337471631360',  'Zgezzy',          'Mcfucked'),
+  ('connorviland8@gmail.com',     '865095321213071360',  'civil8',          'Richmond Barebacks'),
+  ('spencerwien@gmail.com',       '601256274159542272',  'ProjectW',        'Planet Girth'),
+  ('k.kerner94@yahoo.com',        '993354947766833152',  'fantussy69',      'Nicotine Leech'),
+  ('c.keeley2011@gmail.com',      '1002737906202701824', '1ActionBronson1', 'A&A ARMY'),
+  ('jcircelli27@gmail.com',       '993677131928465408',  'ImAnAngler',      'Tua Many Fish'),
+  ('andrewmorganmckay@gmail.com', '1122622685130944512', 'LeBronicus',      'Nabers thnk im sellindope')
 on conflict (email) do update
   set sleeper_user_id = excluded.sleeper_user_id,
       display_name = excluded.display_name,

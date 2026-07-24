@@ -1127,13 +1127,28 @@ tbody tr:hover {
 .h2h-record-table {
   table-layout: fixed;
   width: 100%;
-  min-width: 660px;
+  min-width: 760px;
 }
 /* everything centered except the opponent column */
 .h2h-record-table th,
 .h2h-record-table td {
   text-align: center;
   vertical-align: middle;
+}
+/* tighter side padding on the numeric columns so the colored chips have clear
+   breathing room and never bleed into the next column */
+.h2h-record-table th:not(:first-child),
+.h2h-record-table td:not(:first-child) {
+  padding-left: 6px;
+  padding-right: 6px;
+}
+/* keep each header label + sort arrow on one tidy line */
+.h2h-record-table thead th {
+  white-space: nowrap;
+}
+.h2h-record-table thead th .arrow {
+  margin-left: 3px;
+  font-size: 10px;
 }
 .h2h-record-table th:first-child,
 .h2h-record-table td:first-child {
@@ -1156,8 +1171,10 @@ tbody tr:hover {
 /* highlight as a clean centered chip, not a full-cell block */
 .h2h-chip {
   display: inline-block;
-  min-width: 46px;
-  padding: 4px 9px;
+  box-sizing: border-box;
+  max-width: 100%;
+  min-width: 40px;
+  padding: 3px 7px;
   border-radius: 7px;
   font-variant-numeric: tabular-nums;
 }
