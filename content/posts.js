@@ -43,18 +43,37 @@ export const weeklyReview = [
 // 📡 YEET NEWS NETWORK — league news, trades, rumors, hot takes. Newest first.
 export const yeetNews = [
   {
-    id: "ynn-test-1",
+    id: "ynn-2026-welcome",
     date: "Jul 23, 2026",
-    title: "TEST: Notifications, reactions & links are live",
-    href: "/YEET-FFL-Guidelines.pdf",
-    body: `This is a live test post. The red bubble on the YEET News Network dropdown is counting it — open the dropdown and the bubble clears.
+    title: "Welcome to the Hive, Peons",
+    body: `Hello, Peons.
 
-Links work three ways. The headline above is clickable (opens the league guidelines PDF in a new tab). You can also drop a link right in the text like [the Sleeper site](https://sleeper.com), or paste a bare URL such as https://sleeper.com and it becomes clickable automatically.
+Welcome to the new home of all things YEET FFL (aside from the group chat).
 
-Try the reactions below too — vote it up/down and hit the "+" for more emojis.`,
-    links: [
-      { label: "Open the League Guidelines (PDF)", url: "/YEET-FFL-Guidelines.pdf" },
-      { label: "League Rules (Google Doc)", url: "https://docs.google.com/document/d/1iuEKRa91wx7Nz4L9vPwOgguym7tWBaDMGQwTvNIED1g/edit?usp=sharing" },
-    ],
+Go ahead and take a big ole swig and drink it all in. This website is our new home base. Again, I will always stay to the group chat for comms but if you want information, this is our Hive.
+
+We have weekly previews, reviews, and YEET News Network which has more meaning than football. We can post league life events. Really I can posts these things. That's something I should mention…
+
+I am basically God in here. I make the changes, updates, posts, pushes, etc. (you're welcome) to make this fantasy, fantasy site a reality. This is my house. All you all have to do is walk in, take your shoes off, pants(?), and look around.
+
+Anyway, consider it my gift to you. This shits fun as hell. Take a long while to dig through the capabilities here. The posts and stuff is a small social feature to a much larger archive of information and comparison.
+
+Quick breakdown - I hope you've made it this far:
+
+**Homepage:** You can figure that out
+
+**Matchups:** This data is old by the time you see it. Pulled from 2025 because this season hasn't happened yet, which means when it does, data will update ~24 hours. Here we have a gambling feature based on weekly matchups. And if you want to be legitimate sick disgusting fucks, you can have a friendly with someone in the Head to Head comparison tool and bet on your own time and dime.
+
+**Head to Head:** All Time and Regular Season comparison between two teams.
+
+**Managers:** Strap the fuck in here, player cards for everyone showing historical data of all kinds. Go look and be curious and figure it out
+
+**The Archives:** The ancient history of our league lives here
+
+I am expecting only about 3 people to have made it this far. Lastly and most importantly fun - when posts come out you can upvote and emote to it. A fun way to react to weekly reviews.
+
+That's it really - This was really more of a test post for me to test out the function of posting, reacting, and it going to the right place. Enjoy this treat, I have had a ton of fun making it.
+
+Let's get this fantasy shit poppin again.`,
   },
 ];

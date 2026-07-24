@@ -17,22 +17,28 @@ function paragraphs(text) {
     .filter(Boolean);
 }
 
-// Turn [label](url) and bare URLs inside a paragraph into clickable links.
-function linkify(text, keyBase) {
-  const re = /\[([^\]]+)\]\((https?:\/\/[^\s)]+)\)|(https?:\/\/[^\s)]+)/g;
+// Render a paragraph's inline formatting: **bold**, [label](url) markdown
+// links, and bare URLs (all links open in a new tab).
+function renderInline(text, keyBase) {
+  const re =
+    /\[([^\]]+)\]\((https?:\/\/[^\s)]+)\)|(https?:\/\/[^\s)]+)|\*\*([^*]+)\*\*/g;
   const nodes = [];
   let last = 0;
   let k = 0;
   let m;
   while ((m = re.exec(text)) !== null) {
     if (m.index > last) nodes.push(text.slice(last, m.index));
-    const label = m[1] || m[3];
-    const url = m[2] || m[3];
-    nodes.push(
-      <a key={`${keyBase}-${k++}`} href={url} target="_blank" rel="noopener noreferrer">
-        {label}
-      </a>
-    );
+    if (m[4] != null) {
+      nodes.push(<strong key={`${keyBase}-${k++}`}>{m[4]}</strong>);
+    } else {
+      const label = m[1] || m[3];
+      const url = m[2] || m[3];
+      nodes.push(
+        <a key={`${keyBase}-${k++}`} href={url} target="_blank" rel="noopener noreferrer">
+          {label}
+        </a>
+      );
+    }
     last = re.lastIndex;
   }
   if (last < text.length) nodes.push(text.slice(last));
@@ -65,7 +71,7 @@ export default function PostFeed({ posts, emptyText }) {
             {post.body && (
               <div className="post-body">
                 {paragraphs(post.body).map((p, j) => (
-                  <p key={j}>{linkify(p, `${id}-${j}`)}</p>
+                  <p key={j}>{renderInline(p, `${id}-${j}`)}</p>
                 ))}
               </div>
             )}
