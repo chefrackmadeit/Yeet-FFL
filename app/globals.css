@@ -716,19 +716,23 @@ tbody tr:hover {
 .h2h-row {
   display: grid;
   grid-template-columns: 1fr 200px 1fr;
-  align-items: center;
+  align-items: stretch;
   border-top: 1px solid var(--border);
 }
 .h2h-row:first-child {
   border-top: none;
 }
 .h2h-val {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
   padding: 12px 14px;
   font-weight: 700;
   font-size: 17px;
   font-variant-numeric: tabular-nums;
 }
 .h2h-row .h2h-val:first-child {
+  justify-content: flex-end;
   text-align: right;
 }
 .h2h-val.win {
