@@ -25,10 +25,20 @@ export default function ReactionBar({ postId }) {
 
   useEffect(() => {
     if (!supabase) return;
-    supabase.auth.getUser().then(({ data }) => setUser(data?.user ?? null));
-    const { data: sub } = supabase.auth.onAuthStateChange((_e, session) =>
-      setUser(session?.user ?? null)
-    );
+    supabase.auth.getUser().then(({ data }) => {
+      if (data?.user) {
+        setUser(data.user);
+        setSent(false);
+        setShowForm(false);
+      }
+    });
+    const { data: sub } = supabase.auth.onAuthStateChange((_e, session) => {
+      setUser(session?.user ?? null);
+      if (session?.user) {
+        setSent(false);
+        setShowForm(false);
+      }
+    });
     load();
     return () => sub?.subscription?.unsubscribe();
     // eslint-disable-next-line react-hooks/exhaustive-deps

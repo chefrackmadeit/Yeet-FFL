@@ -1,18 +1,34 @@
+import { createServerClient } from "@supabase/ssr";
 import { NextResponse } from "next/server";
-import { createClient } from "@/lib/supabase/server";
 
-// Magic-link lands here with a ?code=... — exchange it for a session (sets the
-// auth cookies), then send the user back to the homepage, signed in.
+// Magic-link lands here with ?code=... — exchange it for a session and write
+// the auth cookies onto the redirect response so the login persists.
 export async function GET(request) {
   const { searchParams, origin } = new URL(request.url);
   const code = searchParams.get("code");
   const next = searchParams.get("next") || "/";
+  const redirectTo = `${origin}${next}`;
 
-  if (code) {
-    const supabase = createClient();
-    if (supabase) {
-      await supabase.auth.exchangeCodeForSession(code);
-    }
+  const url = process.env.NEXT_PUBLIC_SUPABASE_URL;
+  const key = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
+
+  if (code && url && key) {
+    const response = NextResponse.redirect(redirectTo);
+    const supabase = createServerClient(url, key, {
+      cookies: {
+        getAll() {
+          return request.cookies.getAll();
+        },
+        setAll(cookiesToSet) {
+          cookiesToSet.forEach(({ name, value, options }) =>
+            response.cookies.set(name, value, options)
+          );
+        },
+      },
+    });
+    await supabase.auth.exchangeCodeForSession(code);
+    return response;
   }
-  return NextResponse.redirect(`${origin}${next}`);
+
+  return NextResponse.redirect(redirectTo);
 }
