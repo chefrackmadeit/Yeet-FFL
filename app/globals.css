@@ -1266,6 +1266,7 @@ tbody tr:hover {
   margin-top: 4px;
 }
 .react-row {
+  position: relative;
   display: flex;
   align-items: center;
   gap: 8px;
@@ -1349,14 +1350,15 @@ tbody tr:hover {
   color: var(--text);
 }
 .react-picker-wrap {
-  position: relative;
   display: inline-flex;
 }
+/* Anchored to the reaction row (not the "+" button) so it can never be clipped
+   at the screen edge, wherever the button ends up after wrapping. */
 .react-picker {
   position: absolute;
   bottom: calc(100% + 8px);
-  left: 50%;
-  transform: translateX(-50%);
+  left: 0;
+  right: auto;
   display: grid;
   grid-template-columns: repeat(8, 1fr);
   gap: 2px;
@@ -1367,7 +1369,7 @@ tbody tr:hover {
   box-shadow: var(--shadow);
   z-index: 30;
   width: max-content;
-  max-width: min(320px, 88vw);
+  max-width: min(320px, calc(100vw - 40px));
 }
 .react-pick {
   background: transparent;
