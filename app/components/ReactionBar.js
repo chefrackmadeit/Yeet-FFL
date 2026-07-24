@@ -106,14 +106,6 @@ export default function ReactionBar({ postId }) {
     setSent(true);
   }
 
-  async function signOut() {
-    await supabase.auth.signOut();
-    setUser(null);
-    setManager(null);
-    setShowForm(false);
-    setSent(false);
-  }
-
   const up = (byKind["up"] || []).length;
   const down = (byKind["down"] || []).length;
 
@@ -182,8 +174,7 @@ export default function ReactionBar({ postId }) {
           <span className="sub">Signed in as {manager.display_name}</span>
         ) : user && !manager ? (
           <span className="sub">
-            This account isn’t on the league roster.{" "}
-            <button className="link-btn" onClick={signOut}>sign out</button>
+            This email isn’t on the league roster yet — text Mike to get added.
           </span>
         ) : sent ? (
           <span className="sub">Please check your email.</span>
