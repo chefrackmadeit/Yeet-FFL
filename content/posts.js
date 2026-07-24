@@ -2,10 +2,11 @@
 // POSTS — Weekly Review & YEET News Network
 // ---------------------------------------------------------------------------
 // These are the dropdowns on the homepage that you post into manually.
-// Add a post by copying a template below into the MATCHING array. Newest posts
-// go at the TOP. Each post is itself a collapsible accordion: the site shows
-// just the headline + date, and readers click the headline to expand the full
-// article (with its reactions + links). Keeps the sections clean and scannable.
+// Add a post by copying a template below into the MATCHING array — order in the
+// array doesn't matter, the site auto-sorts posts newest-first by their date.
+// Each post is itself a collapsible accordion: the site shows just the headline
+// + date, and readers click the headline to expand the full article (with its
+// reactions + links). Keeps the sections clean and scannable.
 //
 // FIELDS:
 //   id    — a UNIQUE, PERMANENT tag for the post. This is what stores the

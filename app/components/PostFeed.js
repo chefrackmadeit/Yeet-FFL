@@ -46,14 +46,24 @@ function renderInline(text, keyBase) {
   return nodes;
 }
 
+// Sort key from a post's date. Unparseable/missing dates sort to the bottom
+// (keeping their original order among themselves).
+function dateKey(d) {
+  const t = Date.parse(d);
+  return Number.isNaN(t) ? -8.64e15 : t;
+}
+
 export default function PostFeed({ posts, emptyText }) {
   if (!posts || posts.length === 0) {
     return <p className="post-empty">{emptyText || "Nothing posted yet."}</p>;
   }
 
+  // Always show newest first, regardless of array order.
+  const ordered = [...posts].sort((a, b) => dateKey(b.date) - dateKey(a.date));
+
   return (
     <div className="post-feed">
-      {posts.map((post, i) => {
+      {ordered.map((post, i) => {
         const id = post.id || `post-${i}`;
         return (
           <details className="post" key={id}>
