@@ -72,3 +72,36 @@ Supabase sends the login emails itself, so NO separate email service needed).
 Note: first backend + login feature → expect more back-and-forth than the usual
 "commit and push" (build → Mike sets up Supabase + Vercel keys → push → debug
 together).
+
+## 📬 Email alert when a member signs in
+**Parked on 2026-07-24 — fully designed and built once, then backed out to
+revisit later. Reactions/login are already LIVE; this is an add-on.**
+
+Goal: Mike gets a real-time email the FIRST time each member ever signs in
+(e.g. "🏈 New sign-in: civil8"). One email per person, no spam on repeat logins.
+Reuses the existing Gmail SMTP account (the one that sends magic links) — no new
+email service.
+
+How it works:
+- New table `public.first_signins` (user_id PK, email, manager_name, created_at),
+  RLS: a signed-in user may insert only their own row.
+- A client logger (`SignInLogger`, mounted in layout) does an upsert with
+  `ignoreDuplicates` on sign-in → inserts a row ONLY the first time each person
+  logs in (repeat logins = no-op = no email).
+- A Supabase Database Webhook on `first_signins` INSERT → POST to
+  `/api/notify-signin` (Next.js Node route) → sends Mike an email via nodemailer
+  + Gmail SMTP. Secured with a shared `x-webhook-secret` header.
+
+Config Mike needs (when we revive it):
+1. Run `supabase/signin-notifications.sql` (creates the table + policy).
+2. Vercel env vars (Production): GMAIL_USER, GMAIL_APP_PASSWORD, NOTIFY_EMAIL,
+   SIGNIN_WEBHOOK_SECRET (a random string).
+3. Commit + Push (ships route + logger + nodemailer dep).
+4. Supabase → Database → Webhooks → new hook on public.first_signins, INSERT
+   only, HTTP POST to https://yeet-ffl.vercel.app/api/notify-signin, add header
+   x-webhook-secret matching the env var.
+
+The code for all of this was written once (SignInLogger.js, api/notify-signin
+route, the SQL, nodemailer dep, layout wiring) — can be rebuilt quickly from
+this spec. Also considered: a private on-site "who's signed in" page as a
+no-email alternative/backup.
