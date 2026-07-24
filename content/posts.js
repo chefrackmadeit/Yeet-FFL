@@ -45,8 +45,8 @@ export const yeetNews = [
   {
     id: "ynn-2026-welcome",
     date: "Jul 23, 2026",
-    title: "Welcome to the Hive, Peons",
-    body: `Hello, Peons.
+    title: "Welcome to the Revolution",
+    body: `Welcome Honkies.
 
 Welcome to the new home of all things YEET FFL (aside from the group chat).
 
