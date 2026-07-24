@@ -322,6 +322,28 @@ h2 {
 .section > summary::-webkit-details-marker {
   display: none;
 }
+.notif-badge {
+  margin-left: auto;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 20px;
+  height: 20px;
+  padding: 0 6px;
+  border-radius: 999px;
+  background: #e5484d;
+  color: #fff;
+  font-size: 12px;
+  font-weight: 800;
+  line-height: 1;
+  font-variant-numeric: tabular-nums;
+  box-shadow: 0 0 0 2px color-mix(in srgb, #e5484d 35%, transparent);
+}
+/* When a badge is present it takes the auto-margin, so the arrow sits snug
+   after it instead of pushing to the far right. */
+.section > summary:has(.notif-badge)::after {
+  margin-left: 8px;
+}
 .section > summary::after {
   content: "▸";
   margin-left: auto;
@@ -1310,6 +1332,47 @@ tbody tr:hover {
   .react-picker {
     grid-template-columns: repeat(6, 1fr);
   }
+}
+.post-feed {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+.post {
+  background: var(--bg-soft);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 14px 16px;
+}
+.post-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-bottom: 6px;
+}
+.post-title {
+  margin: 0;
+  font-size: 17px;
+  font-weight: 800;
+}
+.post-date {
+  font-size: 12px;
+  color: var(--muted);
+  white-space: nowrap;
+}
+.post-body p {
+  margin: 0 0 10px;
+  line-height: 1.55;
+}
+.post-body p:last-child {
+  margin-bottom: 12px;
+}
+.post-empty {
+  color: var(--muted);
+  font-style: italic;
+  margin: 0;
 }
 .react-auth {
   margin-top: 8px;

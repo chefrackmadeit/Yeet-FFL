@@ -3,47 +3,38 @@ import {
   getReigningAwards,
   getCurrentLeagueId,
   getSeasonStandingsSets,
+  getNflState,
 } from "@/lib/sleeper";
 import { attachTitleOdds } from "@/lib/odds";
 import StandingsTabs from "./components/StandingsTabs";
 import WeeklyPreview from "./components/WeeklyPreview";
-import ReactionBar from "./components/ReactionBar";
-import { weeklyRecap, yeetNewsNetwork } from "@/content/homepage";
+import PostFeed from "./components/PostFeed";
+import NotifySection from "./components/NotifySection";
+import { weeklyReview, yeetNews } from "@/content/posts";
 
 export const dynamic = "force-dynamic";
 
-// Split editable content into paragraphs on blank lines.
-function paragraphs(text) {
-  return String(text)
-    .trim()
-    .split(/\n\s*\n/)
-    .map((p) => p.trim())
-    .filter(Boolean);
-}
-
-function Prose({ text }) {
-  return (
-    <>
-      {paragraphs(text).map((p, i) => (
-        <p key={i} style={{ margin: i === 0 ? "0 0 10px" : "10px 0" }}>
-          {p}
-        </p>
-      ))}
-    </>
-  );
-}
-
 export default async function HomePage() {
   const currentId = await getCurrentLeagueId();
-  const [league, seasonSets, awards] = await Promise.all([
+  const [league, seasonSets, awards, state] = await Promise.all([
     getLeague(currentId),
     getSeasonStandingsSets(currentId),
     getReigningAwards(currentId),
+    getNflState(),
   ]);
 
   // Attach for-fun league title odds to the current season's rows.
   const currentSet = seasonSets.find((s) => s.isCurrent);
   if (currentSet) attachTitleOdds(currentSet.rows);
+
+  // Notification item-ids for each dropdown. Posts use their own ids; the live
+  // Weekly Preview uses one id per NFL week, so a new week's preview shows "1".
+  const week = Number(state.week) || 0;
+  const previewInSeason =
+    week > 0 && state.season_type !== "off" && league.status !== "complete";
+  const reviewIds = weeklyReview.map((p, i) => p.id || `wr-${i}`);
+  const newsIds = yeetNews.map((p, i) => p.id || `ynn-${i}`);
+  const previewIds = previewInSeason ? [`wp-week-${week}`] : [];
 
   return (
     <>
@@ -63,39 +54,35 @@ export default async function HomePage() {
         </a>
       </section>
 
-      {/* Test post — for trying out reactions during setup */}
-      <div className="card" style={{ marginBottom: 16 }}>
-        <div className="label">🧪 Test Post</div>
-        <p style={{ margin: "4px 0 12px" }}>
-          A sandbox post for testing reactions. Sign in and try the votes and
-          emojis below — hover a reaction to see who reacted.
-        </p>
-        <ReactionBar postId="test-post" />
-      </div>
-
-      {/* Weekly Recap — editable in content/homepage.js */}
-      <details className="section recap">
-        <summary>📰 Weekly Recap</summary>
-        <div className="body">
-          <Prose text={weeklyRecap} />
-        </div>
-      </details>
+      {/* Weekly Review — manual posts (content/posts.js), each with reactions */}
+      <NotifySection
+        className="section recap"
+        storageKey="weekly-review"
+        itemIds={reviewIds}
+        title="📝 Weekly Review"
+      >
+        <PostFeed posts={weeklyReview} emptyText="No reviews posted yet." />
+      </NotifySection>
 
       {/* Weekly Preview — matchup blurbs + for-fun odds (live from Sleeper) */}
-      <details className="section ynn">
-        <summary>🔮 Weekly Preview</summary>
-        <div className="body">
-          <WeeklyPreview />
-        </div>
-      </details>
+      <NotifySection
+        className="section ynn"
+        storageKey="weekly-preview"
+        itemIds={previewIds}
+        title="🔮 Weekly Preview"
+      >
+        <WeeklyPreview />
+      </NotifySection>
 
-      {/* YEET News Network — manually-curated league news (content/homepage.js) */}
-      <details className="section news">
-        <summary>📡 YEET News Network</summary>
-        <div className="body">
-          <Prose text={yeetNewsNetwork} />
-        </div>
-      </details>
+      {/* YEET News Network — manual posts (content/posts.js), each with reactions */}
+      <NotifySection
+        className="section news"
+        storageKey="yeet-news"
+        itemIds={newsIds}
+        title="📡 YEET News Network"
+      >
+        <PostFeed posts={yeetNews} emptyText="No news posted yet." />
+      </NotifySection>
 
       {/* Reigning champion + last place */}
       <div className="grid">
