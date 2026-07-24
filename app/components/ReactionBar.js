@@ -18,9 +18,6 @@ export default function ReactionBar({ postId }) {
   const [user, setUser] = useState(null);
   const [manager, setManager] = useState(null);
   const [rows, setRows] = useState([]);
-  const [email, setEmail] = useState("");
-  const [sent, setSent] = useState(false);
-  const [showForm, setShowForm] = useState(false);
   const [showPicker, setShowPicker] = useState(false);
 
   async function load() {
@@ -35,18 +32,10 @@ export default function ReactionBar({ postId }) {
   useEffect(() => {
     if (!supabase) return;
     supabase.auth.getUser().then(({ data }) => {
-      if (data?.user) {
-        setUser(data.user);
-        setSent(false);
-        setShowForm(false);
-      }
+      if (data?.user) setUser(data.user);
     });
     const { data: sub } = supabase.auth.onAuthStateChange((_e, session) => {
       setUser(session?.user ?? null);
-      if (session?.user) {
-        setSent(false);
-        setShowForm(false);
-      }
     });
     load();
     return () => sub?.subscription?.unsubscribe();
@@ -75,7 +64,8 @@ export default function ReactionBar({ postId }) {
   );
 
   async function toggleEmoji(kind) {
-    if (!user || !manager) return setShowForm(true);
+    if (!user || !manager) return; // signed-out users sign in via the hero button
+
     if (mine.has(kind)) {
       await supabase.from("reactions").delete().eq("post_id", postId).eq("user_id", user.id).eq("kind", kind);
     } else {
@@ -85,7 +75,8 @@ export default function ReactionBar({ postId }) {
   }
 
   async function vote(dir) {
-    if (!user || !manager) return setShowForm(true);
+    if (!user || !manager) return; // signed-out users sign in via the hero button
+
     const other = dir === "up" ? "down" : "up";
     await supabase.from("reactions").delete().eq("post_id", postId).eq("user_id", user.id).eq("kind", other);
     if (mine.has(dir)) {
@@ -94,16 +85,6 @@ export default function ReactionBar({ postId }) {
       await supabase.from("reactions").insert({ post_id: postId, user_id: user.id, kind: dir, manager_name: manager.display_name });
     }
     load();
-  }
-
-  async function sendLink(e) {
-    e.preventDefault();
-    if (!email.trim()) return;
-    await supabase.auth.signInWithOtp({
-      email: email.trim().toLowerCase(),
-      options: { emailRedirectTo: `${window.location.origin}/` },
-    });
-    setSent(true);
   }
 
   const up = (byKind["up"] || []).length;
@@ -169,32 +150,17 @@ export default function ReactionBar({ postId }) {
         </div>
       </div>
 
-      <div className="react-auth">
-        {user && manager ? (
+      {user && manager ? (
+        <div className="react-auth">
           <span className="sub">Signed in as {manager.display_name}</span>
-        ) : user && !manager ? (
+        </div>
+      ) : user && !manager ? (
+        <div className="react-auth">
           <span className="sub">
             This email isn’t on the league roster yet — text Mike to get added.
           </span>
-        ) : sent ? (
-          <span className="sub">Please check your email.</span>
-        ) : showForm ? (
-          <form className="react-signin" onSubmit={sendLink}>
-            <input
-              type="email"
-              required
-              placeholder="you@email.com"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-            />
-            <button className="btn" type="submit">Send link</button>
-          </form>
-        ) : (
-          <button className="link-btn" onClick={() => setShowForm(true)}>
-            Sign in to react
-          </button>
-        )}
-      </div>
+        </div>
+      ) : null}
     </div>
   );
 }
