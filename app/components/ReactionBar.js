@@ -92,7 +92,7 @@ export default function ReactionBar({ postId }) {
     if (!email.trim()) return;
     await supabase.auth.signInWithOtp({
       email: email.trim().toLowerCase(),
-      options: { emailRedirectTo: `${window.location.origin}/auth/callback` },
+      options: { emailRedirectTo: `${window.location.origin}/` },
     });
     setSent(true);
   }
