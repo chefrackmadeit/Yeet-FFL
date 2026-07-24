@@ -52,7 +52,7 @@ export default async function HomePage() {
             target="_blank"
             rel="noopener noreferrer"
           >
-            📖 League Rules
+            League Rules
           </a>
           <HeroSignIn />
         </div>

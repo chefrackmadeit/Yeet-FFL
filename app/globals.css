@@ -273,6 +273,9 @@ a {
 .btn:hover {
   filter: brightness(1.05);
 }
+.btn-coral {
+  background: var(--c-gold);
+}
 
 /* ---- Layout bits ---- */
 main {

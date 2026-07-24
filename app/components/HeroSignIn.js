@@ -62,7 +62,7 @@ export default function HeroSignIn() {
           value={email}
           onChange={(e) => setEmail(e.target.value)}
         />
-        <button className="btn" type="submit">
+        <button className="btn btn-coral" type="submit">
           Send link
         </button>
       </form>
@@ -70,8 +70,8 @@ export default function HeroSignIn() {
   }
 
   return (
-    <button className="btn" onClick={() => setShowForm(true)}>
-      🔑 Sign In
+    <button className="btn btn-coral" onClick={() => setShowForm(true)}>
+      Sign In
     </button>
   );
 }
