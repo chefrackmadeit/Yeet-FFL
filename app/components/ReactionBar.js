@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { createClient } from "@/lib/supabase/client";
 
 const EMOJIS = ["👍", "🔥", "😂", "😮", "🍔"];
@@ -19,6 +19,14 @@ export default function ReactionBar({ postId }) {
   const [manager, setManager] = useState(null);
   const [rows, setRows] = useState([]);
   const [showPicker, setShowPicker] = useState(false);
+  const [error, setError] = useState("");
+  const errTimer = useRef(null);
+
+  function flashSignInError() {
+    setError("Please sign in to react");
+    clearTimeout(errTimer.current);
+    errTimer.current = setTimeout(() => setError(""), 3500);
+  }
 
   async function load() {
     if (!supabase) return;
@@ -64,7 +72,8 @@ export default function ReactionBar({ postId }) {
   );
 
   async function toggleEmoji(kind) {
-    if (!user || !manager) return; // signed-out users sign in via the hero button
+    if (!user) return flashSignInError();
+    if (!manager) return;
 
     if (mine.has(kind)) {
       await supabase.from("reactions").delete().eq("post_id", postId).eq("user_id", user.id).eq("kind", kind);
@@ -75,7 +84,8 @@ export default function ReactionBar({ postId }) {
   }
 
   async function vote(dir) {
-    if (!user || !manager) return; // signed-out users sign in via the hero button
+    if (!user) return flashSignInError();
+    if (!manager) return;
 
     const other = dir === "up" ? "down" : "up";
     await supabase.from("reactions").delete().eq("post_id", postId).eq("user_id", user.id).eq("kind", other);
@@ -159,6 +169,10 @@ export default function ReactionBar({ postId }) {
           <span className="sub">
             This email isn’t on the league roster yet — text Mike to get added.
           </span>
+        </div>
+      ) : error ? (
+        <div className="react-auth">
+          <span className="react-error">{error}</span>
         </div>
       ) : null}
     </div>

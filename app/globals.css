@@ -1471,6 +1471,11 @@ tbody tr:hover {
 .react-auth {
   margin-top: 8px;
 }
+.react-error {
+  color: var(--loss);
+  font-weight: 800;
+  font-size: 13px;
+}
 .react-signin {
   display: flex;
   gap: 8px;
