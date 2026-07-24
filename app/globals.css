@@ -458,6 +458,7 @@ td {
   padding: 12px 14px;
   text-align: left;
   white-space: nowrap;
+  vertical-align: middle;
 }
 thead th {
   background: var(--bg-soft);
@@ -725,15 +726,12 @@ tbody tr:hover {
 .h2h-val {
   display: flex;
   align-items: center;
-  justify-content: flex-start;
+  justify-content: center;
+  text-align: center;
   padding: 12px 14px;
   font-weight: 700;
   font-size: 17px;
   font-variant-numeric: tabular-nums;
-}
-.h2h-row .h2h-val:first-child {
-  justify-content: flex-end;
-  text-align: right;
 }
 .h2h-val.win {
   color: var(--win);
