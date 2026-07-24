@@ -261,9 +261,13 @@ a {
 .btn {
   display: inline-flex;
   align-items: center;
+  justify-content: center;
   gap: 8px;
   background: var(--accent);
   color: #fff;
+  font-family: inherit;
+  font-size: 15px;
+  line-height: 1.4;
   font-weight: 700;
   padding: 10px 16px;
   border-radius: 10px;
