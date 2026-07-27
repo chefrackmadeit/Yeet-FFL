@@ -41,6 +41,8 @@ export default async function HomePage() {
   return (
     <>
       <section className="hero">
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img className="hero-logo" src="/yeet-gang.jpg" alt="YEET GANG" />
         <h1>{league.name}</h1>
         <p>
           {league.season} season · {league.total_rosters} teams · updated live
