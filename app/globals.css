@@ -148,14 +148,14 @@ a {
 }
 .brand {
   order: 1;
-  font-weight: 800;
-  letter-spacing: 0.5px;
-  font-size: 20px;
-  background: var(--grad);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-  -webkit-text-fill-color: transparent;
+  display: inline-flex;
+  align-items: center;
+}
+.brand-logo {
+  display: block;
+  height: 40px;
+  width: 40px;
+  border-radius: 10px;
 }
 .nav-links {
   display: flex;

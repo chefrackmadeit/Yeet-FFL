@@ -18,8 +18,14 @@ export default function NavBar() {
   return (
     <nav className="nav">
       <div className="container nav-inner">
-        <Link href="/" className="brand" onClick={() => setOpen(false)}>
-          YEET FFL
+        <Link
+          href="/"
+          className="brand"
+          onClick={() => setOpen(false)}
+          aria-label="YEET FFL — home"
+        >
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img className="brand-logo" src="/yeet-gang.jpg" alt="YEET FFL" />
         </Link>
         <ThemeToggle />
         <button
