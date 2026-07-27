@@ -331,6 +331,18 @@ main {
   font-weight: 600;
   font-size: 15px;
 }
+.notify-league-wrap {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.notify-league-msg {
+  color: var(--muted);
+  font-weight: 600;
+  font-size: 14px;
+}
 h2 {
   font-size: 24px;
   margin: 28px 0 14px;

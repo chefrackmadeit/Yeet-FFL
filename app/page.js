@@ -11,6 +11,7 @@ import WeeklyPreview from "./components/WeeklyPreview";
 import PostFeed from "./components/PostFeed";
 import NotifySection from "./components/NotifySection";
 import HeroSignIn from "./components/HeroSignIn";
+import NotifyLeagueButton from "./components/NotifyLeagueButton";
 import { weeklyReview, yeetNews } from "@/content/posts";
 
 export const dynamic = "force-dynamic";
@@ -55,6 +56,7 @@ export default async function HomePage() {
             League Rules
           </a>
           <HeroSignIn />
+          <NotifyLeagueButton />
         </div>
       </section>
 
