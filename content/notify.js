@@ -17,7 +17,7 @@ export const notifyEmail = {
   heading: "This Just In",
 
   // Line above the post title.
-  intro: "New post has been added to the YFFL site. Check it out.",
+  intro: "New post has been added to the YFFL site. Check it out now!",
 
   // Text on the clickable button that opens the site.
   buttonLabel: "Read Post",
