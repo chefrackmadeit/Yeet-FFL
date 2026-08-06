@@ -45,6 +45,20 @@ export const weeklyReview = [
 // 📡 YEET NEWS NETWORK — league news, trades, rumors, hot takes. Newest first.
 export const yeetNews = [
   {
+    id: "ynn-2026-draft-day",
+    date: "Aug 6, 2026",
+    title: "This Time is Nigh",
+    body: `Fellas - As discussed in the Group Chat, mark those calendars for August 30th at 7:30 PM.
+
+Clevelander's, lets do our best to make it to the draft spot. Get your families, duties, and other things you got going on taken care of so we can be together. Would love to see PB, Key, Nate, and KT this year for gluttony. Unofficially we are doing Mexican dinner - Open to other thoughts and Ideas. I am happy to provide Barbacoa. Let's not forget beverages, cannabis, vapes, cigarettes(?) either.
+
+Honestly, just sending this post because work is exceptionally slow for me today and I like using this thing, it's fun and I am excited to see things update week to week.
+
+Everyone have a good weekend, stay safe.
+
+Glizz Wiz`,
+  },
+  {
     id: "ynn-2026-welcome",
     date: "Jul 23, 2026",
     title: "Welcome to the Revolution",

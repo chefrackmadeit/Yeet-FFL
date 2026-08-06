@@ -109,6 +109,17 @@ a {
   background: linear-gradient(var(--bg), var(--bg)) padding-box,
     var(--grad) border-box;
 }
+.banner-inner + .banner-inner {
+  margin-top: 8px;
+}
+.banner-note {
+  width: 100%;
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--muted);
+  letter-spacing: 0.3px;
+  margin-top: -2px;
+}
 .banner-label {
   font-weight: 800;
   letter-spacing: 0.4px;
