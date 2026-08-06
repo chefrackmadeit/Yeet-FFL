@@ -76,7 +76,13 @@ export default function CountdownBanner() {
   return (
     <div className="banner">
       {COUNTDOWNS.map((c) => (
-        <Countdown key={c.label} label={c.label} target={c.target} done={c.done} />
+        <Countdown
+          key={c.label}
+          label={c.label}
+          target={c.target}
+          done={c.done}
+          note={c.note}
+        />
       ))}
     </div>
   );
