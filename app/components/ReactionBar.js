@@ -13,6 +13,16 @@ const MORE_EMOJIS = [
   "👏", "🙈", "💩", "🫠", "😈", "🤙",
 ];
 
+// Short relative time for comment timestamps ("2h ago").
+function relTime(iso) {
+  const s = Math.floor((Date.now() - new Date(iso).getTime()) / 1000);
+  if (s < 60) return "just now";
+  if (s < 3600) return `${Math.floor(s / 60)}m ago`;
+  if (s < 86400) return `${Math.floor(s / 3600)}h ago`;
+  if (s < 604800) return `${Math.floor(s / 86400)}d ago`;
+  return new Date(iso).toLocaleDateString();
+}
+
 export default function ReactionBar({ postId }) {
   const supabase = useMemo(() => createClient(), []);
   const [user, setUser] = useState(null);
@@ -21,6 +31,11 @@ export default function ReactionBar({ postId }) {
   const [showPicker, setShowPicker] = useState(false);
   const [error, setError] = useState("");
   const errTimer = useRef(null);
+
+  const [comments, setComments] = useState([]);
+  const [showComments, setShowComments] = useState(false);
+  const [draft, setDraft] = useState("");
+  const [posting, setPosting] = useState(false);
 
   function flashSignInError() {
     setError("Please sign in to react");
@@ -37,6 +52,16 @@ export default function ReactionBar({ postId }) {
     setRows(data || []);
   }
 
+  async function loadComments() {
+    if (!supabase) return;
+    const { data } = await supabase
+      .from("comments")
+      .select("id, user_id, manager_name, body, created_at")
+      .eq("post_id", postId)
+      .order("created_at", { ascending: true });
+    setComments(data || []);
+  }
+
   useEffect(() => {
     if (!supabase) return;
     supabase.auth.getUser().then(({ data }) => {
@@ -46,6 +71,7 @@ export default function ReactionBar({ postId }) {
       setUser(session?.user ?? null);
     });
     load();
+    loadComments();
     return () => sub?.subscription?.unsubscribe();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [supabase, postId]);
@@ -97,6 +123,29 @@ export default function ReactionBar({ postId }) {
     load();
   }
 
+  async function postComment(e) {
+    e.preventDefault();
+    if (!user || !manager) return;
+    const text = draft.trim();
+    if (!text) return;
+    setPosting(true);
+    await supabase.from("comments").insert({
+      post_id: postId,
+      user_id: user.id,
+      manager_name: manager.display_name,
+      body: text,
+    });
+    setDraft("");
+    await loadComments();
+    setPosting(false);
+  }
+
+  async function deleteComment(id) {
+    if (!user) return;
+    await supabase.from("comments").delete().eq("id", id).eq("user_id", user.id);
+    loadComments();
+  }
+
   const up = (byKind["up"] || []).length;
   const down = (byKind["down"] || []).length;
 
@@ -110,10 +159,10 @@ export default function ReactionBar({ postId }) {
   return (
     <div className="reactions">
       <div className="react-row">
-        <button className={"react-vote" + (mine.has("up") ? " on" : "")} onClick={() => vote("up")} title="Upvote">
+        <button className={"react-vote react-up" + (mine.has("up") ? " on" : "")} onClick={() => vote("up")} title="Upvote">
           ▲ {up}
         </button>
-        <button className={"react-vote" + (mine.has("down") ? " on" : "")} onClick={() => vote("down")} title="Downvote">
+        <button className={"react-vote react-down" + (mine.has("down") ? " on" : "")} onClick={() => vote("down")} title="Downvote">
           ▼ {down}
         </button>
         <span className="react-divider" />
@@ -158,6 +207,16 @@ export default function ReactionBar({ postId }) {
             </div>
           )}
         </div>
+
+        <span className="react-divider" />
+        <button
+          className={"react-chip react-comment" + (showComments ? " on" : "")}
+          onClick={() => setShowComments((v) => !v)}
+          title="Comments"
+        >
+          <span className="react-emoji">💬</span>
+          <span className="react-count">{comments.length}</span>
+        </button>
       </div>
 
       {user && manager ? (
@@ -175,6 +234,55 @@ export default function ReactionBar({ postId }) {
           <span className="react-error">{error}</span>
         </div>
       ) : null}
+
+      {showComments && (
+        <div className="comments">
+          {comments.length === 0 && (
+            <p className="sub comments-empty">No comments yet.</p>
+          )}
+          {comments.map((c) => (
+            <div className="comment" key={c.id}>
+              <div className="comment-head">
+                <span className="comment-author">{c.manager_name}</span>
+                <span className="comment-time">{relTime(c.created_at)}</span>
+                {user && c.user_id === user.id && (
+                  <button
+                    className="comment-del"
+                    onClick={() => deleteComment(c.id)}
+                    title="Delete comment"
+                    aria-label="Delete comment"
+                  >
+                    ×
+                  </button>
+                )}
+              </div>
+              <div className="comment-body">{c.body}</div>
+            </div>
+          ))}
+
+          {user && manager ? (
+            <form className="comment-form" onSubmit={postComment}>
+              <textarea
+                rows={2}
+                placeholder="Add a comment…"
+                value={draft}
+                onChange={(e) => setDraft(e.target.value)}
+              />
+              <button
+                className="btn btn-coral"
+                type="submit"
+                disabled={posting || !draft.trim()}
+              >
+                {posting ? "Posting…" : "Post"}
+              </button>
+            </form>
+          ) : user && !manager ? (
+            <p className="sub">This email isn’t on the league roster yet.</p>
+          ) : (
+            <p className="sub comment-signin">Sign in to comment.</p>
+          )}
+        </div>
+      )}
     </div>
   );
 }
