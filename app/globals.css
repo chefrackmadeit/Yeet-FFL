@@ -1546,8 +1546,27 @@ tbody tr:hover {
   font-size: 13px;
 }
 /* ---- Comments ---- */
-.react-comment .react-count {
+.comment-toggle {
+  display: block;
+  margin: 12px auto 0;
+  min-width: 240px;
+  max-width: 100%;
+  padding: 10px 20px;
+  background: var(--bg-soft);
+  border: 1px solid var(--border);
+  color: var(--text);
+  border-radius: 999px;
   font-weight: 700;
+  font-size: 14px;
+  cursor: pointer;
+  transition: border-color 0.15s ease, background 0.15s ease;
+}
+.comment-toggle:hover {
+  border-color: var(--claude);
+}
+.comment-toggle.on {
+  border-color: var(--accent);
+  background: color-mix(in srgb, var(--accent) 14%, transparent);
 }
 .comments {
   margin-top: 12px;

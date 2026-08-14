@@ -207,17 +207,14 @@ export default function ReactionBar({ postId }) {
             </div>
           )}
         </div>
-
-        <span className="react-divider" />
-        <button
-          className={"react-chip react-comment" + (showComments ? " on" : "")}
-          onClick={() => setShowComments((v) => !v)}
-          title="Comments"
-        >
-          <span className="react-emoji">💬</span>
-          <span className="react-count">{comments.length}</span>
-        </button>
       </div>
+
+      <button
+        className={"comment-toggle" + (showComments ? " on" : "")}
+        onClick={() => setShowComments((v) => !v)}
+      >
+        Comment{comments.length > 0 ? ` (${comments.length})` : ""}
+      </button>
 
       {user && manager ? (
         <div className="react-auth">
