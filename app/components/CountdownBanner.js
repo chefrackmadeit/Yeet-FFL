@@ -4,18 +4,11 @@ import { useEffect, useState } from "react";
 
 // Countdown targets. Edit the dates here if anything moves.
 // NFL Kickoff 2026: Sept 9, 2026, 8:20 PM Eastern (-04:00 EDT).
-// Draft Day: Aug 30, 2026, 7:30 PM Eastern (-04:00 EDT).
 const COUNTDOWNS = [
   {
     label: "🏈 NFL Kickoff Countdown",
     target: new Date("2026-09-09T20:20:00-04:00").getTime(),
     done: "It's game time! 🎉",
-  },
-  {
-    label: "📋 Draft Day Countdown",
-    target: new Date("2026-08-30T19:30:00-04:00").getTime(),
-    done: "Draft is live! 🎉",
-    note: "Eastern Standard Time",
   },
 ];
 
