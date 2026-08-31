@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>YEET FFL — Draft Order Derby</title>
+<style>
+  :root {
+    --bg: #0b0c1a; --panel: #14162b; --border: #2a2d4a; --text: #e8eafb;
+    --muted: #9aa0c7; --grad: linear-gradient(90deg,#8b6dff,#ff5fa2,#ff9457);
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; background: var(--bg); color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+    padding: 20px; min-height: 100vh;
+  }
+  h1 {
+    text-align: center; font-size: 34px; margin: 4px 0 2px;
+    background: var(--grad); -webkit-background-clip: text; background-clip: text;
+    color: transparent; -webkit-text-fill-color: transparent; letter-spacing: 1px;
+  }
+  .sub { text-align: center; color: var(--muted); margin: 0 0 16px; font-size: 14px; }
+  .wrap { max-width: 1100px; margin: 0 auto; }
+  .controls { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; margin-bottom: 16px; }
+  button {
+    background: var(--grad); color: #10101e; border: none; border-radius: 10px;
+    padding: 12px 22px; font-size: 15px; font-weight: 800; cursor: pointer;
+    letter-spacing: 0.4px;
+  }
+  button.ghost { background: transparent; color: var(--text); border: 1px solid var(--border); }
+  button:disabled { opacity: 0.5; cursor: not-allowed; }
+  .track {
+    background: var(--panel); border: 1px solid var(--border); border-radius: 14px;
+    padding: 10px 10px 10px 0; overflow: hidden; position: relative;
+  }
+  .lane {
+    position: relative; height: 46px; display: flex; align-items: center;
+    border-bottom: 1px dashed rgba(255,255,255,0.06);
+  }
+  .lane:last-child { border-bottom: none; }
+  .lane-name {
+    width: 210px; min-width: 210px; padding: 0 12px; font-weight: 700; font-size: 14px;
+    white-space: nowrap; overflow: hidden; text-overflow: ellipsis; text-align: right;
+    color: var(--muted);
+  }
+  .lane-track { position: relative; flex: 1; height: 100%; }
+  .finish {
+    position: absolute; right: 8px; top: 0; bottom: 0; width: 8px;
+    background: repeating-linear-gradient(45deg,#fff 0 6px,#111 6px 12px);
+    border-radius: 2px; opacity: 0.8;
+  }
+  .horse {
+    position: absolute; top: 50%; transform: translateY(-50%); left: 0;
+    font-size: 26px; will-change: left; white-space: nowrap;
+  }
+  .horse .num {
+    font-size: 11px; font-weight: 800; color: var(--text);
+    background: rgba(0,0,0,0.4); border-radius: 6px; padding: 1px 5px; margin-right: 2px;
+    vertical-align: middle;
+  }
+  .setup { background: var(--panel); border: 1px solid var(--border); border-radius: 14px; padding: 16px; margin-bottom: 16px; }
+  .setup h2 { margin: 0 0 12px; font-size: 16px; }
+  .names { display: grid; grid-template-columns: repeat(2, 1fr); gap: 8px; }
+  .names input {
+    background: #0f1022; border: 1px solid var(--border); color: var(--text);
+    border-radius: 8px; padding: 9px 11px; font-size: 14px; width: 100%;
+  }
+  .results { margin-top: 16px; background: var(--panel); border: 1px solid var(--border); border-radius: 14px; padding: 16px; display: none; }
+  .results.show { display: block; }
+  .results h2 { margin: 0 0 12px; font-size: 20px; text-align: center; }
+  .results ol { margin: 0; padding-left: 0; list-style: none; counter-reset: pick; columns: 2; }
+  .results li {
+    counter-increment: pick; padding: 7px 10px; margin: 0 0 6px; border-radius: 8px;
+    background: #0f1022; font-size: 15px; break-inside: avoid; display: flex; gap: 10px; align-items: center;
+  }
+  .results li::before {
+    content: counter(pick); font-weight: 800; color: #10101e; background: var(--grad);
+    border-radius: 6px; min-width: 26px; text-align: center; padding: 2px 0;
+  }
+  .results li.first { outline: 2px solid #ff9457; }
+  .countdown {
+    position: absolute; inset: 0; display: none; align-items: center; justify-content: center;
+    font-size: 120px; font-weight: 900; color: #fff; z-index: 5;
+    background: rgba(8,9,20,0.55); backdrop-filter: blur(2px);
+  }
+  @media (max-width: 640px) {
+    .names { grid-template-columns: 1fr; }
+    .lane-name { width: 120px; min-width: 120px; font-size: 12px; }
+    .results ol { columns: 1; }
+    h1 { font-size: 26px; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>🏇 Draft Order Derby</h1>
+  <p class="sub">YEET FFL · run it once, watch together — finishing order = draft order</p>
+
+  <div class="setup" id="setup">
+    <h2>Runners (edit names, then race)</h2>
+    <div class="names" id="names"></div>
+  </div>
+
+  <div class="controls">
+    <button id="startBtn">🏁 Start Race</button>
+    <button id="editBtn" class="ghost" style="display:none;">✏️ Edit Names</button>
+    <button id="againBtn" class="ghost" style="display:none;">🔁 Race Again</button>
+  </div>
+
+  <div class="track" id="track">
+    <div class="countdown" id="countdown"></div>
+  </div>
+
+  <div class="results" id="results">
+    <h2>🏆 Draft Order</h2>
+    <ol id="order"></ol>
+  </div>
+</div>
+
+<script>
+  const DEFAULT_NAMES = [
+    "Glizzard Wizards","Chadamania","Tua Many Fish","Nicotine Leech",
+    "Planet Girth","Bonnie Blue 42","Preston Wasnt There Again","Richmond Barebacks",
+    "Nabers thnk im sellindope","The Space Browns","A&A ARMY","Mcfucked"
+  ];
+  const HORSES = ["🐎","🏇"];
+  const N = 12;
+
+  const namesEl = document.getElementById("names");
+  const trackEl = document.getElementById("track");
+  const setupEl = document.getElementById("setup");
+  const startBtn = document.getElementById("startBtn");
+  const editBtn = document.getElementById("editBtn");
+  const againBtn = document.getElementById("againBtn");
+  const resultsEl = document.getElementById("results");
+  const orderEl = document.getElementById("order");
+  const countdownEl = document.getElementById("countdown");
+
+  // Build name inputs
+  const inputs = [];
+  for (let i = 0; i < N; i++) {
+    const inp = document.createElement("input");
+    inp.value = DEFAULT_NAMES[i] || ("Team " + (i + 1));
+    inp.maxLength = 40;
+    namesEl.appendChild(inp);
+    inputs.push(inp);
+  }
+
+  let lanes = [];
+  function buildLanes(names) {
+    // clear track but keep countdown element
+    [...trackEl.querySelectorAll(".lane")].forEach((l) => l.remove());
+    lanes = [];
+    names.forEach((nm, i) => {
+      const lane = document.createElement("div");
+      lane.className = "lane";
+      const label = document.createElement("div");
+      label.className = "lane-name";
+      label.textContent = nm;
+      const lt = document.createElement("div");
+      lt.className = "lane-track";
+      const fin = document.createElement("div");
+      fin.className = "finish";
+      const horse = document.createElement("div");
+      horse.className = "horse";
+      horse.innerHTML = '<span class="num">' + (i + 1) + '</span>' + HORSES[i % HORSES.length];
+      lt.appendChild(fin);
+      lt.appendChild(horse);
+      lane.appendChild(label);
+      lane.appendChild(lt);
+      trackEl.appendChild(lane);
+      lanes.push({ name: nm, horse, lt });
+    });
+  }
+
+  function shuffle(a) {
+    for (let i = a.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [a[i], a[j]] = [a[j], a[i]];
+    }
+    return a;
+  }
+
+  let running = false;
+  function startRace() {
+    if (running) return;
+    running = true;
+    const names = inputs.map((inp, i) => (inp.value.trim() || "Team " + (i + 1)));
+    buildLanes(names);
+    setupEl.style.display = "none";
+    startBtn.style.display = "none";
+    editBtn.style.display = "none";
+    againBtn.style.display = "none";
+    resultsEl.classList.remove("show");
+
+    // Fair random finishing order (index -> finishing rank)
+    const finishRank = shuffle([...Array(N).keys()].map((k) => k)); // finishRank[position] = laneIndex
+    const rankOf = new Array(N);
+    finishRank.forEach((laneIdx, pos) => { rankOf[laneIdx] = pos; });
+
+    const base = 8500, gap = 320;
+    const horses = lanes.map((lane, i) => ({
+      lane,
+      finishTime: base + rankOf[i] * gap + Math.random() * gap * 0.45,
+      amp: 0.05 + Math.random() * 0.07,
+      freq: 1 + Math.random() * 2.5,
+      phase: Math.random() * Math.PI * 2,
+      done: false,
+    }));
+
+    const crossOrder = [];
+    let startTime = null;
+
+    function frame(ts) {
+      if (!startTime) startTime = ts;
+      const t = ts - startTime;
+      horses.forEach((h) => {
+        const width = h.lane.lt.clientWidth - 34; // leave room for horse + finish
+        let progress;
+        if (t >= h.finishTime) {
+          progress = 1;
+          if (!h.done) { h.done = true; crossOrder.push(h); }
+        } else {
+          const raw = t / h.finishTime;
+          const wob = h.amp * Math.sin(h.freq * raw * Math.PI * 2 + h.phase) * raw * (1 - raw) * 4;
+          progress = Math.max(0, Math.min(0.985, raw + wob));
+        }
+        h.lane.horse.style.left = (progress * width) + "px";
+      });
+      if (horses.every((h) => h.done)) {
+        finish(crossOrder);
+        return;
+      }
+      requestAnimationFrame(frame);
+    }
+
+    // 3-2-1 countdown, then go
+    let c = 3;
+    countdownEl.style.display = "flex";
+    countdownEl.textContent = c;
+    const cd = setInterval(() => {
+      c--;
+      if (c === 0) { countdownEl.textContent = "GO!"; }
+      else if (c < 0) {
+        clearInterval(cd);
+        countdownEl.style.display = "none";
+        requestAnimationFrame(frame);
+      } else {
+        countdownEl.textContent = c;
+      }
+    }, 800);
+  }
+
+  function finish(crossOrder) {
+    orderEl.innerHTML = "";
+    crossOrder.forEach((h, idx) => {
+      const li = document.createElement("li");
+      if (idx === 0) li.className = "first";
+      li.textContent = h.name;
+      orderEl.appendChild(li);
+    });
+    resultsEl.classList.add("show");
+    editBtn.style.display = "";
+    againBtn.style.display = "";
+    running = false;
+    resultsEl.scrollIntoView({ behavior: "smooth", block: "start" });
+  }
+
+  startBtn.addEventListener("click", startRace);
+  againBtn.addEventListener("click", startRace);
+  editBtn.addEventListener("click", () => {
+    setupEl.style.display = "";
+    startBtn.style.display = "";
+    editBtn.style.display = "none";
+    againBtn.style.display = "none";
+    resultsEl.classList.remove("show");
+  });
+
+  // initial empty lanes preview
+  buildLanes(DEFAULT_NAMES);
+</script>
+</body>
+</html>
