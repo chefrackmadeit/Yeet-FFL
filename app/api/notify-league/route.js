@@ -2,6 +2,7 @@ import nodemailer from "nodemailer";
 import { createClient } from "@supabase/supabase-js";
 import { weeklyReview, yeetNews } from "@/content/posts";
 import { notifyEmail } from "@/content/notify";
+import { getNflState, getCurrentLeagueId, getLeague } from "@/lib/sleeper";
 
 // Commissioner-only endpoint: emails every manager that a new post is up, with
 // a "View Now" link to the site. Verified two ways — the caller must present a
@@ -24,6 +25,23 @@ function newestPost() {
   ];
   all.sort((a, b) => dateKey(b.date) - dateKey(a.date));
   return all[0] || null;
+}
+
+// The current week's live Weekly Preview, as an announceable "post". Returns
+// null in the offseason (nothing to preview yet), mirroring the WeeklyPreview
+// component's own in-season check.
+async function previewPost() {
+  try {
+    const [state, id] = await Promise.all([getNflState(), getCurrentLeagueId()]);
+    const league = await getLeague(id);
+    const week = Number(state.week) || 0;
+    const inSeason =
+      week > 0 && state.season_type !== "off" && league.status !== "complete";
+    if (!inSeason) return null;
+    return { title: `Week ${week} Preview`, section: "Weekly Preview" };
+  } catch {
+    return null;
+  }
 }
 
 function fillTemplate(str, post) {
@@ -65,16 +83,31 @@ export async function POST(request) {
     return Response.json({ error: "Not authorized" }, { status: 403 });
   }
 
-  // Test mode = send only to yourself, so you can preview before blasting the league.
+  // Test mode = send only to yourself, so you can preview before blasting the
+  // league. target = "preview" announces the live Weekly Preview; anything else
+  // announces the newest manual post (Weekly Review / YEET News Network).
   let test = false;
+  let target = "post";
   try {
     const body = await request.json();
     test = !!body?.test;
+    if (body?.target === "preview") target = "preview";
   } catch {}
 
-  // 2) Which post to announce (newest).
-  const post = newestPost();
-  if (!post) return Response.json({ error: "There are no posts to announce yet." }, { status: 400 });
+  // 2) Which thing to announce.
+  const post =
+    target === "preview" ? await previewPost() : newestPost();
+  if (!post) {
+    return Response.json(
+      {
+        error:
+          target === "preview"
+            ? "There's no Weekly Preview to announce yet (it's the offseason)."
+            : "There are no posts to announce yet.",
+      },
+      { status: 400 }
+    );
+  }
 
   // 3) Recipient list = every manager's email.
   const { data: managers, error: mErr } = await supabase.from("managers").select("email");

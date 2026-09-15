@@ -356,6 +356,11 @@ main {
   flex-wrap: wrap;
   justify-content: center;
 }
+.notify-group {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}
 .notify-league-msg {
   color: var(--muted);
   font-weight: 600;
