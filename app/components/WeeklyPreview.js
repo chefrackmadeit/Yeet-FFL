@@ -1,14 +1,20 @@
 // Server component: builds the Weekly Preview — a short blurb + fun odds for
 // each of the upcoming week's matchups. In the offseason it shows the intro
-// text ("Matchups are coming"). Odds are computed live from team scoring, so
-// they update themselves each week.
+// text ("Matchups are coming"). Projections come from each team's CURRENT set
+// lineup (with a best-lineup fallback if a manager hasn't set one), so the
+// odds reflect the upcoming week and update themselves as lineups change.
 
 import {
   getCurrentLeagueId,
   getNflState,
   getLeague,
-  getStandings,
+  getUsers,
+  getRosters,
   getMatchups,
+  getWeekProjections,
+  projectionMaps,
+  teamProjection,
+  usersById,
   teamName,
 } from "@/lib/sleeper";
 import { winProbability, americanOdds } from "@/lib/odds";
@@ -41,18 +47,22 @@ export default async function WeeklyPreview() {
     );
   }
 
-  const [standings, matchups] = await Promise.all([
-    getStandings(id),
+  const [users, rosters, matchups, projections] = await Promise.all([
+    getUsers(id),
+    getRosters(id),
     getMatchups(week, id),
+    getWeekProjections(league.season, week).catch(() => []),
   ]);
 
-  // roster_id -> { team, projected (season avg points) }
+  const uById = usersById(users);
+  const { pts, pos } = projectionMaps(projections, league.scoring_settings?.rec ?? 0);
+
+  // roster_id -> { team, projected points for the week }
   const info = {};
-  for (const r of standings) {
-    const games = r.wins + r.losses + r.ties;
-    info[r.rosterId] = {
-      team: r.team,
-      proj: games ? r.pointsFor / games : 0,
+  for (const r of rosters) {
+    info[r.roster_id] = {
+      team: teamName(uById[r.owner_id]),
+      proj: teamProjection(r, pts, pos, league.roster_positions),
     };
   }
 
@@ -82,7 +92,7 @@ export default async function WeeklyPreview() {
   return (
     <>
       <p className="sub" style={{ marginTop: 0 }}>
-        Week {week} · projections and odds are just for fun.
+        Week {week} · projected from set lineups · odds are just for fun.
       </p>
       {games.map((g) => (
         <div className="preview-card" key={g.mid}>
@@ -93,11 +103,13 @@ export default async function WeeklyPreview() {
           <div className="preview-odds">
             <div className="odds-side">
               <span className="odds-team">{g.hi.team}</span>
+              <span className="odds-proj muted">Proj {g.hi.proj.toFixed(1)}</span>
               <span className="odds-line">{americanOdds(g.pHi)}</span>
             </div>
             <div className="odds-vs">vs</div>
             <div className="odds-side">
               <span className="odds-team">{g.lo.team}</span>
+              <span className="odds-proj muted">Proj {g.lo.proj.toFixed(1)}</span>
               <span className="odds-line">{americanOdds(g.pLo)}</span>
             </div>
           </div>
