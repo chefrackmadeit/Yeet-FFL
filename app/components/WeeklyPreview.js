@@ -11,7 +11,7 @@ import {
   getMatchups,
   teamName,
 } from "@/lib/sleeper";
-import { winProbability, tenToWin, americanOdds } from "@/lib/odds";
+import { winProbability, americanOdds } from "@/lib/odds";
 import { weeklyPreview, matchupBlurbs } from "@/content/homepage";
 
 function paras(text) {
@@ -93,16 +93,12 @@ export default async function WeeklyPreview() {
           <div className="preview-odds">
             <div className="odds-side">
               <span className="odds-team">{g.hi.team}</span>
-              <span className="odds-line">
-                {americanOdds(g.pHi)} · $10 to win {tenToWin(g.pHi)}
-              </span>
+              <span className="odds-line">{americanOdds(g.pHi)}</span>
             </div>
             <div className="odds-vs">vs</div>
             <div className="odds-side">
               <span className="odds-team">{g.lo.team}</span>
-              <span className="odds-line">
-                {americanOdds(g.pLo)} · $10 to win {tenToWin(g.pLo)}
-              </span>
+              <span className="odds-line">{americanOdds(g.pLo)}</span>
             </div>
           </div>
         </div>

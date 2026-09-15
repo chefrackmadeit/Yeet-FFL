@@ -1,5 +1,4 @@
 import "./globals.css";
-import CountdownBanner from "./components/CountdownBanner";
 import NavBar from "./components/NavBar";
 
 export const metadata = {
@@ -26,7 +25,6 @@ export default function RootLayout({ children }) {
       </head>
       <body>
         <header className="site-header">
-          <CountdownBanner />
           <NavBar />
         </header>
         <main>

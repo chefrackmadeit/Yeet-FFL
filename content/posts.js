@@ -32,14 +32,38 @@
 
 // 📝 WEEKLY REVIEW — recap of the week that just finished. Newest first.
 export const weeklyReview = [
-  // {
-  //   id: "wr-2026-week1",
-  //   date: "Sep 9, 2026",
-  //   title: "Week 1 Review",
-  //   body: `Your writeup goes here.
-  //
-  // A second paragraph goes here.`,
-  // },
+  {
+    id: "wr-2026-week1-power-rankings",
+    date: "Sep 15, 2026",
+    title: "🍆 Power Rankings Week 1 💦",
+    body: `Here she blows
+
+**Highest Points $25 Week 1 = Tua Many Fish 196.86**
+
+1. Jesse - Damn dog, ChatGPT drafted you the best team in the league for Week (I know how much you use ChatGPT in ur daily life hoe). Nail Fingerpainting Williams combined with 45 year old Derrick Henry, D. Swift, JSN and Parker Washington to diabolically blow Preston's back out. If this squad stays healthy and the Bears offense isn't fraudulent, we all might be fucked. Week 2 matchup = Lash
+
+2. Tozzi - Jahmyr is a fucking cheat code. 29 carries… dudes carrying the load that your squad just blew all over Lash this week. I think your team is real solid - and I believe in Tuten. Only question marks for me - Herbert really actually may just not be that guy and where the fuck was Colston Loveland this week? Week 2 matchup = CV
+
+3. ZG - Holy fuck. I didn't know you had it in you to assemble a solid fantasy football team. Like a rising phoenix from the ashes of pounds of overcooked burnt McDouble meat, it seems you have yourself a squad. I have no real notes other than your starting lineup is rock solid if they stay healthy + your bench is nonexistent. Once you get Brock back your team is scary. Week 2 matchup = PB
+
+4. Schec - Josh Allen cheat code. You arguably have assembled the best recieving core in the league. For as sus as your RB room is, if Rhamondre keeps putting up decent points you should be all set. Question marks for your squad - how long is Zay out for? Is the Steelers defense really that good or did they just play the Breakfast Bungalow All Stars this week? If you need a RB down the road hit my line. Week 2 Matchup = Weeno
+
+5. PB - Interesting to not see the entire Cinci offense on your squad this year. Put up 150+ but still unfortunately got smacked around by Jesse's AI crafted team. RIP AJ Brown (I drafted him in the 2nd in another league so I feel your pain). How will Quinshon play this year? Will he be able to understand the play calls coming from QB1 Tyler Castrillo in the huddle? Week 2 matchup = ZG
+
+6. Kerner - Solid backs, solid WRs and I love the Mike Evans flex. I also think he will continue to eat this year. I also heard that you AI analytics'd your way through the draft. I'm happy for you. I hope your whole team doesn't collectively get AIDS and all die in separate plane crashes. Is Deebo making your starting lineup next week? Week 2 matchup =   Magoo
+
+7. KT - Secured the dub this week. Is Kenneth Walker really that boy? CMC bound to put up more points than 13 on a weekly basis and you have one of the most solid benches in the league. I still think Marvin Harrison is fraudulent and anyone who drafted Fannin might be questioning that after we saw the talent level of our QB1 in Cleveland this weekend. Week 2 matchup = Keysta baby
+
+8. Magoo - What an ass week for your hitters Ja'Marr and Mr. Chicken Pickens. That's not sustainable - these guys will hoop this year… maybe. Questions for your squad this year - will Lamar's back/pussy start to bother him again this year? How long until Skatt CTEs himself into drinking jello out of a straw in an assisted living home? Is Kittle officially cooked? Week 2 matchup = Kerner
+
+9. Spencer - Your team doesn't really excite me at all - but is nice knowing JJettas might actually have a competent QB throwing him the ball this year. Even if Kyler is Radio'd, Carson got that thang on 'em. It looks like there is hope that Josh Jacobs actually will play football this year.. maybe. Looks like you can sexually assault and DV any woman you want in the NFL as long as the video footage ain't released. Week 2 matchup = Schec
+
+10. Keeley - Your team actually put up decent points this week, so maybe not a dogwater week, but that roster is looking highly suspicious. I told you Kyler is not it, I don't care if you like to play with his lil ass on Madden. Jalen Coker coked out for you this week. Looks like Ashton Jeanty actually may be a legit RB1.. or maybe they just played Miami who I heard lost to a 18u Women's Australian Football team in the offseason. Good luck Key - I hope you don't actually lose this year, because I know how much you'd cum your shorts to have some time alone in a McArnolds just smacking doubles. Week 2 matchup = KT
+
+11. Lash - Here's a positive, at least you didn't put up 87pts like I did - you broke 100 and that's respectable. Some big question marks though - Omarion Hampton/the Chargers offense??? Devonta Adams too nappy? Josh Downs actually has downs? You should totally start Denzel Boston next week - heard he's really built great relationship with his delusional rapist QB since being drafted. Week 2 matchup = Jesse
+
+12. CV - I ate a double cheeseburger w/ my Big Mac at the airport today to prepare myself for what it might feel like if I have to eat 14-16 more double cheeseburgers in a 24hr period. I am not motivated by $$ in this league - I am motivated by not having to inject burgers. Whole team looking like a fresh pair of shiny red clown shoes after week 1. Week 2 matchup = Tozzi`,
+  },
 ];
 
 // 📡 YEET NEWS NETWORK — league news, trades, rumors, hot takes. Newest first.
