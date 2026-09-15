@@ -90,39 +90,51 @@ export default async function WeeklyPreview() {
     return <p style={{ margin: 0 }}>{weeklyPreview}</p>;
   }
 
+  // Rendered as a collapsible post (same accordion as the Weekly Review / YEET
+  // News feeds) so it only takes up a headline until clicked open.
   return (
-    <>
-      <p className="sub" style={{ marginTop: 0 }}>
-        Week {week} · projected from set lineups · odds are just for fun.
-      </p>
-      {games.map((g) => (
-        <div className="preview-card" key={g.mid}>
-          <div className="preview-desc">
-            {g.blurb ||
-              `${g.hi.team} projects for ${g.hi.proj.toFixed(1)} vs ${g.lo.team} at ${g.lo.proj.toFixed(1)} — ${g.hi.team} favored.`}
-          </div>
-          <div className="preview-odds">
-            <div className="odds-side">
-              <span className="odds-team">{g.hi.team}</span>
-              <span className="odds-proj muted">Proj {g.hi.proj.toFixed(1)}</span>
-              <span className="odds-line">{americanOdds(g.pHi)}</span>
+    <div className="post-feed">
+      <details className="post">
+        <summary className="post-summary">
+          <span className="post-summary-main">
+            <span className="post-title">Week {week} Preview</span>
+            <span className="post-date">updates live</span>
+          </span>
+        </summary>
+        <div className="post-content">
+          <p className="sub" style={{ marginTop: 0 }}>
+            Week {week} · projected from set lineups · odds are just for fun.
+          </p>
+          {games.map((g) => (
+            <div className="preview-card" key={g.mid}>
+              <div className="preview-desc">
+                {g.blurb ||
+                  `${g.hi.team} projects for ${g.hi.proj.toFixed(1)} vs ${g.lo.team} at ${g.lo.proj.toFixed(1)} — ${g.hi.team} favored.`}
+              </div>
+              <div className="preview-odds">
+                <div className="odds-side">
+                  <span className="odds-team">{g.hi.team}</span>
+                  <span className="odds-proj muted">Proj {g.hi.proj.toFixed(1)}</span>
+                  <span className="odds-line">{americanOdds(g.pHi)}</span>
+                </div>
+                <div className="odds-vs">vs</div>
+                <div className="odds-side">
+                  <span className="odds-team">{g.lo.team}</span>
+                  <span className="odds-proj muted">Proj {g.lo.proj.toFixed(1)}</span>
+                  <span className="odds-line">{americanOdds(g.pLo)}</span>
+                </div>
+              </div>
             </div>
-            <div className="odds-vs">vs</div>
-            <div className="odds-side">
-              <span className="odds-team">{g.lo.team}</span>
-              <span className="odds-proj muted">Proj {g.lo.proj.toFixed(1)}</span>
-              <span className="odds-line">{americanOdds(g.pLo)}</span>
-            </div>
+          ))}
+
+          {/* Emotes + comments for the week's preview — same system as the
+              Weekly Review / YEET News posts, keyed per NFL week so each week is
+              its own thread (matches the preview's notification id). */}
+          <div className="preview-reactions">
+            <ReactionBar postId={`wp-week-${week}`} />
           </div>
         </div>
-      ))}
-
-      {/* Emotes + comments for the week's preview — same system as the Weekly
-          Review / YEET News posts, keyed per NFL week so each week is its own
-          thread (matches the preview's notification id). */}
-      <div className="preview-reactions">
-        <ReactionBar postId={`wp-week-${week}`} />
-      </div>
-    </>
+      </details>
+    </div>
   );
 }
