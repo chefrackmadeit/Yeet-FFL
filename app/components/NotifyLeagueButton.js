@@ -11,8 +11,10 @@ const COMMISSIONER_EMAIL = "chefrackmadeit@gmail.com";
 export default function NotifyLeagueButton() {
   const [supabase] = useState(() => createClient());
   const [isCommish, setIsCommish] = useState(false);
-  const [busy, setBusy] = useState(false);
+  // Which specific button is mid-send (e.g. "post", "preview-test"), or null.
+  const [active, setActive] = useState(null);
   const [msg, setMsg] = useState("");
+  const busy = active !== null;
 
   useEffect(() => {
     if (!supabase) return;
@@ -29,6 +31,8 @@ export default function NotifyLeagueButton() {
 
   // target: "post" = newest Weekly Review / YEET News post; "preview" = the
   // live Weekly Preview. test = send only to yourself.
+  // target: "post" = newest Weekly Review / YEET News post; "preview" = the
+  // live Weekly Preview. test = send only to yourself.
   async function notify(test, target = "post") {
     if (busy) return;
     const what = target === "preview" ? "the Weekly Preview" : "the newest post";
@@ -38,7 +42,7 @@ export default function NotifyLeagueButton() {
         : `Email ALL league managers about ${what}?`
     );
     if (!ok) return;
-    setBusy(true);
+    setActive(`${target}${test ? "-test" : ""}`);
     setMsg("");
     try {
       const { data } = await supabase.auth.getSession();
@@ -56,25 +60,25 @@ export default function NotifyLeagueButton() {
     } catch {
       setMsg("Something went wrong.");
     }
-    setBusy(false);
+    setActive(null);
   }
 
   return (
     <span className="notify-league-wrap">
       <span className="notify-group">
         <button className="btn btn-coral" onClick={() => notify(false, "post")} disabled={busy}>
-          {busy ? "Sending…" : "Notify: New Post"}
+          {active === "post" ? "Sending…" : "Notify: New Post"}
         </button>
         <button className="link-btn" onClick={() => notify(true, "post")} disabled={busy}>
-          Test to myself
+          {active === "post-test" ? "Sending…" : "Test to myself"}
         </button>
       </span>
       <span className="notify-group">
         <button className="btn btn-coral" onClick={() => notify(false, "preview")} disabled={busy}>
-          {busy ? "Sending…" : "Notify: Weekly Preview"}
+          {active === "preview" ? "Sending…" : "Notify: Weekly Preview"}
         </button>
         <button className="link-btn" onClick={() => notify(true, "preview")} disabled={busy}>
-          Test to myself
+          {active === "preview-test" ? "Sending…" : "Test to myself"}
         </button>
       </span>
       {msg && <span className="notify-league-msg">{msg}</span>}
