@@ -19,6 +19,7 @@ import {
 } from "@/lib/sleeper";
 import { winProbability, americanOdds } from "@/lib/odds";
 import { weeklyPreview, matchupBlurbs } from "@/content/homepage";
+import ReactionBar from "./ReactionBar";
 
 function paras(text) {
   return String(text)
@@ -115,6 +116,13 @@ export default async function WeeklyPreview() {
           </div>
         </div>
       ))}
+
+      {/* Emotes + comments for the week's preview — same system as the Weekly
+          Review / YEET News posts, keyed per NFL week so each week is its own
+          thread (matches the preview's notification id). */}
+      <div className="preview-reactions">
+        <ReactionBar postId={`wp-week-${week}`} />
+      </div>
     </>
   );
 }
