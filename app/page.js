@@ -95,9 +95,7 @@ export default async function HomePage() {
       {/* Reigning champion + last place */}
       <div className="grid">
         <div className="card award-champion">
-          <div className="label">
-            Reigning Champion{awards.season ? ` — ${awards.season}` : ""}
-          </div>
+          <div className="label">Reigning Champ</div>
           <div className="value">
             <span className="award-emoji">🏆</span>{" "}
             {awards.champion ? awards.champion.team : "—"}
@@ -107,9 +105,7 @@ export default async function HomePage() {
           )}
         </div>
         <div className="card award-loser">
-          <div className="label">
-            Burger Bound{awards.season ? ` — ${awards.season}` : ""}
-          </div>
+          <div className="label">Burger Bandit</div>
           <div className="value">
             <span className="award-emoji">🍔</span>{" "}
             {awards.loser ? awards.loser.team : "—"}

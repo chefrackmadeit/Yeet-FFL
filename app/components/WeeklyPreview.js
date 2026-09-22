@@ -18,7 +18,7 @@ import {
   teamName,
 } from "@/lib/sleeper";
 import { winProbability, americanOdds } from "@/lib/odds";
-import { weeklyPreview, matchupBlurbs } from "@/content/homepage";
+import { weeklyPreview, matchupBlurbs, previewArchive } from "@/content/homepage";
 import ReactionBar from "./ReactionBar";
 
 function paras(text) {
@@ -27,6 +27,37 @@ function paras(text) {
     .split(/\n\s*\n/)
     .map((p) => p.trim())
     .filter(Boolean);
+}
+
+// Past weeks, rendered as collapsible historical posts (with their reactions
+// preserved) beneath the live current-week preview.
+function ArchivePosts() {
+  const weeks = [...(previewArchive || [])].sort((a, b) => b.week - a.week);
+  if (!weeks.length) return null;
+  return (
+    <>
+      {weeks.map((wk) => (
+        <details className="post" key={wk.week}>
+          <summary className="post-summary">
+            <span className="post-summary-main">
+              <span className="post-title">{wk.title || `Week ${wk.week} Preview`}</span>
+              {wk.date && <span className="post-date">{wk.date}</span>}
+            </span>
+          </summary>
+          <div className="post-content">
+            {(wk.matchups || []).map((m, i) => (
+              <div className="preview-card" key={i}>
+                <div className="preview-desc">{m}</div>
+              </div>
+            ))}
+            <div className="preview-reactions">
+              <ReactionBar postId={`wp-week-${wk.week}`} />
+            </div>
+          </div>
+        </details>
+      ))}
+    </>
+  );
 }
 
 export default async function WeeklyPreview() {
@@ -44,6 +75,9 @@ export default async function WeeklyPreview() {
             {p}
           </p>
         ))}
+        <div className="post-feed">
+          <ArchivePosts />
+        </div>
       </>
     );
   }
@@ -87,7 +121,14 @@ export default async function WeeklyPreview() {
     });
 
   if (!games.length) {
-    return <p style={{ margin: 0 }}>{weeklyPreview}</p>;
+    return (
+      <>
+        <p style={{ margin: 0 }}>{weeklyPreview}</p>
+        <div className="post-feed">
+          <ArchivePosts />
+        </div>
+      </>
+    );
   }
 
   // Rendered as a collapsible post (same accordion as the Weekly Review / YEET
@@ -135,6 +176,7 @@ export default async function WeeklyPreview() {
           </div>
         </div>
       </details>
+      <ArchivePosts />
     </div>
   );
 }
