@@ -972,39 +972,66 @@ tbody tr:hover {
   background: color-mix(in srgb, var(--text) 3%, transparent);
 }
 .preview-desc {
-  margin-bottom: 10px;
+  margin-bottom: 12px;
+  line-height: 1.55;
 }
 .preview-reactions {
   margin-top: 14px;
   padding-top: 12px;
   border-top: 1px solid var(--border);
 }
+/* Symmetric head-to-head row: team | vs | team, mirrored around the center. */
 .preview-odds {
-  display: flex;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
   align-items: center;
-  gap: 12px;
-  flex-wrap: wrap;
+  column-gap: 16px;
+  row-gap: 6px;
+  padding-top: 12px;
+  border-top: 1px dashed var(--border);
 }
 .odds-side {
-  flex: 1;
-  min-width: 180px;
   display: flex;
   flex-direction: column;
-  gap: 2px;
+  gap: 5px;
+  min-width: 0;
+}
+.odds-side:first-child {
+  align-items: flex-end;
+  text-align: right;
+}
+.odds-side:last-child {
+  align-items: flex-start;
+  text-align: left;
 }
 .odds-team {
   font-weight: 700;
+  font-size: 15px;
+  line-height: 1.2;
+  overflow-wrap: anywhere;
+}
+.odds-proj {
+  font-size: 12px;
+  color: var(--muted);
+  font-variant-numeric: tabular-nums;
 }
 .odds-line {
   color: var(--c-gold);
-  font-size: 13px;
-  font-weight: 600;
+  font-size: 12px;
+  font-weight: 700;
   font-variant-numeric: tabular-nums;
+  background: color-mix(in srgb, var(--c-gold) 12%, transparent);
+  border: 1px solid color-mix(in srgb, var(--c-gold) 32%, transparent);
+  border-radius: 999px;
+  padding: 1px 9px;
 }
 .odds-vs {
   color: var(--muted);
-  font-size: 13px;
+  font-size: 11px;
   font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  opacity: 0.8;
 }
 
 /* ---- Owners directory ---- */
