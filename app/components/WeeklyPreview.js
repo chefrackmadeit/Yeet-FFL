@@ -18,7 +18,13 @@ import {
   teamName,
 } from "@/lib/sleeper";
 import { winProbability, americanOdds } from "@/lib/odds";
-import { weeklyPreview, matchupBlurbs, previewArchive } from "@/content/homepage";
+import {
+  weeklyPreview,
+  matchupBlurbs,
+  previewArchive,
+  currentPreviewDate,
+  previewSignoff,
+} from "@/content/homepage";
 import ReactionBar from "./ReactionBar";
 
 function paras(text) {
@@ -50,6 +56,9 @@ function ArchivePosts() {
                 <div className="preview-desc">{m}</div>
               </div>
             ))}
+            {wk.signoff && (
+              <p style={{ margin: "12px 0 0", fontWeight: 600 }}>{wk.signoff}</p>
+            )}
             <div className="preview-reactions">
               <ReactionBar postId={`wp-week-${wk.week}`} />
             </div>
@@ -139,7 +148,9 @@ export default async function WeeklyPreview() {
         <summary className="post-summary">
           <span className="post-summary-main">
             <span className="post-title">Week {week} Preview</span>
-            <span className="post-date">updates live</span>
+            {currentPreviewDate && (
+              <span className="post-date">{currentPreviewDate}</span>
+            )}
           </span>
         </summary>
         <div className="post-content">
@@ -167,6 +178,10 @@ export default async function WeeklyPreview() {
               </div>
             </div>
           ))}
+
+          {previewSignoff && (
+            <p style={{ margin: "12px 0 0", fontWeight: 600 }}>{previewSignoff}</p>
+          )}
 
           {/* Emotes + comments for the week's preview — same system as the
               Weekly Review / YEET News posts, keyed per NFL week so each week is
