@@ -33,9 +33,9 @@
 // 📝 WEEKLY REVIEW — recap of the week that just finished. Newest first.
 export const weeklyReview = [
   {
-    id: "wr-2026-week4-whaaappp",
+    id: "wr-2026-week3-whaaappp",
     date: "Sep 29, 2026",
-    title: "WHAAAPPP - Week 4 Review",
+    title: "WHAAAPPP - Week 3 Review",
     body: `The time has come I'm gonna DO A LITTLE CHRIS Berman voice /inspiration "WHAAAAAPPPPPPPPPPPP".
 
 When the sun rises on our holy day, Chick-fil-A may be closed our significant others might be mad, but guess what? It's NFLs DAY
