@@ -33,6 +33,116 @@
 // 📝 WEEKLY REVIEW — recap of the week that just finished. Newest first.
 export const weeklyReview = [
   {
+    id: "wr-2026-week4-whaaappp",
+    date: "Sep 29, 2026",
+    title: "WHAAAPPP - Week 4 Review",
+    body: `The time has come I'm gonna DO A LITTLE CHRIS Berman voice /inspiration "WHAAAAAPPPPPPPPPPPP".
+
+When the sun rises on our holy day, Chick-fil-A may be closed our significant others might be mad, but guess what? It's NFLs DAY
+
+YES, WE HAVE OUR BELOVED CLEVELAND BROWNS TO WATCH HOWEVER THAT'S THE BEAUTY IN FANTASY FOOTBALL THE CLOWNS MAY LET US DOWN, BUT AT LEAST WE HAVE YEETGANG FANTASY FOOTBALL TO HOLD US OVER - the banter the camaraderie the legacy week to week, rankings and reviews highs, and lows! BURGER WATCH
+
+They're being said what came first the chicken or the egg?
+
+Who should've been drafted first Gibbs or Puka?
+
+For us fantasy football owners what's more exciting¿
+
+The Browns being 2-1, people are calling their local sports station 92.3 the fan saying it's time to extend Deshaun Watson now for our future and I'm over here listening to it on my way into work ready veir off on the 480 bridge because he won to fucking Games - BLOW ME
+
+Or is it the excitement of some of our fantasy football teams being two and one? Or undefeated¿ also last but not least. And in reference to the ringer. And in quotations "when the fuck did we get ice cream" voice "WHO THE FUCK IS ON BURGER WATCH"
+
+**In first place**
+
+We have KY KY AKA NICOTINE LEACH A.K.A. YOUR FAVORITE ACCOUNTANTS ACCOUNTANT - application developer
+Kyle Kerner 3 and MOTHER FUCKING 0
+
+You know what better than a three and O start?
+A three and counting baseball because you know that fastball is coming right down the middle and you better get the fuck up and take that baseball for a motherfucking spin it reminds me of back in the day playing on the Titans and Connor Viland was arguing with the umpire about the strike zone and the umpire vividly told him no matter what the next pitch will be a strike he looked at the umpire said OK and then fucking peed off on the motherfucker took it for a triple maybe if he hit the gym back in the day it probably would've went out of the yard but to each their own This is about Kyle Kerner being in first place - Keep up the good work is the GM and owner, sir that fantasy football ring could be on the horizon for you.
+
+You got Joe BBBBUUUUUUUUURRRRRRRRRR - OOOOOHHH AT A QUARTERBACK OHIO NATIVE SO OF COURSE I'M GONNA BE BIASED ABOUT IT
+
+TEAM IS SOLID AS HELL TOO DEEBO, SAMUEL AND MIKE EVANS IN YOUR LINEUP BOth ON THE 49ERS - BEAUTIFUL. JONATHAN TAYLOR HAD SLOW WEEK BUT SHIT YOU'RE STILL BALLIN LIKE A MOTHERFUCKER Garrett, Wilson Ohio State product 26 piece not a 24 piece a 26 piecE SOLID!
+
+Next week you have only felons and Spencer Wien - let the 2 application developers of get plowed and TEND dUKE IT out for the best application developer in Solon, Ohio!
+
+**Second place**
+
+We have I am angler a.k.a. change your name every week a.k.a. bending bareback over a.k.a. your favorite videographer videographer a.k.a. Your favorite off-roaders off-roader a.k.a. Yeetgang's favorite content creator Jesse Circelli
+
+Looking at this team, your wide receivers are stacked you got JSN a.k.a. "JaXON SMITH INIGGGBAS" DRUSKI VOICE I DON'T KNOW IF IT'S YOUR ABILITY TO DRAFT VIA CHATGPT OR YOU REALLY DID YOUR RESEARCH THIS YEAR WHEN IT CAME TO FANTASY FOOTBALL BUT OVERALL i'll see you this week motherfucker you're playing whipped&waddled
+
+**Third Place**
+
+we have new dad two and one The space Brown
+
+Nate schecty aka YOUR FAVORITE LEFTIES LEFTY
+A.K.A. WIDE RECEIVER U AKA JOSH ALLEN TO THE PROMISED LAND? LOOKING AT THIS TEAM. STACKED AT WIDE RECEIVER - is it your strategy to go wide receiver heavy this year? I mean Christ Almighty CeeDee Lamb, Drake London, Zay Flowers then on your bench you got Carnell Tate. Absolutely scary. You might be my dark horse for the season. Another day of breathing. But your downfall might be your running backs who knows it's fantasy football anybody can win anybody can be on burger watch
+
+Next week he got KT
+
+**Fourth Place**
+
+We have Kyle Twerak a.k.a. Your favorite golfers golfer A.K.A. I'M STILL PRETTY SURE YOU PUT GUM IN MY HAIR at NATE Bs sleep over party with Matt P BUT THAT'S BESIDES THE POINT AND ALSO, I ALMOST FORGOT THE INFAMOUS ZJOBBER
+LOOKING AT THE TEAM RUNNING BACK SOLID CMC, KENNETH, WALKER WIDE RECEIVER chris olave SCARY TERRY EMEKA EGBUKA I know previously I said Schecty is my dark horse, but looking at this team you have the best chance of winning the league I think.
+
+Next week you the space Browns
+
+**Fifth place**
+
+We have LASHYmane aka your favorite year of Plenty year of plenty, year of plentier - part-time weed grower your favorite visual communications designer, designer a.k.a. also known as my former coworker LA - you are team Hollywood or Hollywood? Or because of your part-time job being a farmer should we call you Mr. backwood? Looking at this team. You got Matt Stafford, kyren Williams & lad Mackey as well as Mr Taco Bell himself in Devonte Adam's. Overall, your team is Hollywood. I just don't know if it's enough to get you that ring you won't be on burger watch. LOVE YOU, BROTHER.
+
+NEXT WEEK YOU GOT PBRICK TO ME IT'S A COIN TOSS ON THAT ONE
+
+**SIXTH PLACE**
+
+We got Michael Tozzi a.k.a. your favorite president president even though you won't let me move any of your freight that's a different time and place a.k.a. The best fantasy football draft host. A.k.a. Your favorite diesels diesel. A.k.a. I don't know if you're gonna kill me or hug me up every time we talk. Looking at this team. You got Gibbs and any time you have Gibbs on your team. You got a shot to win I mean shit you whooped my ass this week. Up a salad nice 152. I don't even know how to say Tuten first name but he's solid too overall solid team. I'll see what the future heads in store for you and Big V the beautiful machine.
+
+Next week you got the silver slurpers and I don't even know who that team owner is
+
+**Seventh Place**
+
+We have McFuckin' a.k.a. Your favorite dirt bikers dirt biker. A.k.a., I don't know if who is the better fisherman between you, Magoo and Jesse a.k.a. you're a man of your word and did burgers before the NFL season started a.k.a. are we McFuckin or are we McLovin? Aka did you recover from the Burger challenge? Or do we need to start a burger anonymous congregation?
+
+Looking at your team, you have highs and lows tight, Dan you got Mr. Bowers wide receiver in Saint Brown
+Other than that it's a crapshoot you don't know who's gonna show up week to week. But overall silent team.
+
+Next week you got the Richmond bareback easy dub
+
+**Eight Place**
+
+We have Chadamania aka your favorite guitarists guitarist I don't know what's better your guitar playing skills or drafting skills. I sure you wrote the dice and drafted all the Cincinnati Bengals and it worked out for you this year. He got hurt. He got Robinson. You got Judkins you got rice you got Jordan Atkinson, the same salad as well. I'm looking at your bench and it looks like you got the Washington commanders. Looks like you went with the approach last year. Just happens to be with the wrong team. We'll see what's in store for you, boss man. Next week he got LASHYMANE
+
+**9th Place**
+
+Whipped and waddled
+I would enjoy burgers
+
+**10th Place**
+
+We have Richmond bareback A.k.a. Connor Viland a.k.a. CV3 aka CV🎄 a.k.a. Let me hit your vape. A.k.a. Mr. Burger watch himself. AKA MR. CATAN LURKER HIMSELF
+
+I picked up Tyreek Hill in my other league but dropped him for Jordan Atkinson looking at your team you had a wide receiver empty, but you still got a pretty solid team put 127 up overall solid looking at your team it's it's eh blah as well as the coin flip as well
+
+Next week you got McFuckin good luck!
+
+**Eleventh Place**
+
+We have the silver slurpers based off his name I'm assuming this is Andy McKay team a.k.a. I still think you should become a lawyer. A.k.a lowhoop gorilla a.k.a. the best fisherman I know. A.k.a. Bentley. Uuuuuhhhh 50. Uuuuhhhhhh go I love your team Ja'Marr Chase. Cam let me ram uhhh ska ska skattebooooooooommmmmm! George Pickens and Lamar Jesus lord have mercy how aren't you 3 - 0 …
+
+This week you have Tozzi hopefully you can get your first dub I'm praying for you, sweetheart,
+
+**Twelfth Place**
+
+Current burger watcher himself. Aka Only Felons aka Mr. Fuzz aka if you need flooring in NE Ohio you don't go to Calvetta you go to him! AKA IF YOU NEED AN RB TRADE ASK HIM FOR A TRADE BUT GET READY TO BE BAMBOOZLED AKA MR. LATE NIGHT TRADER
+
+Looking at this team I don't know if you were just enjoying the night with the boys at Tozzi's house on draft night or you thought if I had the dab pen or eat a few more edibles I'll be able to pull some fucking sleepers out of my ass they're being said need a hook in ladder a Hail Mary or one hell of a bamboozle trade because I don't know if we both would be enjoying a McDonald's together or we should at least go to one that has a play zone because you, sir are on burger watch.
+
+This week you got Kerner grab your rosemary pray to mother Mary not marry Jane I hope for the best for you, Spence
+
+This concludes my fantasy review for Yeetgang fantasy football I am no Shakesspeare by any means, however, I hope everyone enjoys this review that being said stay Yeetie spooky season and fantasy football season is in stride WHAAAAAAAAAPPPPPPP`,
+  },
+  {
     id: "wr-2026-week2-roundup",
     date: "Sep 22, 2026",
     title: "Week 2 Roundup - CUMBACK SZN",
