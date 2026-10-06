@@ -33,6 +33,144 @@
 // 📝 WEEKLY REVIEW — recap of the week that just finished. Newest first.
 export const weeklyReview = [
   {
+    id: "wr-2026-week4-kerner-power-rankings",
+    date: "Oct 6, 2026",
+    title: "Post-Week 4 Pre-Week 5 Kerner Power Rankings",
+    body: `4-5 4/5 4….5 45 69 Happy Wednesday YEET FFL 2026 12-Team PPR this is Fantussy69, Nicotine Leech, current number one in the standings and your power ranking presenter of the week. The first four weeks of football have been plagued (Russia) with so many injuries…taking a high level look at the league this week I am truly thankful I'm not in some of your shoes right now. We are all blessed and all have a lot to be thankful for (insert heart emoji).
+
+Alright lets jump into now – the below rankings reflect the current feelings and bias of the current power ranking presenter of the week, Kerner, aka your accountants favorite accountant:
+
+**1. Ginger Holocaust**
+
+• First, to the Reich. Lot of dark haired fellas on this team. Caleb Williams on the roster too, not sure how Hegseth would feel about that boy.
+
+• This team has come in scorching hot this season, but this last week may have shown the teams true colors (Red..ginger red). I stand with Keeley.
+
+• JSN is the truth, solid depth helped with some league injuries this team will be a contender…six thumbs up…low price! Birthday week!
+
+• Week 5 matchup against fantastic 0-4
+
+**2. The Space Browns**
+
+• Herrrro errryone, my name Elong muhhh
+
+• This teams WR core helps to give this team its $1T valuation before it IPO'd. Team IPO'd pretty nice with week…two thumbs up (borat)…high score vewy goooood
+
+• Only glaring weakness is RB locker room. I expect this team to be a contender every week.
+
+• Week 5 matchup week against my original facebook wife
+
+**3. Nicotine Leech**
+
+• Dis a team vewy well rownded. Decent playa in basically evwy position
+
+• Only issue is team is currently pretty barebacked up right now…need to get healthy
+
+• Week 5 matchup against nipples
+
+**4. Carol's Peps**
+
+• Tough game this week…think its still some karma carryover, but no worries dis a team have rewy good players that play next to the guy that throws the ball. I would say RBU through four weeks
+
+• Bench is looking a little sketchy…might need to make sure to keep those nipples well lubricated so you don't chafe…the season is a marathon not a sprint
+
+• So long as Olave can avoid a concussion this season this team is certainly going to have a nice pep in their step!
+
+• Week 5 matchup against the team that needs to change their name
+
+**5. Big V…ictory**
+
+• Big V was my FB wife for a little while…she always used to say "I like a little cream in my coffee". A stellar woman and an icon
+
+• Baque to yo team, dis a team a pretty gooowd…solid roll players threwout. I expect this team to continue to rise the ranks
+
+• No glaring weakness either…the team has some solid depth mmmmkaaayyyy
+
+• Week 5 matchup against SpaceXBrowns
+
+**6. Richmond Barebacks**
+
+• Time to talk about commissiona…dis team had a pwetty great week…lots of yum yum sauce good
+
+• Feel like it happens this way every year, but I think this team is better than it looks. Michael Wilson is best sleeper pick of year behind Walker. Only glaring weakness right now is flex play week in and week out
+
+• You a keepa this up for the rest of the season you be commissiona foreva…low price!
+
+• Week 5 matchup against Ferguson
+
+**7. LAshymane**
+
+• Hello Michael.
+
+• Boiiiiiiiii dis team a in decent shape…not tua bad not tua bad. Definitely some question marks at the WR position, but lets hope this RB room can continue to produce…will be critical for the remainder of the season. If not, it not gonna be a good for you
+
+• Have a little faith though I have you currently just missing the playoffs, prove me wrong.
+
+• Week 5 matchup against P diddy
+
+**8. Team D'Brickashaw**
+
+• Preston.
+
+• Forma reich champion of the league last year…not looking that way this year Mr. Brick. Kidding…team has some pieces but needs more production out of the WR room
+
+• In my opinion this guy could be the best ball knower in the league…he knows…but does he know what he doesn't know (wave hands in front of your face all mysterious like)
+
+• Week 5 matchup against Virgina
+
+**9. Whipped & Waddled**
+
+• CK.
+
+• Season seems to have to bent over getting spanked with a ball gag…but it seems like you're used to it by now…part of me thinks is all apart of your grand plan
+
+• Overall, dis a team is okay, young RB core with promise but might be a year or two earwy. I think there is still promise in the team and can see you in the hunt.
+
+• I don't a use a spell a check because a no speaka engwish
+
+• Week 5 matchup against Washington
+
+**10. Mcfuckin'**
+
+• Z.
+
+• Week 4 performance was pretty Boutte
+
+• This team will be in the hunt every week. If the RB room doesn't start producing more though I'd say the opposite. WRs are good enough paired with Bowers. Flex play will be a question most weeks.
+
+• I believe in this manager though…he has both been at the peak of the mountain and sitting at a McD's…a wise one indeed
+
+• Week 5 matchup against Mortgage
+
+**11. The Silver Slurpers**
+
+• Owner of toys in Toy Story
+
+• This team is silver slurping on something…must be the drought out west…El nino is coming
+
+• Alas…this team and the perfect storm…I like this team…not sure I love it. Some solid pieces, but going to be a challenge to get a win every week against some of these other teams…any more injuries or missed time could spell disaster
+
+• A few more bad weeks and this a team a gonna be dreaming about burgas
+
+• Week 5 matchup against the Reich
+
+**12. OnlyFelons**
+
+• Oh hewo der.
+
+• Yo team a not a looking a vewy goowd
+
+• Lets be honest though in a different universe where this team is healthy…I am saying otherwise. I feel sorry that you have to live with your current bench right now but what can you do.
+
+• Personally, I do not want to face this team in the second half of the season and neither should the rest of the league. Good day (salute)
+
+• Week 5 matchup against Kakaw
+
+God speed gents.
+
+I hope nice poops and buzzes were had today and cheers to a great rest of the season.`,
+  },
+  {
     id: "wr-2026-week3-whaaappp",
     date: "Sep 29, 2026",
     title: "WHAAAPPP - Week 3 Review",
