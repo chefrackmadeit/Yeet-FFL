@@ -23,13 +23,28 @@ export const yeetNewsNetwork = `Nothing new except this site which is sick as he
 // current. When a new week starts, move the finished week's blurbs down into
 // previewArchive below so they live on as a collapsible historical post.
 // Date shown on the current week's preview dropdown (instead of "updates live").
-export const currentPreviewDate = "Sep 29, 2026";
+export const currentPreviewDate = "Oct 6, 2026";
 
 // Sign-off shown at the bottom of the current week's preview.
 export const previewSignoff = `Claude out. ✊🏽✊🏽✊🏽`;
 
 export const matchupBlurbs = {
-  "4:1": `Nicotine Leech (proj 139.4) is 3-0 and about to drag OnlyFelons (proj 114.7) behind the truck for four straight. Garrett Wilson (26.7) is catching everything Joe Burrow (22.6) throws his way, and Kerner keeps winning ugly while the rest of us lose pretty. Only wart: his first-round backfield of Jonathan Taylor (9.2) and Chase Brown (8.9) combined for less than one functioning running back. Spencer, on the other hand, is 0-3 fresh off a limp-dick 82. Chuba Hubbard (15) and Mahomes are the only two motherfuckers on that roster with a pulse, and Saquon (9) is running like someone stuffed cinder blocks in his shorts. Felons by name, felons by nature — this one's a life sentence with no parole. Start the burger math, big dog.`,
+  "5:1": `LAshymane (proj 129.2) gets a get-right game against OnlyFelons (proj 73.5), and it's less a matchup than a mercy killing. Kyren Williams just dropped 36.7 and Trey McBride is still a cheat code at tight end, but Davante Adams (7.2) played last week like he was collecting Social Security from the slot. Spencer's actually got Chuba Hubbard (25.9) and Ollie Gordon (18) running hard, but rookie Kenyon Sadiq laid a fat goose egg and the whole squad is 0-4 with fryer grease already soaked into their clothes. Preheat the grill, Spencer — your burgers are getting seasoned one loss at a time.`,
+
+  "5:2": `Nicotine Leech (proj 132.2) brings a 4-0 record into a near coin flip with Carol's Peps (proj 125.7). Joe Burrow (25.7) and Sam LaPorta (22.4) carried Kerner to 151 last week, but Garrett Wilson put up a 5.7 like he was running routes in a fucking hot tub. KT is the unluckiest bastard alive after dropping 168 in a loss — Kyle Monangai (28) and Chris Olave (19.6) are cooking — but Emeka Egbuka (3.3) vanished like a dad going out for cigarettes. Leech by a hair, but the Peps are overdue to stop getting screwed.`,
+
+  "5:3": `The Richmond Barebacks (proj 115.3) vs Team D'Brickashaw (proj 119) is a 2-2 slap fight that could go either way. The commish finally woke up for 169 with Tetairoa McMillan going nuclear for 45.2 and Javonte Williams adding 31.3, but Kyle Pitts (7.7) remains the human embodiment of a participation trophy. Preston's got Bijan (27.7) and Quinshon Judkins (21.6) running like they owe him money, but DJ Moore's 2.7 is the kind of output that gets a man traded for a bag of Funyuns. Coin flip, two bitter assholes, and one of them is limping out of here at 2-3.`,
+
+  "5:4": `Clash of the 3-1s: Big V….ictory (proj 136.5) vs The Space Browns (proj 135.5), separated by one measly point. Nate just hung 170 on KT with CeeDee Lamb going supernova for 41.3 and Zay Flowers adding 25.8, but J.K. Dobbins (7.2) is running like he's dragging a refrigerator. Tozzi's got Nico Collins (30.8) cooking and Malik Nabers (23.2) finally found a pulse, while Dalton Schultz caught a 2.9 that should be a fireable offense. Dead heat — whoever's tight end shows up wins the whole fucking thing.`,
+
+  "5:5": `Mcfuckin' (proj 119.8) should have their way with Whipped & Waddled (proj 105.4), so Keeley might as well start stretching now. ZG's got Brock Bowers (20.6) and the Amon-Ra (15.5) / Rome Odunze (15.4) duo giving him real juice, even if David Montgomery (4.3) runs like he's stuck in Detroit rush-hour traffic. Key's got Puka (27.7) and Ashton Jeanty (18.6) doing their part, but Travis Kelce (3.5) is playing like he's more worried about the wedding seating chart than catching a football. 1-3 and headed for 1-4 — Key, call your mortgage guy and ask if he refinances burgers.`,
+
+  "5:6": `Jesse (proj 142.9) is the biggest favorite on the board against the 0-4 Silver Slurpers (proj 121.6), and this could get ugly fast. He's sitting on a league-best 645 points with Tee Higgins (26.7) and Jared Goff (20.5) doing the dirty work, though Dalton Kincaid (1.7) plays tight end like a lawn ornament. Magoo's got RJ Harvey (19.3) and George Kittle (17) trying their hardest, but George Pickens' 9.5 is as useful as a screen door on a submarine, and 0-4 means you can already smell the grill. Bend over, Magoo — 0-5 is coming and that Burger Prince crown fits a little too snug.`,
+};
+
+// Week 4 blurbs — archived (moved into previewArchive below on Oct 6, 2026).
+const week4Blurbs = {
+  "4:1":`Nicotine Leech (proj 139.4) is 3-0 and about to drag OnlyFelons (proj 114.7) behind the truck for four straight. Garrett Wilson (26.7) is catching everything Joe Burrow (22.6) throws his way, and Kerner keeps winning ugly while the rest of us lose pretty. Only wart: his first-round backfield of Jonathan Taylor (9.2) and Chase Brown (8.9) combined for less than one functioning running back. Spencer, on the other hand, is 0-3 fresh off a limp-dick 82. Chuba Hubbard (15) and Mahomes are the only two motherfuckers on that roster with a pulse, and Saquon (9) is running like someone stuffed cinder blocks in his shorts. Felons by name, felons by nature — this one's a life sentence with no parole. Start the burger math, big dog.`,
 
   "4:2": `Ship rematch, and it's a dead coin flip: Chadamania (proj 124.5) vs LAshymane (proj 123.3). Preston finally got off the schneid with 135 — Bijan (35.3) is a one-man cheat code and rookie Matthew Golden (21) showed up like a grown-ass man — but Jalen Hurts threw up a 13.6 like he was slinging it with his off hand after a few too many. Lash is 2-1 off a 143, with Kyren (21.8), Jaylen Warren (20.6) and Davante (20.7) all eating off the same plate, but rookie Omarion Hampton (5.6) is running like he lost his car in the Browns Stadium parking lot. Last year's ship winner vs the guy who hasn't shut the fuck up about it since. Bring a mouthguard and a box of tissues, both of you.`,
 
@@ -64,6 +79,13 @@ const week3Blurbs = {
 // week wraps, paste its matchupBlurbs values here as a new entry at the top.
 // ---------------------------------------------------------------------------
 export const previewArchive = [
+  {
+    week: 4,
+    title: "Week 4 Preview",
+    date: "Sep 29, 2026",
+    matchups: Object.values(week4Blurbs),
+    signoff: `Claude out. ✊🏽✊🏽✊🏽`,
+  },
   {
     week: 3,
     title: "Week 3 Preview",
