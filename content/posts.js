@@ -353,6 +353,18 @@ Zaddy out. ✊🏽✊🏽✊🏽`,
 // 📡 YEET NEWS NETWORK — league news, trades, rumors, hot takes. Newest first.
 export const yeetNews = [
   {
+    id: "ynn-2026-post1-news-happenings",
+    date: "Oct 7, 2026",
+    title: "Post 1 - News and Happenings!",
+    body: `Week 4-5 transitions with some exceptional news. First and foremost, Mazel Tov to Nate and Nath for becoming parents, I've seen the baby, cute as hell! Nate's appearing to cruise through fatherhood at the moment truly living on vacation with the only job being to love his child. Talk about hard work.
+
+Next, we have Your favorite team renaming shit-talker's favorite team renaming shit-talker, JMoney1020, J$, Jesse Joseph Antonio Eduardo Circelli's birthday tomorrow 10/8! Guys turning 37 or something which is crazy we all graduated with him. WISH HIM WELL. Don't be a fuck up and rely on your calendar to tell you when your close friends bday is and wish him a Happy Birthday today like I did.
+
+Lastly, we have our first trade of the year! In what was a day long negotiation; Numbers were crunched, long term back scratching/cock scratching favors were dealt, and a couple scores have been settled leaving a few people outside of this organization with missing fingers. The commish and the self-dubbed shadow commish have come to an agreement: Big Unc Zaddy has sent Davante Adams and Jaylen Warren to the Barebacks for Javonte Williams.
+
+I am unsure of what the future holds for either one of us. I am still hurting at receiver but perhaps stronger in RB, CV looking balanced throughout. I just don't want to eat burgers. Unc out, godspeed in week 5.`,
+  },
+  {
     id: "ynn-2026-way-too-early",
     date: "Aug 31, 2026",
     title: "The way too early projection",
