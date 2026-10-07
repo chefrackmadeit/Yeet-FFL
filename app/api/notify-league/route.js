@@ -17,12 +17,13 @@ function dateKey(d) {
   return Number.isNaN(t) ? -8.64e15 : t;
 }
 
-// Newest post across the two manual feeds (with its section label).
-function newestPost() {
-  const all = [
-    ...(weeklyReview || []).map((p) => ({ ...p, section: "Weekly Review" })),
-    ...(yeetNews || []).map((p) => ({ ...p, section: "YEET News Network" })),
-  ];
+// Newest post in one manual feed — "review" (Weekly Review) or "news"
+// (YEET News Network) — or across both feeds when no section is given.
+function newestPost(section) {
+  const reviews = (weeklyReview || []).map((p) => ({ ...p, section: "Weekly Review" }));
+  const news = (yeetNews || []).map((p) => ({ ...p, section: "YEET News Network" }));
+  const all =
+    section === "review" ? reviews : section === "news" ? news : [...reviews, ...news];
   all.sort((a, b) => dateKey(b.date) - dateKey(a.date));
   return all[0] || null;
 }
@@ -63,6 +64,13 @@ function buildHtml({ heading, intro, buttonLabel, footer, title, siteUrl }) {
 </div>`;
 }
 
+const NOTHING_TO_SEND = {
+  preview: "There's no Weekly Preview to announce yet (it's the offseason).",
+  review: "There are no Weekly Review posts to announce yet.",
+  news: "There are no YEET News Network posts to announce yet.",
+  post: "There are no posts to announce yet.",
+};
+
 export async function POST(request) {
   const url = process.env.NEXT_PUBLIC_SUPABASE_URL;
   const anon = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
@@ -84,29 +92,24 @@ export async function POST(request) {
   }
 
   // Test mode = send only to yourself, so you can preview before blasting the
-  // league. target = "preview" announces the live Weekly Preview; anything else
-  // announces the newest manual post (Weekly Review / YEET News Network).
+  // league. target: "preview" = the live Weekly Preview; "review" = newest
+  // Weekly Review post; "news" = newest YEET News Network post; anything else
+  // ("post") = newest post across both manual feeds.
   let test = false;
   let target = "post";
   try {
     const body = await request.json();
     test = !!body?.test;
-    if (body?.target === "preview") target = "preview";
+    if (["preview", "review", "news"].includes(body?.target)) target = body.target;
   } catch {}
 
   // 2) Which thing to announce.
   const post =
-    target === "preview" ? await previewPost() : newestPost();
+    target === "preview"
+      ? await previewPost()
+      : newestPost(target === "post" ? null : target);
   if (!post) {
-    return Response.json(
-      {
-        error:
-          target === "preview"
-            ? "There's no Weekly Preview to announce yet (it's the offseason)."
-            : "There are no posts to announce yet.",
-      },
-      { status: 400 }
-    );
+    return Response.json({ error: NOTHING_TO_SEND[target] }, { status: 400 });
   }
 
   // 3) Recipient list = every manager's email.

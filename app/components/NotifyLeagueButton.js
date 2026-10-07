@@ -29,13 +29,17 @@ export default function NotifyLeagueButton() {
 
   if (!supabase || !isCommish) return null;
 
-  // target: "post" = newest Weekly Review / YEET News post; "preview" = the
-  // live Weekly Preview. test = send only to yourself.
-  // target: "post" = newest Weekly Review / YEET News post; "preview" = the
-  // live Weekly Preview. test = send only to yourself.
-  async function notify(test, target = "post") {
+  // target: "review" = newest Weekly Review post; "news" = newest YEET News
+  // Network post; "preview" = the live Weekly Preview. test = send only to yourself.
+  const WHAT = {
+    review: "the newest Weekly Review",
+    news: "the newest YEET News Network post",
+    preview: "the Weekly Preview",
+  };
+
+  async function notify(test, target = "review") {
     if (busy) return;
-    const what = target === "preview" ? "the Weekly Preview" : "the newest post";
+    const what = WHAT[target] || "the newest post";
     const ok = window.confirm(
       test
         ? `Send a test email about ${what} to just yourself?`
@@ -66,11 +70,19 @@ export default function NotifyLeagueButton() {
   return (
     <span className="notify-league-wrap">
       <span className="notify-group">
-        <button className="btn btn-coral" onClick={() => notify(false, "post")} disabled={busy}>
-          {active === "post" ? "Sending…" : "Notify: New Post"}
+        <button className="btn btn-coral" onClick={() => notify(false, "review")} disabled={busy}>
+          {active === "review" ? "Sending…" : "Notify: Weekly Review"}
         </button>
-        <button className="link-btn" onClick={() => notify(true, "post")} disabled={busy}>
-          {active === "post-test" ? "Sending…" : "Test to myself"}
+        <button className="link-btn" onClick={() => notify(true, "review")} disabled={busy}>
+          {active === "review-test" ? "Sending…" : "Test to myself"}
+        </button>
+      </span>
+      <span className="notify-group">
+        <button className="btn btn-coral" onClick={() => notify(false, "news")} disabled={busy}>
+          {active === "news" ? "Sending…" : "Notify: YNN"}
+        </button>
+        <button className="link-btn" onClick={() => notify(true, "news")} disabled={busy}>
+          {active === "news-test" ? "Sending…" : "Test to myself"}
         </button>
       </span>
       <span className="notify-group">
