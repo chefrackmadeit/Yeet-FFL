@@ -23,12 +23,27 @@ export const yeetNewsNetwork = `Nothing new except this site which is sick as he
 // current. When a new week starts, move the finished week's blurbs down into
 // previewArchive below so they live on as a collapsible historical post.
 // Date shown on the current week's preview dropdown (instead of "updates live").
-export const currentPreviewDate = "Oct 6, 2026";
+export const currentPreviewDate = "Oct 13, 2026";
 
 // Sign-off shown at the bottom of the current week's preview.
 export const previewSignoff = `Claude out. ✊🏽✊🏽✊🏽`;
 
 export const matchupBlurbs = {
+  "6:1": `Carol's Peps (proj 110.3) vs OnlyBurgers (proj 57.4) isn't a matchup, it's a hospice visit, and Spencer finally renamed his team to what we've all been calling it. KT's 2-3 despite 721 points of pure bad luck, with Aaron Jones (18.7) and CMC (17.3) carrying the backfield, though Harold Fannin's 1.4 was a tight end performance best described as decorative. Spencer's 0-5 with the fewest points in the league, and sure, Justin Jefferson (18.8) and Jameson Williams (18.7) showed up, but Jake Ferguson (4.9) ran routes like he was looking for his car keys. Preheat the flat top, you sad son of a bitch, because a projected 57 isn't a lineup, it's a cry for help.`,
+
+  "6:2": `Revenge of the trade: LAshymane (proj 132.6) vs the Richmond Barebacks (proj 130.3) is a dead coin flip between two 3-2 teams who just swapped spit. Unc shipped out Jaylen Warren and watched him drop 36.8 for CV in week one, but Stafford (27.3) and McBride (21.6) kept him alive while Omarion Hampton (4.9) ran like a rookie who missed the team bus. The Barebacks hung a league-high 196.5 with Drake Maye (39.5) and Isaiah Likely (32.4) going nuclear, yet Chris Godwin's 7 points proved that ankle is still held together with duct tape. Flip a coin, and whoever loses gets to explain that fucking trade to the group chat for the rest of the season.`,
+
+  "6:3": `Nicotine Leech is 5-0 but projected for a limp 95.9 against Big V….ictory (proj 115), so Kerner's undefeated ass is finally getting bent over. Tozzi just dropped 184.4 with Christian Watson (32.3) and Malik Nabers (29.1) torching people, though Colston Loveland's 3.9 was the tight end equivalent of a dead-fish handshake. Mike Evans (26.3) and Garrett Wilson (23.4) keep the Leech breathing, but Chase Brown's 7 points is the kind of output that gets an accountant audited. Enjoy that 5-0 while it lasts, Kerner, because the IRS and Big V are both coming to collect.`,
+
+  "6:4": `Team D'Brickashaw (proj 124.2) should beat the brakes off Whipped & Waddled (proj 91.1), and Keeley is officially sprinting toward the grill. Preston's got Matthew Golden (20.3) balling and Bijan (15.8) still doing Bijan shit, but Bo Nix's 7.9 last week was so ugly it got him benched for Jalen Hurts. Key's 1-4 with Puka (37.7) doing the work of an entire roster and Kyler (18.3) chipping in, while Jeremiyah Love managed 2.2 points like he's allergic to the end zone. Call the mortgage guy again, Key, because you're about to owe the league a lot more than a refinance.`,
+
+  "6:5": `The Space Browns (proj 145.2) are the biggest favorite on the board over Lebron Sucks (proj 92.7), and the birthday boy is about to get spanked like it's his 37th. New dad Nate is cruising through fatherhood and fantasy alike, with Josh Allen (31.5) and Tyler Warren (21.4) cooking, even if CeeDee Lamb (2.9) caught about as many balls as a newborn. Jesse's 4-1 with a league-best 814 points thanks to Parker Washington (30.4) and JSN (22.8), but Tee Higgins put up a 4.2 like he was still hungover from the party. Happy belated, J$, your present is a 50-point ass whooping wrapped in a diaper box.`,
+
+  "6:6": `Mcfuckin' (proj 102.8) vs They Hated Jesus Too (proj 95.6) is close enough to call a toss-up, and both lineups are held together with bye-week duct tape. ZG got 32.3 from Jayden Daniels and 31.5 from Bucky Irving, but Romeo Doubs (2.6) played like he wandered onto the field by accident. Magoo's 0-5 and still swinging, with George Pickens (28) and Jacoby Brissett (26.3) going off, though RJ Harvey's 0.7 is a number that should come with a restraining order. Slight edge to ZG, but if Magoo drops this one, the Burger Prince crown gets welded to his skull.`,
+};
+
+// Week 5 blurbs — archived (moved into previewArchive below on Oct 13, 2026).
+const week5Blurbs = {
   "5:1": `LAshymane (proj 129.2) gets a get-right game against OnlyFelons (proj 73.5), and it's less a matchup than a mercy killing. Kyren Williams just dropped 36.7 and Trey McBride is still a cheat code at tight end, but Davante Adams (7.2) played last week like he was collecting Social Security from the slot. Spencer's actually got Chuba Hubbard (25.9) and Ollie Gordon (18) running hard, but rookie Kenyon Sadiq laid a fat goose egg and the whole squad is 0-4 with fryer grease already soaked into their clothes. Preheat the grill, Spencer — your burgers are getting seasoned one loss at a time.`,
 
   "5:2": `Nicotine Leech (proj 132.2) brings a 4-0 record into a near coin flip with Carol's Peps (proj 125.7). Joe Burrow (25.7) and Sam LaPorta (22.4) carried Kerner to 151 last week, but Garrett Wilson put up a 5.7 like he was running routes in a fucking hot tub. KT is the unluckiest bastard alive after dropping 168 in a loss — Kyle Monangai (28) and Chris Olave (19.6) are cooking — but Emeka Egbuka (3.3) vanished like a dad going out for cigarettes. Leech by a hair, but the Peps are overdue to stop getting screwed.`,
@@ -79,6 +94,13 @@ const week3Blurbs = {
 // week wraps, paste its matchupBlurbs values here as a new entry at the top.
 // ---------------------------------------------------------------------------
 export const previewArchive = [
+  {
+    week: 5,
+    title: "Week 5 Preview",
+    date: "Oct 6, 2026",
+    matchups: Object.values(week5Blurbs),
+    signoff: `Claude out. ✊🏽✊🏽✊🏽`,
+  },
   {
     week: 4,
     title: "Week 4 Preview",
