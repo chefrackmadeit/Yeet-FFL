@@ -33,6 +33,116 @@
 // 📝 WEEKLY REVIEW — recap of the week that just finished. Newest first.
 export const weeklyReview = [
   {
+    id: "wr-2026-week5-im-fucked",
+    date: "Oct 14, 2026",
+    title: "Week 5 Review - I'M FUCKED",
+    body: `**1. Nicotine Leach**
+
+I'm pretty sure this GM sold his soul to the devil, and honestly, I'm starting to think he got a pretty reasonable deal. The guy doesn't even know what fantasy football poverty looks like. One injury through five weeks? In this NFL economy?! Meanwhile, the rest of the league is submitting waiver claims that should qualify for FEMA assistance. Maybe try scoring under 130 points one week and let the other kids at the playground have some fun? Jesus Christ. This guy is playing fantasy football on rookie difficulty while everyone else is fighting the final boss with a plastic spoon.
+
+5-0 and absolutely no signs of stopping. Somebody check this man's basement for a pentagram.
+
+**2. LeBron Sucked Me**
+
+First off, I refuse to acknowledge this team name. Second, we need to acknowledge one of the greatest emotional recoveries in league history.
+
+Week 1, this GM was ready to sell the entire franchise for pennies on the dollar. He was holding a liquidation sale like a Circuit City in 2009. You probably could've gotten Njigba for a washing machine and a pack of dryer sheets after Darnold went down. Literally what he offered me…
+
+Now? He's sitting near the top of the league like he knew what he was doing all along. We know this man can catch a fish. The question is whether he can reel in a a championship or if he's going to get dragged into the lake by his own stupidity. Will he shit on the league or shit his pants when the lights get bright? Only time will tell. Either way, somebody get the man a towel.
+
+**3. Big V….ictory**
+
+Speaking of shitting your pants, we arrive at the league's premier walking turd sandwich. This GM could bench-press a Buick, power jerk (PAUSE) a refrigerator, and deadlift an entire retirement community, and it still wouldn't make him a better fantasy manager. Thankfully, he's got Jahmyr Gibbs, which is basically the fantasy equivalent of being born into generational wealth. You don't need to be smart. You don't need a plan. Just follow that beautiful bastard into the promis land and try not to touch anything. Also, huge congratulations to Verissa Mason on earning her real estate license! Incredible accomplishment. Word on the street is this GM has been sleeping with his realtor. Pretty aggressive strategy to avoid closing costs, but I respect the hustle. Apparently, she's not the only one helping him score this year.
+
+**4. Space Browns**
+
+This is where things start getting shaky. A lot of question marks on this roster, but somehow this GM keeps holding on like a drunk guy dangling off the edge of a pontoon boat.
+
+Rhamondre Stevenson might experience a resurgence with Henderson hurt, but let's talk about JK Dobbins. Having Dobbins as your RB2 is like having Brucie from The Longest Yard as your starting quarterback. The confidence is absolutely electric. The actual production? Dog water. And not the fancy filtered water from the fridge. I'm talking rusty garden hose water sitting in a kiddie pool behind an abandoned Arby's in July. The kind of water that develops its own ecosystem. Space Browns is somehow still orbiting the playoff picture, but I'm starting to think that spaceship is being held together by zip ties and a Home Depot receipt.
+
+One more injury and this team is going to need Elon Musk to launch a rescue mission.
+
+**5. Richmond Barebacks**
+
+This roster is actually pretty damn solid. Marv getting traded could be the catalyst that launches Michael Wilson into elite WR territory. If these boys stay healthy, I can absolutely see them making some noise in December. Unfortunately, the football has become secondary to whatever sexual circus this GM has been operating behind closed doors.
+
+Sources are reporting that the GM and kicker Matt Gay have been scissoring after games. Didn't even have the common decency to wait until the rest of the team finished showering. This GM reportedly walked into the locker room wearing a Borat speedo with his nutsack divided by a piece of fabric thinner than the league's playoff margins. Matt Gay took one look and realized his job description had changed significantly.
+
+I've heard of building team chemistry, but this organization has taken it to a level that would make HR spontaneously combust.
+
+Maybe the postgame tugs are the secret sauce. Whatever they're doing, it's working. Just don't shine a blacklight in that locker room.
+
+**6. Mid Mike & The Boys**
+
+Never has a team name been more appropriate. If you opened Webster's Dictionary to the word mediocrity, you'd find this GM staring back at you wearing a headset, holding a clipboard upside down. Three of his first seven draft picks are riding the bench. Not because they're injured. Not because they're on bye weeks. Because apparently this man drafted with the same scouting department that recommended JaMarcus Russell.
+
+Holy swing and a miss. Somehow this team is still clinging to the final playoff spot like a raccoon hanging onto the back of a garbage truck. At this point, Trey McBride might need to be traded for three functioning adults and a motivational speaker. And somebody needs to get Mike McDaniel fired immediately. Maybe blackmail him with an AI generated photo of himself inside the Richmond Barebacks locker room??? Although, based on recent reports, we might not even need AI.
+
+Apparently that locker room has become the fantasy equivalent of an airport lounge. Everybody's welcome, nobody knows who's in charge, and there's an alarming amount of unsolicited hand activity. Cumming to a locker room near you.
+
+**7. McFuckin'**
+
+What a fitting name for a man who has already experienced rock bottom.
+
+After earning last year's Sacko title and presenting his wiener between two McDoubles like a limited time menu item, this GM entered the season seeking vengeance. Unfortunately, his team still smells like a poopy flavored lollipop. His quarterback look like he was assembled out of Play Doh and rejected Gumby audition tapes.
+
+And yet, credit where credit is due. This GM balled out this week and kept the season alive. But let's not get carried away. This team isn't bad enough to order another 24-hour McDonald's sentence, and it damn sure isn't good enough to make any meaningful noise in December.
+
+He's basically the fantasy version of a Toyota Corolla with 250,000 miles. Not impressive, not exciting, but somehow the fucking thing keeps starting. And after funneling McDiabetes for 24 straight hours last year, perhaps mediocrity is exactly what this man needs. He's not chasing a championship anymore. He's chasing a normal cholesterol reading.
+
+**8. Carol's Peps**
+
+Ahhhhh, Carol Baskin. That bitch.
+
+She had some peps, alright. Although I'm going to assume we're not talking about another Carol here. 👀
+
+That crazy bitch allegedly killed her husband, fed him to the tigers, and apparently buried this GM's fantasy luck in the backyard next to him.
+
+Two straight losses with this roster? How? I'm not even sure this team belongs in the toilet bowl conversation, yet here we are, watching a perfectly capable roster stumble around like a giraffe on roller skates. It's giving Los Angeles Rams energy. Plenty of talent, plenty of expectations, and somehow nobody can explain what the hell is happening on Sundays. Fire the coach. Fire the coordinators. Fire the guy who fills up the Gatorade bottles. Trade CMC to the biggest poverty franchise in the league (🙋‍♂️) just to send a message.
+
+I've heard the players are already requesting locker room changes. Not because of bad chemistry, but because they're embarrassed to be associated with this 2-3 football team. I still expect this team to turn it around, but if the losing continues, somebody might want to check the tiger enclosure.
+
+**9. Team D'Brickashaw**
+
+This new father has been absolutely GRINDING. Sleepless nights. Shirts covered in puke and spoiled milk. Diaper blowouts that should require a hazmat certification. Phantom baby cries every time he closes his eyes.
+
+And all that sacrifice for the privilege of managing a 2-3 fantasy football team. Beautiful. Any roster with Bijan Robinson has absolutely no business sniffing the toilet bowl, so I'm still optimistic about this squad.
+
+Captain Kirk has apparently taken over starting duties, which is impressive considering he's required to catch the shuttle back to his assisted living facility immediately after the game. I heard he has a standing 5:30 dinner reservation and gets fined if he misses bingo. Meanwhile, AJ Brown is riding the bench while Golden is out there looking like the second coming of Jerry Rice. This team feels like a diesel engine in January. Takes forever to get going, makes a bunch of concerning noises, but eventually you expect it to start. Fatherhood is hard. Fantasy football is harder.
+
+And nothing says "I'm thriving as a new dad" quite like setting your lineup at 3:47 AM while getting pissed on by a newborn.
+
+**10. Whipped & Waddled**
+
+At one point, this GM had a certified WAGON. Now? He's driving a 2006 Chrysler Town & Country with a check-engine light and three mismatched tires. Puka goes out on Monday Night Football and breaks a record with 17 receptions, and somehow the rest of this roster collectively shit their pants. It's honestly impressive. At 1-4, this team is dangerously close to entering McDonald's territory. But I just don't believe this roster is bad enough to finish last. Unless, of course, this has been the plan all along. Word on the street is this GM has been intentionally sabotaging his lineup because he's absolutely desperate to spend 24 hours inside a Wack Arnold's. Think about it. A full day surrounded by burgers, fries, ice cream, and absolutely no accountability? For this man, that's not a punishment….That's an all-inclusive resort. He'd polish off 20 McDoubles, consume enough soft serve to shut down a dairy farm, and leave with a smile on his face.
+
+The league's greatest fear isn't that he'll finish last. It's that he'll enjoy it.
+
+**11. They Hated Jesus Too**
+
+Indeed they did. Indeed... they... did.
+
+And after watching this fantasy team for five weeks, I'm starting to understand why people were so angry back then. Every time I open this roster, my stomach turns. I get cold sweats. My vision starts to blur. I feel an overwhelming urge to projectile vomit into the nearest trash can.
+
+I genuinely believe Cam Skattebo has been passing out Crayola boxes in the locker room disguised as Takis.
+
+The players aren't studying film. They're arguing over who gets to eat Burnt Orange. Sources say Skattebo owns significant stock in Crayola and has already begun planning his post-football career as a regional sales representative. The good news? Ja'Marr Chase is on a bye this week, so naturally that should provide a much needed offensive spark.
+
+This roster has the potential to win another game or two this season, which is remarkable considering some of the competition apparently eats laxatives for breakfast and washes them down with room temperature prune juice. They hated Jesus too, but even Jesus might look at this starting lineup and say "Father, forgive them, for they know not how to draft." At this point, the only miracle this team is getting is the McDonald's ice cream machine actually working.
+
+**12. Only burgers**
+
+Ladies and gentlemen. We have arrived. What a perfect team name for a franchise that has completely surrendered to its destiny. This GM didn't just accept the possibility of spending 24 hours in a McDonald's. He built his entire identity around it.
+
+Drafting 17 running backs is certainly a strategy. Not a good strategy. Not even a strategy that makes sense to someone actively suffering from a traumatic brain injury. But a strategy nonetheless. And when your third-round pick is dealing with serious domestic violence allegations, that's a pretty strong indication your draft board needed significantly more due diligence. "Smoke another one" they said. And by God, smoke another one he did…during the draft. This GM approached the fantasy draft the same way a raccoon approaches an overturned dumpster. No preparation, no self control, and absolutely no concern for the consequences.
+
+They say you make your bed and lie in it. Well, this man's bed is filled with shit. Not metaphorical shit. We're talking wall to wall, ceiling to floor, industrial grade fantasy sewage. He's just rolling around in it, desperately Googling "cleanest McDonald's bathrooms near me" (not a joke) and researching which locations will let him charge his phone overnight. At this point, I don't even think he's setting his lineup to win. He's practicing his McDonald's order.
+
+The franchise is cooked. The season is deep fried. The GM is one loss away from asking whether he can earn rewards points during his sentence.
+
+Ba da ba ba ba….I'M FUCKED!`,
+  },
+  {
     id: "wr-2026-week4-kerner-power-rankings",
     date: "Oct 6, 2026",
     title: "Post-Week 4 Pre-Week 5 Kerner Power Rankings",
