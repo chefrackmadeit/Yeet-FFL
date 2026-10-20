@@ -23,12 +23,27 @@ export const yeetNewsNetwork = `Nothing new except this site which is sick as he
 // current. When a new week starts, move the finished week's blurbs down into
 // previewArchive below so they live on as a collapsible historical post.
 // Date shown on the current week's preview dropdown (instead of "updates live").
-export const currentPreviewDate = "Oct 13, 2026";
+export const currentPreviewDate = "Oct 20, 2026";
 
 // Sign-off shown at the bottom of the current week's preview.
 export const previewSignoff = `Claude out. ✊🏽✊🏽✊🏽`;
 
 export const matchupBlurbs = {
+  "7:1": `The Richmond Barebacks (proj 118.3) should bend OnlyBurgers (proj 98.5) over the flat top, and at 0-6 Spencer is basically paying rent in the loser's bracket. The commish is 4-2 with 819 points thanks to James Cook (24.3) and Isaiah Likely (23.9) running wild, though Davante Adams (6.9) and a 1-point Texans D were a public indecency. Spencer's got Tre Tucker (26.7, a goddamn Raiders receiver nobody has heard of) and Chuba Hubbard (19.1) doing all the work, while Justin Jefferson and Darren Waller both laid a goose egg that deserves a restraining order. Your lineup projects under 100 and a guy named Tre Tucker is your best player, so at least the burgers can't get any more overcooked than this season.`,
+
+  "7:2": `Carol's Peps (proj 130.7) are a lock to roll Big V….ictory (proj 111.6), and Tozzi's 5-1 record is about to get exposed as a clerical error. KT is a 3-3 coin of chaos but CMC (30.7) and Kenneth Walker (27.9) were absolutely feral, even if Harold Fannin's 1.9 was a tight end doing impressions of a cardboard cutout. Tozzi dropped 154.8 behind Malik Nabers (28.5) and Bhayshul Tuten (24.7), but Tyler Higbee (4.2) and Tyler Allgeier (5.8) are the kind of depth guys who make a grown man cry into his Funyuns. A projected 111 is a 5-1 team running on fumes and luck, so Tozzi gets taken behind the barn and shown who the real daddy is.`,
+
+  "7:3": `Mid Mike & The Boyz (proj 129.3) vs Whipped & Waddled (proj 125) is a near coin flip between two teams who both need this like a junkie needs a fix. Mike's boys got Germie Bernard (25.7) and Keenan Allen (16.2) cooking last week, but Denzel Boston's 2.5 was a wide receiver acting like he's on a tour of the stadium. Key's 1-5 but Bryce Young (19.8) and Ashton Jeanty (15.8) are running like they owe somebody money, even though Jaylen Waddle (6.4) and a Patriots D that scored 6 are the reason that mortgage guy keeps declining his calls. Mike gets the nod by a hair, but both of you smell like week-old fryer grease so enjoy the slap fight.`,
+
+  "7:4": `The Challenger Disaster (proj 127.1) is the odds-on favorite over Nicotine Leech (proj 106.7), and Kerner's 5-1 record is looking more like a Ponzi scheme every week. Jesse's sitting on a league-best 930 points with Jaxon Smith-Njigba (25.4) and D'Andre Swift (23) bullying people, though that Vikings D put up a big fat zero and Derrick Henry's 5 was embarrassing for a man built like a refrigerator. Leech got Jonathan Taylor (21.1) and DeVonta Smith (20.5) to the party, but MarShawn Lloyd's 1 and Pat Freiermuth's 3.1 were basically two empty beer cans sitting in the lineup. A projection of 106.7 is not a championship contender, it's a hostage video, so Kerner finally learns what losing feels like.`,
+
+  "7:5": `Team D'Brickashaw (proj 126.1) should treat They Hated Jesus Too (proj 107) like a speed bump, and Magoo's 1-5 record says even the Lord gave up on this roster. Preston's got Matthew Golden (22.4) and Kirk Cousins (19.5) making noise, though A.J. Brown's 5.7 and a 4.7 from Joshua Palmer are the kind of numbers that get a man laughed out of the group chat. Magoo's got George Kittle (17.9) and Aaron Rodgers (17) doing their best, but Cam Skattebo posted a 0 and Mark Andrews turned in a 1.4 like they both got the flu and a hangover. Everybody saw this one coming, Magoo, so start preheating the Burger Prince crown because it's headed straight for your fat skull.`,
+
+  "7:6": `The Space Browns (proj 113.4) vs Mcfuckin' (proj 109.7) is a toss-up between two 3-3 teams who both look like they're held together with duct tape and prayers. Nate's got Carnell Tate (19) and Josh Allen (18.3) holding it down, but Juwan Johnson's goose egg is the kind of thing that should come with a warranty. ZG got Jayden Daniels (21) and Brock Bowers (11) doing their thing, but a measly 81.1 total and Austin Ekeler's 2.7 prove the roster is pure dumpster fire. Slight edge to the Browns because at least Nate's team shows up, but ZG can still win it if his dead weight wakes up for once.`,
+};
+
+// Week 6 blurbs — archived (moved into previewArchive below on Oct 20, 2026).
+const week6Blurbs = {
   "6:1": `Carol's Peps (proj 110.3) vs OnlyBurgers (proj 57.4) isn't a matchup, it's a hospice visit, and Spencer finally renamed his team to what we've all been calling it. KT's 2-3 despite 721 points of pure bad luck, with Aaron Jones (18.7) and CMC (17.3) carrying the backfield, though Harold Fannin's 1.4 was a tight end performance best described as decorative. Spencer's 0-5 with the fewest points in the league, and sure, Justin Jefferson (18.8) and Jameson Williams (18.7) showed up, but Jake Ferguson (4.9) ran routes like he was looking for his car keys. Preheat the flat top, you sad son of a bitch, because a projected 57 isn't a lineup, it's a cry for help.`,
 
   "6:2": `Revenge of the trade: LAshymane (proj 132.6) vs the Richmond Barebacks (proj 130.3) is a dead coin flip between two 3-2 teams who just swapped spit. Unc shipped out Jaylen Warren and watched him drop 36.8 for CV in week one, but Stafford (27.3) and McBride (21.6) kept him alive while Omarion Hampton (4.9) ran like a rookie who missed the team bus. The Barebacks hung a league-high 196.5 with Drake Maye (39.5) and Isaiah Likely (32.4) going nuclear, yet Chris Godwin's 7 points proved that ankle is still held together with duct tape. Flip a coin, and whoever loses gets to explain that fucking trade to the group chat for the rest of the season.`,
@@ -94,6 +109,13 @@ const week3Blurbs = {
 // week wraps, paste its matchupBlurbs values here as a new entry at the top.
 // ---------------------------------------------------------------------------
 export const previewArchive = [
+  {
+    week: 6,
+    title: "Week 6 Preview",
+    date: "Oct 13, 2026",
+    matchups: Object.values(week6Blurbs),
+    signoff: `Claude out. ✊🏽✊🏽✊🏽`,
+  },
   {
     week: 5,
     title: "Week 5 Preview",
