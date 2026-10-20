@@ -33,6 +33,36 @@
 // 📝 WEEKLY REVIEW — recap of the week that just finished. Newest first.
 export const weeklyReview = [
   {
+    id: "wr-2026-week6-power-rankings",
+    date: "Oct 20, 2026",
+    title: "Week 6 Power Rankings",
+    body: `🚨 Week 6 Power Rankings🚨
+
+In first we have Tozzi. Not only because I love the imagery associated with Big V’s (likely) Big V, but because this is the best roster in the league and I don’t think they’ve reached their final form. Getting going at just the right time, Bayshul has defenses Tuten their ass up as he takes liberties on linebackers. And as long as Malik’s knee doesn’t turn to linguine, he’ll continue to cook as well. This particular ball club isn’t going anywhere
+
+In second we have Jesse Percacelli. While I don’t understand the context behind the team name, as a connoisseur of carnage I respect it. They say seven is a lucky number; but not in this instance as that many aboard the craft rolled snake eyes on that fateful Florida day. And died. But this is about football and fantasy is about volume over talent, something the asstronauts have in spades. Proper workhorses abound. A formidable ball club that will have to be reckoned with
+
+Third is none other than KTwizzle. I see the record. But I’m looking at the roster. No team’s record paints a more misleading picture than this one, who at 3-3 has as good a chance as any to go the distance. More studs on this roster than a Subaru dealership(lesbians) and with Egbuka getting 16 targets this week that could be Kyle’s ace in the hole(not to be confused with Dorian Graham’s ace under the table IYKYK). Fuck that guy. This team is fire
+
+The fourth place Fantussies have absolutely nothing to be ashamed of. If we can get anything out of Chase Brown we’ll be well on our way to a deep playoff run. I would not want to see this team down the stretch
+
+Fifth is N8 and the Space Browns. Through no fault of his own this team has experienced some tough luck, racking up points that the record does not reflect. Bright spot here is Carnell Tate who, like most rookie receivers, take a few games to start to flourish if they ever do at all. If Cam Bell I mean Ward wasn’t such a bad person I mean quarterback Tate would be running away with the OROY. Can’t really think of anything too clever here so I’ll just leave it there. This is a bona fide contender and I’ve always known Nate to be a good person. With a great cock
+
+Sixth is the Barebacks of Richmond. When Josh Allen isn’t pilfering his goal line touches, we see James Cook like it’s the 2016 NBA Finals. Unfortunately Davante Adams leg might’ve turned to Aglio e Olio, in which case we may be running a double TE lineup if Kyle Pitts can ball out again. With three SuperMid™️ WRs on the bench, we’ll look to parlay that into one serviceable receiver from a team lacking depth
+
+In seventh I got Milky Mike and the Boys. Very solid 1-2 punch at RB which is good because as of now, Omarion has a better chance of mopping up loads at the Hampton Inn than he does finding himself IN the endzone. We’re thin at receiver unfortunately, with Ladd McConkey staying more banged up than a Cornell sorority sister. Germie(appalling name/attempt at ‘Jeremy’) Bernard could be a saving grace at the position, getting a thousand targets along with a ringing endorsement from his QB on a team starved for playmakers
+
+At eight it’s Zgeezy, who opted for the wholesome albeit foolish choice of drafting an array of hometown players on an already mid team. With a team of my own that would be laughed at by the whole league I do realize the glass house/stones situation I’ve laid out here. Having already resigned myself to Burger Avoider™️ status(BAS) a win this week would be a nice change of pace.
+
+As we move further and further away from the light we encounter number nein, D’Brickashaw Ferguson. A bright spot is Matthew Golden, whose face resembles conscious rapper and community activist Pooh Shiesty while his route running looks like prime Tae Adams. A disappointment so far has been Rashee “I only let my girlfriend eat” Rice, along with DJ “my body don’t work so good no” Moore. We’ll see
+
+Continuing into the abyss at ten is the Book of LeBronicus 6:23. Through no fault of his own he’s fallen on hard times. Cam Skattebo having his name etched in the Guinness Book of World Records for fastest CTE diagnosis sucks too. Get this guy a bib because he’s going to drown in a pool of drool
+
+Number eleven is Chronnor Mealy. This is a ball club that has gone by the wayside thanks to major disappointments in Jearuhmaiyah Love and Jaylen Waddle, along with Puka’s beginning of the season to really put Key behind the 8 ball 👃 While we’re on the topic Nacua, who has a PhD in CTE, might get fast tracked to Steve Gleason status with Davante Adams out. Could he start getting 30+ a game? Absolutely. Could his brain scans have even the most experienced neurologists quitting abruptly to dedicate their lives to monkhood? Next question.
+
+At number twelve, which is still way too high, is OnlyBurgers. A true abomination of a team, this mess just started three tight ends, one singular(fantastically average) WR and no defense. This isn’t just a white flag, this one is of the albino variety. Even the lowliest of teams are licking their chops, ready to have their way raw and unfiltered with this appalling collection of invalids. A slump buster doesn’t even begin to describe it, and if anyone does lose to this ‘team’ I think there should be a punishment that makes McDonald’s look like pure euphoria`,
+  },
+  {
     id: "wr-2026-week5-im-fucked",
     date: "Oct 14, 2026",
     title: "Week 5 Review - I'M FUCKED",
