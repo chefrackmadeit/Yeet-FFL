@@ -23,12 +23,43 @@ export const yeetNewsNetwork = `Nothing new except this site which is sick as he
 // current. When a new week starts, move the finished week's blurbs down into
 // previewArchive below so they live on as a collapsible historical post.
 // Date shown on the current week's preview dropdown (instead of "updates live").
-export const currentPreviewDate = "Oct 20, 2026";
+export const currentPreviewDate = "Nov 4, 2026";
 
 // Sign-off shown at the bottom of the current week's preview.
 export const previewSignoff = `Claude out. ✊🏽✊🏽✊🏽`;
 
 export const matchupBlurbs = {
+  "9:1": `Crayon Eaters Inc. (proj 129.9) holds a slim edge on Whipped & Waddled (proj 122), and it's a battle between two guys who've been getting dicked by the standings all year. Spencer got 31.1 from Ja'Marr Chase, 28.7 from Tony Pollard and 25.4 from Mahomes, but Tre Tucker laid a goose egg like he got lost on the way to the stadium. Key is 1-7 and still got 25 from Puka and 20.9 from Kyler, yet Nick Folk put up negative 1, which is a kicker actively robbing you. Spencer by a hair, but both of you are fighting for the title of least-bad crayon in the box.`,
+
+  "9:2": `Big V….ictory (proj 146.7) is a hair better than Kelly Peterson X2 🍆💦👅🫦 (proj 141), and the whole league is about to watch the two best teams trade haymakers. Tozzi got 29.9 from Bhayshul Tuten, 28.2 from Kirk Cousins and 24.8 from Gibbs, but Omar Cooper and Will Reichard both scored a flat zero like they lost their cleats. Jesse is 7-1 with 1,265.3 points thanks to Tee Higgins (37.5), D'Andre Swift (27.9) and JSN (23.8), though Parker Washington's 3.6 was a human cardboard cutout. Coin flip, so whoever's scrubs stop jerking off in the end zone gets to dance on the other guy's grave.`,
+
+  "9:3": `The Richmond Barebacks (proj 120.7) are a solid favorite over They Hated Jesus Too (proj 102.4), and Magoo is staring down another weekly pounding. Civil got 26.8 from Michael Wilson, 22.5 from Drake Maye and 21.3 from Jaylen Warren, but Kyle Pitts (2.6) and Keon Coleman (1.4) combined for less than a Tuesday morning bowel movement. Magoo got Josh Jacobs (23.2), Wan'Dale Robinson (15.7) and Kenny Gainwell (14) doing the heavy lifting, but Mark Andrews coughed up a 4.4 like a guy who forgot the playbook at home. A 102 projection against a 120 means the Burger Prince crown stays welded to your skull, Magoo, so go ahead and start lubing up.`,
+
+  "9:4": `Carol's Peps (proj 138.8) and Mcfuckin' (proj 135.1) is a dead heat between two lineups that look like they were drafted blindfolded. KT got 23.4 from Harold Fannin and 19.8 from Dak, but Ja'Kobi Lane (2.3) and Spencer Shrader (1) were a pair of ghosts at a funeral. ZG got a monster 28.2 from Brock Bowers and 21 from Bucky Irving, yet Samaje Perine (2.9) and a 1-point Chiefs D are why he's 3-5 and angry. Flip a coin, because whichever of you loses can go ahead and explain it to the group chat.`,
+
+  "9:5": `The Space Browns (proj 137.9) get a modest nod over Mid Mike & The Boyz (proj 129), though both sides are 4-4 and neither looks scary. Nate leads the league with 1,138.9 points on the back of Josh Allen (27.6) and a Tampa D that hung 18, but Zay Flowers laid a goose egg like he lost a bet. Mike's boys got Trey McBride (20.2) and T.J. Hockenson (15.8) doing their jobs while Drake London's 1.8 and a 1-point Jason Myers kicked the roster in the nuts. Browns by a nose, but Mike's one hot kicker away from making this ugly for the new dad.`,
+
+  "9:6": `Nicotine Leech (proj 143.5) barely edges Team D'Brickashaw (proj 138.4), and this is a sweaty coin flip between two teams that can both light you up. Kerner got a ridiculous 42.5 from Joe Burrow and 20.4 from Jonah Coleman, but Jonathan Taylor's 6.7 is a lot of money for a guy running like he's got a mortgage payment due. Preston got 20.9 from Matthew Golden, 20 from a Jaguars D and 17.3 from Tucker Kraft, though Bijan's 7.6 is a first-rounder pissing in the wind. Leech by a whisker, and if Preston's studs don't wake up, Kerner takes it and rubs it in for a week.`,
+
+};
+
+// Week 8 blurbs — archived (moved into previewArchive below on Nov 4, 2026).
+const week8Blurbs = {
+  "8:1": `Crayon Eaters Inc. (proj 115.7) are a 31-point favorite over Big V….ictory (proj 84.9), so Spencer's 1-6 dumpster fire is finally getting a gift basket. Tony Pollard dropped 36.5 and Jameson Williams added 26.1, though Jake Ferguson laid a flat zero and the man is somehow starting a lineup with no defense at all. Tozzi is 5-2 off Malik Nabers (18.1) and Jahmyr Gibbs (17.3), but Nico Collins (2.6) and Tyler Higbee (3.4) clocked in like they were paid by the hour to stand around. A projected 84.9 is a 5-2 record taking a cold shower, so Tozzi gets pantsed by the worst team in the league and Spencer finally tastes something besides fryer grease.`,
+
+  "8:2": `Whipped & Waddled (proj 122.3) hold a slim edge on the Richmond Barebacks (proj 111.8), which is a fancy way of saying two fuckups are fighting over a bar tab. civil8 got 28.4 from Drake Maye and 16.7 from Jaylen Warren, but Isaiah Likely's 3.2 was a tight end doing a Weekend at Bernie's impression. Key is 1-6 and still got 23.2 from KC Concepcion, 21.8 from Puka and 21.6 from Ashton Jeanty, yet Bryce Young's 7.4 is why the mortgage guy keeps ghosting him. Call it a coin flip with a slight lean to the guy who can't stop losing, because somebody has to be the lesser dumpster fire and neither of you volunteered.`,
+
+  "8:3": `Kelly Peterson X2 🍆💦👅🫦 (proj 131) is a massive favorite over Carol's Peps (proj 89.3), and a 41-point gap is not a matchup, it's a hit job. Jaxon Smith-Njigba (31.3), Tee Higgins (26.8) and Luther Burden (23.7) are all feasting at 6-1 with a league-best 1,109.9 points, though Derrick Henry's 5.9 is a lot less than you'd expect from a refrigerator on cleats. KT is 4-3 and got Dak (23.3) and CMC (22) cooking, but Aaron Jones put up 3.6 and Spencer Shrader a 3 like a couple of retirees sleepwalking through a mall. Projected under 90 is the kind of number you hide from your family, KT, so go ahead and bend over because Jesse brought the whole damn toolbox.`,
+
+  "8:4": `Mid Mike & The Boyz (proj 129.3) should steamroll They Hated Jesus Too (proj 93.8), and Magoo's lineup is looking at a 35-point beating. Mike's boys got Trey McBride (27.1) and Javonte Williams (21.5) humming, but Denzel Boston and Germie Bernard both laid 5.7s like they were jogging to the concession stand. Magoo is 2-5 with Emanuel Wilson (18.5), Ja'Marr Chase (17.2) and George Pickens (15.7) trying their best, though Wan'Dale Robinson's 4.7 was a pile of wet laundry. A projection of 93.8 means the Burger Prince crown gets welded to your skull, Magoo, so go ahead and ask Mike how much he charges for lube.`,
+
+  "8:5": `Nicotine Leech (proj 123.9) is a 38-point favorite over Mcfuckin' (proj 86.2), and ZG's projection looks like a typo that got printed on purpose. Kerner got Makai Lemon (19.7) and Jonathan Taylor (19) running like they stole something, but Sam LaPorta (2.8) and Garrett Wilson (4.6) were the human equivalent of a participation ribbon. ZG's Bucky Irving (24) and Amon-Ra St. Brown (24.2) went nuclear, yet Jaylin Noel (1.7) caught fewer balls than a sloth in a snowstorm. At 3-4 with a projected 86, ZG is a human piñata with a Chiefs D that scored 3, and Kerner is swinging with both hands.`,
+
+  "8:6": `D'Brickashaw (proj 131) is a 23-point favorite over the Space Browns (proj 107.4), and Nate is about to learn what a diaper rash on the scoreboard looks like. Preston got 23.4 from Quinshon Judkins and 20.4 from Kirk Cousins, but A.J. Brown's 7.8 is the kind of number that gets a man laughed out of the group chat. Nate's got the league's second-best points at 1,034.8 with Zay Flowers (27.7), Bo Nix (26.3) and CeeDee (24.4) all balling, but J.K. Dobbins posted an 8.3 like he was dragging a refrigerator through mud. A 107 projection against a 131 is a mismatch, so Nate, sleep-deprived dad brain and all, gets spanked like a newborn at a family reunion.`,
+};
+
+// Week 7 blurbs — archived (moved into previewArchive below on Oct 27, 2026).
+const week7Blurbs = {
   "7:1": `The Richmond Barebacks (proj 118.3) should bend OnlyBurgers (proj 98.5) over the flat top, and at 0-6 Spencer is basically paying rent in the loser's bracket. The commish is 4-2 with 819 points thanks to James Cook (24.3) and Isaiah Likely (23.9) running wild, though Davante Adams (6.9) and a 1-point Texans D were a public indecency. Spencer's got Tre Tucker (26.7, a goddamn Raiders receiver nobody has heard of) and Chuba Hubbard (19.1) doing all the work, while Justin Jefferson and Darren Waller both laid a goose egg that deserves a restraining order. Your lineup projects under 100 and a guy named Tre Tucker is your best player, so at least the burgers can't get any more overcooked than this season.`,
 
   "7:2": `Carol's Peps (proj 130.7) are a lock to roll Big V….ictory (proj 111.6), and Tozzi's 5-1 record is about to get exposed as a clerical error. KT is a 3-3 coin of chaos but CMC (30.7) and Kenneth Walker (27.9) were absolutely feral, even if Harold Fannin's 1.9 was a tight end doing impressions of a cardboard cutout. Tozzi dropped 154.8 behind Malik Nabers (28.5) and Bhayshul Tuten (24.7), but Tyler Higbee (4.2) and Tyler Allgeier (5.8) are the kind of depth guys who make a grown man cry into his Funyuns. A projected 111 is a 5-1 team running on fumes and luck, so Tozzi gets taken behind the barn and shown who the real daddy is.`,
@@ -109,6 +140,20 @@ const week3Blurbs = {
 // week wraps, paste its matchupBlurbs values here as a new entry at the top.
 // ---------------------------------------------------------------------------
 export const previewArchive = [
+  {
+    week: 8,
+    title: "Week 8 Preview",
+    date: "Oct 27, 2026",
+    matchups: Object.values(week8Blurbs),
+    signoff: `Claude out. ✊🏽✊🏽✊🏽`,
+  },
+  {
+    week: 7,
+    title: "Week 7 Preview",
+    date: "Oct 20, 2026",
+    matchups: Object.values(week7Blurbs),
+    signoff: `Claude out. ✊🏽✊🏽✊🏽`,
+  },
   {
     week: 6,
     title: "Week 6 Preview",
