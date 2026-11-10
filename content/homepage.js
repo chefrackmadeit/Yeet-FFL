@@ -23,12 +23,28 @@ export const yeetNewsNetwork = `Nothing new except this site which is sick as he
 // current. When a new week starts, move the finished week's blurbs down into
 // previewArchive below so they live on as a collapsible historical post.
 // Date shown on the current week's preview dropdown (instead of "updates live").
-export const currentPreviewDate = "Nov 4, 2026";
+export const currentPreviewDate = "Nov 10, 2026";
 
 // Sign-off shown at the bottom of the current week's preview.
 export const previewSignoff = `Claude out. ✊🏽✊🏽✊🏽`;
 
 export const matchupBlurbs = {
+  "10:1": `Kelly Peterson X2 🍆💦👅🫦 (proj 126.5) is a 17-point favorite over Crayon Eaters Inc. (proj 108.8), so Spencer's 3-6 ass is staring down another beating. Spencer fleeced Magoo in the Chase-for-Jefferson swap, and Ja'Marr Chase rewarded him with a 31.5 while Cam Little's kicking leg chipped in 17, but Jameson Williams (5) and Ollie Gordon (7.4) are two guys collecting a paycheck for standing around. Jesse is 7-2 with a league-best 1,378.7 points thanks to Luther Burden (20.7) and Tee Higgins (20.2), though Derrick Henry's 5.6 and Dalton Kincaid's 5.8 are a refrigerator and a traffic cone respectively. A 108.8 projection against that machine means Spencer gets bent over the fryer and the only thing getting a rest this week is his dignity.`,
+
+  "10:2": `Whipped & Waddled (proj 86.8) vs They Hated Jesus Too (proj 85.4) is a 1.4-point coin flip between two lineups that look like a bus stop on fire. Key is 1-8, but Puka Nacua dropped 35 and Bryce Young somehow coughed up 21.3 while the Patriots D laid a flat zero like the whole unit got lost on the way to the stadium. Magoo is 3-6 with Jake Bates (15) and Breece Hall (11.7) carrying him, but Justin Jefferson, the guy he took in the Chase trade, posted a miserable 8.8 that Spencer is laughing at from his couch. Neither of you should be proud of an 86 projection, so whoever wins gets to avoid the Burger Prince crown for exactly one more week.`,
+
+  "10:3": `Big V….ictory (proj 122.1) is a 24-point favorite over Mcfuckin' (proj 97.8), and ZG's lineup projects like it's being held for ransom. Tozzi is 6-3 with 1,238.6 points and just got a 30.1 out of Christian Watson and a 15 from the Bears D, though Tyler Allgeier's 6.6 is a running back running in place. ZG got 28.5 from Bucky Irving and 22.3 from Brock Bowers, but Adonai Mitchell laid a goose egg and Austin Ekeler's 5.4 is a retirement home with a jersey. A sub-100 projection at 3-6 is how you hand your man card to the guy in the next cubicle, so ZG gets properly railed here.`,
+
+  "10:4": `The Richmond Barebacks 🍑💦 (proj 118.6) hold a small edge over The Space Browns (proj 114), and it's a close fight between a 6-3 team and a 5-4 team who both think they're better than they are. Civil is 6-3 with Brock Purdy (26.3) and Isaiah Likely (16.3) humming, but Kyle Pitts keeps putting up numbers like a 5.3 that should come with an apology. Nate has 1,278.7 points on the board with CeeDee Lamb (33.5) and Javonte Williams (22.4, the guy he swindled out of Mike) leading the way, yet Zay Flowers (5.3) and Michael Mayer (4.7) combined for less than a decent sneeze. Tight as a drum, so whichever of your scrubs finally wakes the fuck up gets to talk shit until Sunday.`,
+
+  "10:5": `Team D'Brickashaw (proj 136) is a 15-point favorite over Carol's Peps (proj 120.4), and KT is about to get his ass handed to him in the nicest possible way. KT is 5-4 off a huge 152.5 with Kenneth Walker (36.3) and CMC (22.7) running like they owe someone money, but Aaron Jones' 3.1 and a Marvin Harrison Jr. projection of 4.7 are why this roster still has dead weight stapled to it. Preston is 5-4 with Matthew Golden (32.4) and Bijan (26.7) doing the heavy lifting, though Tucker Kraft's 1.9 was a tight end impression of a fire hydrant. A 15-point gap says Preston gets the W, and KT gets to learn what a participation trophy feels like up close.`,
+
+  "10:6": `Nicotine Leech (proj 116.3) barely edges Mid Mike & The Boyz (proj 114.6), and it's a coin flip between two teams that both smell like a wet gym bag. Mike is 4-5 and put up an 84.1 last week, though Trey McBride (12.4), Tyler Bass (13) and Drake London (11.8, fresh off the Nate trade) are the ones keeping him out of the gutter, while Ladd McConkey's zero was the single worst thing he's done since Sunday brunch. Kerner is 6-3 with Joe Burrow (29.5) and Jonah Coleman (18.8) doing the heavy lifting, but Jonathan Taylor's 9.4 and a 4-point Bengals D are why he keeps getting bailed out. A coin flip, so Mike better hope his kicker doesn't miss because Kerner will rub it in for a week.`,
+
+};
+
+// Week 9 blurbs — archived (moved into previewArchive below on Nov 10, 2026).
+const week9Blurbs = {
   "9:1": `Crayon Eaters Inc. (proj 129.9) holds a slim edge on Whipped & Waddled (proj 122), and it's a battle between two guys who've been getting dicked by the standings all year. Spencer got 31.1 from Ja'Marr Chase, 28.7 from Tony Pollard and 25.4 from Mahomes, but Tre Tucker laid a goose egg like he got lost on the way to the stadium. Key is 1-7 and still got 25 from Puka and 20.9 from Kyler, yet Nick Folk put up negative 1, which is a kicker actively robbing you. Spencer by a hair, but both of you are fighting for the title of least-bad crayon in the box.`,
 
   "9:2": `Big V….ictory (proj 146.7) is a hair better than Kelly Peterson X2 🍆💦👅🫦 (proj 141), and the whole league is about to watch the two best teams trade haymakers. Tozzi got 29.9 from Bhayshul Tuten, 28.2 from Kirk Cousins and 24.8 from Gibbs, but Omar Cooper and Will Reichard both scored a flat zero like they lost their cleats. Jesse is 7-1 with 1,265.3 points thanks to Tee Higgins (37.5), D'Andre Swift (27.9) and JSN (23.8), though Parker Washington's 3.6 was a human cardboard cutout. Coin flip, so whoever's scrubs stop jerking off in the end zone gets to dance on the other guy's grave.`,
@@ -140,6 +156,13 @@ const week3Blurbs = {
 // week wraps, paste its matchupBlurbs values here as a new entry at the top.
 // ---------------------------------------------------------------------------
 export const previewArchive = [
+  {
+    week: 9,
+    title: "Week 9 Preview",
+    date: "Nov 4, 2026",
+    matchups: Object.values(week9Blurbs),
+    signoff: `Claude out. ✊🏽✊🏽✊🏽`,
+  },
   {
     week: 8,
     title: "Week 8 Preview",
