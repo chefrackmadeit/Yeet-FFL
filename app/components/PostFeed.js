@@ -46,6 +46,15 @@ function renderInline(text, keyBase) {
   return nodes;
 }
 
+// Turn a YouTube link (youtu.be/ID, youtube.com/watch?v=ID, /shorts/ID, /embed/ID)
+// into a privacy-friendly embed URL. Returns null if it isn't a YouTube link.
+function youtubeEmbed(url) {
+  const m = String(url || "").match(
+    /(?:youtu\.be\/|youtube\.com\/(?:watch\?(?:.*&)?v=|shorts\/|embed\/))([\w-]{11})/
+  );
+  return m ? `https://www.youtube-nocookie.com/embed/${m[1]}` : null;
+}
+
 // Sort key from a post's date. Unparseable/missing dates sort to the bottom
 // (keeping their original order among themselves).
 function dateKey(d) {
@@ -79,6 +88,21 @@ export default function PostFeed({ posts, emptyText }) {
                   {paragraphs(post.body).map((p, j) => (
                     <p key={j}>{renderInline(p, `${id}-${j}`)}</p>
                   ))}
+                </div>
+              )}
+              {youtubeEmbed(post.video) && (
+                <div
+                  className="post-video"
+                  style={{ position: "relative", width: "100%", aspectRatio: "16 / 9", margin: "12px 0" }}
+                >
+                  <iframe
+                    src={youtubeEmbed(post.video)}
+                    title={post.title}
+                    loading="lazy"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    allowFullScreen
+                    style={{ position: "absolute", inset: 0, width: "100%", height: "100%", border: 0, borderRadius: 8 }}
+                  />
                 </div>
               )}
               {Array.isArray(post.links) && post.links.length > 0 && (

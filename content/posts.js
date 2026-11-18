@@ -17,6 +17,9 @@
 //   body  — the post text. Put a blank line between paragraphs. You can also
 //           drop links right in the text: [click here](https://example.com)
 //           or just paste a full https://... URL. They open in a new tab.
+//   video — (optional) a YouTube link (youtu.be/... or youtube.com/watch?v=...)
+//           that gets embedded as a playable video inside the post. A post can
+//           be video-only (no body needed).
 //   links — (optional) an array of { label, url } shown as buttons under the
 //           post — perfect for a PDF or Google Doc. e.g.
 //           links: [{ label: "Read the recap (PDF)", url: "/my-file.pdf" }]
@@ -32,6 +35,12 @@
 
 // 📝 WEEKLY REVIEW — recap of the week that just finished. Newest first.
 export const weeklyReview = [
+  {
+    id: "wr-2026-week9-all-time-review",
+    date: "Nov 12, 2026",
+    title: "Week 9 All Time Review",
+    video: "https://youtu.be/S73rvjv5HGo",
+  },
   {
     id: "wr-2026-week7-7th-heaven",
     date: "Oct 27, 2026",
