@@ -23,12 +23,28 @@ export const yeetNewsNetwork = `Nothing new except this site which is sick as he
 // current. When a new week starts, move the finished week's blurbs down into
 // previewArchive below so they live on as a collapsible historical post.
 // Date shown on the current week's preview dropdown (instead of "updates live").
-export const currentPreviewDate = "Nov 18, 2026";
+export const currentPreviewDate = "Nov 24, 2026";
 
 // Sign-off shown at the bottom of the current week's preview.
 export const previewSignoff = `Claude out. ✊🏽✊🏽✊🏽`;
 
 export const matchupBlurbs = {
+  "12:1": `Mcfuck (proj 133) barely edges Crayon Eaters Inc. (proj 130.5), and it's a 4-7 vs 4-7 slap fight between two teams who've both been getting railed by the schedule all year. Spencer got 25 from Mahomes and 13 from Cam Little's kicking leg, but Ja'Marr Chase's 8.1 and a 5.1 from Dawson Knox, his free-agent tight end, were a double dose of nothing. ZG got 26 from Chuba Hubbard and 19 from Bucky Irving, though Brenton Strange's 4.6 was a tight end doing a Weekend at Bernie's impression. A 2.5-point gap is a coin flip, so whoever's scrubs finally stop jerking off in the end zone gets to climb out of the basement.`,
+
+  "12:2": `The Space Browns (proj 125) are a solid favorite over They Hated Jesus Too (proj 110), and Magoo's last-week fluke is about to get a reality check. Nate got 30.2 from CeeDee and 24.1 from Javonte Williams, the guy he swindled out of Mike, but J.K. Dobbins laid a flat zero like he was dragging a refrigerator through mud. Magoo hung 147.4 behind George Pickens (23.8) and Antonio Williams (21.2), but Mark Andrews (3.4) played tight end like a lawn ornament and 5-6 says last week was a hot streak and not a personality. A 15-point gap says Nate wins and Magoo goes back to being the guy who gets a crown welded to his skull.`,
+
+  "12:3": `Leat Perez ✈️🍆👌🏻💦👅 (proj 155.1) is a 17-point favorite over Team D'Brickashaw (proj 138.1), and Preston's actually projected decent and is still about to get bent over. Jesse owns the league's best 1,645.5 points with Derrick Henry (19.1), Parker Washington (18.3) and a $3 pickup in T.J. Hockenson (11.5), but the Vikings D and Ja'Kobi Lane both laid goose eggs like they were napping on the bench. Preston got 23.1 from DJ Moore and a free 9.4 from Braelon Allen off the waiver wire, though Rachaad White's zero and Chase McLaughlin's 3 were two guys who got stuck in traffic on the way to the stadium. At 5-6, Preston is staring down the highest projection on the board, so go ahead and brace for impact because Jesse isn't stopping.`,
+
+  "12:4": `Nicotine Leech (proj 142.7) is a 45-point favorite over Whipped & Waddled (proj 97.9), and that isn't a matchup, it's a hit job. Kerner is 8-3 with Jonah Coleman dropping a stupid 34.9 and Mike Evans adding 22.9, though Jonathan Taylor's 6.7 is a first-rounder running like his shoes are full of concrete. Key is 2-9 but got 27.9 from Ashton Jeanty and 25.4 from Travis Kelce, yet Tank Dell, the $50 bid that keeps on giving, posted another 5.7 and Alvin Kamara laid a 7.2 like a retiree on a nature walk. A projected 98 against 142 means Key goes right back to getting spanked like a toddler in a toy store.`,
+
+  "12:5": `Big V….ictory (proj 151.8) is a 38-point favorite over Mid Mike & The Boyz (proj 113.8), and our commissioner is about to get a fat load of Tozzi. Tozzi is 8-3 with 1,528.7 points, with Jahmyr Gibbs (27.8), C.J. Stroud (21.5) and Malik Nabers (18.5) cooking, though DK Metcalf's 1.2 was a wide receiver impersonating a cardboard cutout. Mike got 24.3 from Emmett Johnson and 17 each from Tyler Bass and the Bears D, but Michael Mayer's 1.4 after a $23 bid proves he'd lose a footrace to a three-legged dog, and both T.J. Hockenson and Keenan Allen, the guys he cut, got scooped up by rivals. A 38-point gap against the guy who runs the league is the kind of corruption scandal nobody wants to read about, so Mike better bring a helmet.`,
+
+  "12:6": `Carol's Peps (proj 134.6) is an 18-point favorite over the Richmond Barebacks 🍑💦 (proj 116.7), and Civil's 7-4 record is about to look like a clerical error. KT hung 35.9 from Dak and 19.2 from Chris Olave and added Keenan Allen on a $11 waiver claim, though Spencer Shrader's 1 was a kicker holding a pity party. Civil got 22.2 from Purdy, 19.1 from Tetairoa McMillan and 15 from the Texans D, but Isaiah Likely (4.5) and Chris Godwin (4.3) ran routes like they lost a bet. A 117 projection into a 135 means Civil gets taken behind the barn and shown who's boss, so bend over, bro.`,
+
+};
+
+// Week 11 blurbs — archived (moved into previewArchive below on Nov 24, 2026).
+const week11Blurbs = {
   "11:1": `Crayon Eaters Inc. (proj 131.6) is a 25-point favorite over They Hated Jesus Too (proj 106.3), and the Chase trade is still chewing Magoo's ass like a rabid raccoon. Spencer hung a league-best 178.3 behind Mahomes (35.4), Ja'Marr Chase (34.1) and Cam Skattebo (27.2), though Brock Bowers, the tight end he got in the Chuba swap, answered with a 3.8 like he showed up to the wrong stadium. Magoo got 43.5 from George Pickens and 14.8 from Breece Hall, but he blew $8 of FAAB on Chimere Dike while Jake Bates booted a 5 like a drunk at a bar mitzvah. A 25-point gap on a 4-6 team is called a public flogging, Magoo, so go ahead and ask Spencer how the Chase deal looks from over here.`,
 
   "11:2": `Leat Perez ✈️🍆👌🏻💦👅 (proj 135.4) is a 27-point favorite over Mcfuckin' (proj 108.6), so ZG's 3-7 ass is about to get stapled to the bottom of the standings. Jesse owns the league's best 1,546.8 points off JSN (31.1), Parker Washington (28.2) and a Vikings D that hung 21, though Jason Myers' 2 got him dumped before he finished unpacking. ZG got 34.2 from Chuba Hubbard after the Bowers trade and 25.8 from Amon-Ra, but DeMario Douglas (1.4) was the other piece of that deal and he turned in a stat line you could lose in a couch cushion. A projected 108.6 into a 135 buzzsaw means ZG goes down like a drunk uncle at a wedding.`,
@@ -172,6 +188,13 @@ const week3Blurbs = {
 // week wraps, paste its matchupBlurbs values here as a new entry at the top.
 // ---------------------------------------------------------------------------
 export const previewArchive = [
+  {
+    week: 11,
+    title: "Week 11 Preview",
+    date: "Nov 18, 2026",
+    matchups: Object.values(week11Blurbs),
+    signoff: `Claude out. ✊🏽✊🏽✊🏽`,
+  },
   {
     week: 10,
     title: "Week 10 Preview",
