@@ -36,6 +36,40 @@
 // 📝 WEEKLY REVIEW — recap of the week that just finished. Newest first.
 export const weeklyReview = [
   {
+    id: "wr-2026-week11-power-rankings",
+    date: "Nov 24, 2026",
+    title: "Week 11 YEET FFL Power Rankings",
+    body: `Following up John Gruuuuu is a tall task but here we goooooo
+
+The league is tightening up quicker than Jesse’s grip on his ol’ billfold when he sees a group of basketball-Americans walking by. Let’s hop in and see what’s going on around the YEET
+
+**1.** Jesse Circelli aka Leat Perez (sexual emojis) - This team may be 3rd in the standings but they are second to none in my books. Speaking of seconds remember Julia Gilmore at Brillapalooza 2009? Key slopped it up for you and you came in like Frank Reynolds for the scraps. Anyways back to the pigskin, Your squad took the L this week with JSN on bye. I would be a little worried about the swift fumbling issue, but you have the depth to overcome if necessary. Don’t want to see this team on my schedule the rest of the way. I fully expect you to bounce back next week vs PB.
+
+**2.** Tozzi aka Big V- another day another V…..ictory for this big sexy man. Guy has an elite receiving core to pair with the most valuable asset in fantasy. Sonic could take my hedgehog and go to town on me any night if he was doing these kind of numbers for my team. it’s hard not to foresee these top two teams matchup in the championship. Next week you take on mid mike and the boys. Thanks for the fuck shack
+
+**3.** Kyle K aka Nicotine Leech- my guy KK has a really solid football team here. Jonah Coleman looks like the pickup of the year, Mike Evans and Devonta both back, and you put a whooping on our fearless leader. Hey remember when you had to babysit me in the MGM grand so I could make numerous losing parlays… well I don’t but I hear we had a good time. Next week you’ve got burger boy. 9-3 here you come
+
+**4.** Nate Schecter aka Space browns- Next up is the Birthday Boy! Happy birthday to my fellow big lefty. Many blessings to you and yours. Unfortunately, your fantasy team has not been blessed with wins but this is still a top team make no mistake abooot it. Taking an L to the big keester bunny can’t feel great, but you’ve got Josh Allen and Ceedee that’s a recipe for the playoffs. Next week you’ve got Andrew Morgan McKay
+
+**5.** Myself aka Carol’s Peps- my team makes me want to puke every time I open up this damn app. Absolutely zero depth and one receiver who isn’t completely Strillo’d. Ken Walker is thrusting his groin into my ass with no KY. Then I look up and see lash has Emmett Johnson chillin on the bench ready to join Kenneth in the sexual assault festivities. For fucks sake. I’m holding on for dear life to get a playoff spot. Next week Vs. Commish
+
+**6.** Commissioner V aka Richmond Barebacks- this team honestly blows and i dont know how he keeps pulling off wins. He must be cheating, coach even said so and he’s a stand up morally correct character. Like my squad, this teams receiving room is depleted, we’re both starting two tight ends and a mid Vikings RB. Should be a good matchup next week. Clank up
+
+**7.** PB aka D’brickashaw aka Champ- this team is heading backwards faster than you could ever run on the Solon middle school track. Looking at the roster tells a different story though. TLaw at the helm with Bijan and receivers for dayzzz. Definitely has the pieces in place to make a run at it. I’d sprinkle a future championship bet on this squad. Big matchup next week vs. JMoola
+
+**8.** ZG aka Mcfuck- well McFuck me. I guess the trade wasn’t as egregious as I originally thought. I’d like to submit a formal apology for being on the forefront of that veto committee. This team is really starting to fuck though. JD5 is looking like himself, RBs are really solid and Amon-Ra is the most consistent fantasy player of this era. Would need a lot of help but definitely not out of this race at all. Next week Vs. Crayon Eaters
+
+**9.** Andrew Morgan- you took Spencer out to the shed and shoved your tools in his crevices. Played your role so good after you hit you took a bow. Grizz gang. Sorry this is just gibberish. You got the boys riled up and ready to fuggggg this week. Minus the Qb spot the team is starting to come together and sing kumbaya. Jefferson Pickens Kittle down the middle of that lineup is scary. Jacobs coming back soon. Possible playoff push? Let’s see. Next week vs Schec in a big bubble spot matchup
+
+**10.** Mid mike and the boys- hey fuck you man. Fuckayouuuu. Jk I love you and I’ve been trying to get with you sexually so please call me. Your team is not terrible but also not good. Just lacking the star power. A perfectly suitable name from a very underrated film. A playoff run is possible if Ladd has a sex change and Omarion evolves into a real RB1. Wouldn’t count on it though. Next week vs. Big Verissa Mason
+
+**◦** Spencer the Crayon Eater- you had your little run and even had Super Bowl champ coach gruden wanking you off in the chat. But it’s over. Big Andrew Morgan has stuck his nail in your coffin. An interesting year going from one of the worst teams ever assembled, having your Jeremy Lin like run and now you’ll be looking over your shoulder  for the last 3 weeks wondering if you’ll have to clock in at McDonald’s. I love you but I think we’re all rooting for key to climb out of that last spot. Godspeed to you. Next week vs. mcFuck. How fitting
+
+**◦** Connor Keeley aka whipped and waddled aka Keysta bunny aka carols favorite son- Let me take you back a few years to 2008- We all had gathered at Mr. Mosquito’s (Brillhart) one bedroom cracked out black tarred apartment. Key is on the clock with the 1st overall pick, surely he can’t fuck this one up. We all wait and anticipate. Key steps up to the board with an orange label, he states loud and confidently “with the first overall pick I select Jamal Lewis”  we all burst out in laughter. Mr. B had to of shared some of his crack pipe with the young lad we all thought to ourselves. Nonetheless it made for a great laugh and a memory I’ll never forget. And here we are 18 years or so later and not much has changed. Keys team is more ass than abella danger. Injuries have definitely taken their toll on this squad and there’s not much you can do or say about this roster at this point. Burgers are happening for this guy barring a miracle that we’re all rooting for. Well most likely all be watching key with a smile on his face guzzling down McDoubles and hi C. Next week Vs. nicotine leech go get em tiger
+
+Happy thanksgiving  and good luck down the stretch boys`,
+  },
+  {
     id: "wr-2026-week9-all-time-review",
     date: "Nov 12, 2026",
     title: "Week 9 All Time Review",
